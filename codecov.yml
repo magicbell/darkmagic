@@ -1,0 +1,4 @@
+status:
+  project:
+    default:
+      threshold: 92.5%

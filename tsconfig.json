@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": ["packages", "scripts", "types", "vitest/globals"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "paths": {
+      "~/fixtures": ["fixtures"],
+      "~/sb-decorators": [".storybook/decorators"],
+      "@darkmagic/react": ["packages/react/src"]
+    },
+    "noEmit": true
+  }
+}
