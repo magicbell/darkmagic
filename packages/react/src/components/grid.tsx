@@ -229,33 +229,33 @@ const StyledGrid = styled('div', {
   },
 });
 
-type StyledGridlProps = ComponentProps<typeof StyledGrid>;
+type StyledGridProps = ComponentProps<typeof StyledGrid>;
 
 type RootProps = {
   /**
    * The number of columns in the grid.
    */
-  cols?: StyledGridlProps['cols'];
+  cols?: StyledGridProps['cols'];
   /**
    * The number of rows in the grid.
    */
-  rows?: StyledGridlProps['rows'];
+  rows?: StyledGridProps['rows'];
   /**
    * The gap between cells.
    */
-  gap?: StyledGridlProps['gap'];
+  gap?: StyledGridProps['gap'];
   /**
    * The gap between columns when vertical and horizontal gaps are different.
    */
-  colGap?: StyledGridlProps['colGap'];
+  colGap?: StyledGridProps['colGap'];
   /**
    * The gap between rows when vertical and horizontal gaps are different.
    */
-  rowGap?: StyledGridlProps['rowGap'];
+  rowGap?: StyledGridProps['rowGap'];
   /**
    * The spacing inside each cell.
    */
-  spacing?: StyledGridlProps['spacing'];
+  spacing?: StyledGridProps['spacing'];
   /**
    * The grid contents, usually `Grid.Cell` components.
    */
