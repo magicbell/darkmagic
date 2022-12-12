@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/magicbell-io/magicbell-ui"
+    "url": "git+https://github.com/magicbell-io/darkmagic"
   },
   "keywords": [
     "magicbell",
@@ -34,7 +34,7 @@
   ],
   "homepage": "https://magicbell.com",
   "bugs": {
-    "url": "https://github.com/magicbell-io/magicbell-ui/issues"
+    "url": "https://github.com/magicbell-io/darkmagic/issues"
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.8",
