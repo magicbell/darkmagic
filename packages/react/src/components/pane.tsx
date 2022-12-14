@@ -1,44 +1,111 @@
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
+import { ElementRef, forwardRef, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { isElement } from 'react-is';
+import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
+import invariant from 'tiny-invariant';
 
 import { createSlot, getSlots } from '../lib/slots';
-import { CSS, styled } from '../lib/stitches';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
 import { Flex } from './flex';
+import { IconButton } from './icon-button';
+import { ScrollArea } from './scroll-area';
 import { Typography } from './typography';
 
-const StyledHeader = styled('div', {
+const StyledHeaderContent = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  gap: '$6',
+  flexDirection: 'row',
   userSelect: 'none',
-  flex: 'none',
+  alignItems: 'center',
+  padding: '0 $8',
 
   variants: {
-    noBottomPadding: {
-      // negative margin to compensate for bottom border and make bottom borders collapse
-      true: { paddingBottom: 0, '& > :last-child': { marginBottom: '-1px' } },
-    },
+    variant: {
+      pane: {
+        paddingTop: '$8',
+      },
 
-    bottomBorder: {
-      true: {
+      toolbar: {
+        justifyContent: 'center',
+        height: '$18',
         borderBottom: `1px solid $border-muted`,
       },
     },
 
-    level: {
-      1: {},
-      2: {},
-    },
-
-    spacing: {
-      md: { padding: '$6 $6 $8 $6' },
-      lg: { padding: '$8 $8 $4 $8' },
+    tabs: {
+      contained: {},
+      underline: {},
     },
   },
 
-  compoundVariants: [
-    { noBottomPadding: false, level: 1, spacing: 'md', css: { paddingBottom: '$8' } },
-    { noBottomPadding: false, level: 2, spacing: 'md', css: { paddingBottom: '$4' } },
-  ],
+  compoundVariants: [{ variant: 'toolbar', tabs: 'contained', css: { borderBottom: 'none' } }],
+});
+
+const StyledHeaderTabs = styled('div', {
+  padding: '$2 $8 0 $8',
+
+  variants: {
+    variant: {
+      toolbar: { paddingTop: '$8' },
+      pane: { paddingTop: '$2' },
+    },
+    tabs: {
+      contained: {},
+      underline: {
+        borderBottom: `1px solid $border-muted`,
+        '& > [role="tablist"]': {
+          marginBottom: '-1px',
+        },
+      },
+    },
+  },
+});
+
+const StyledHeader = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  userSelect: 'none',
+  flex: 'none',
+
+  variants: {
+    variant: {
+      pane: {},
+
+      toolbar: {},
+    },
+  },
+});
+
+const overlayShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+const contentShow = keyframes({
+  '0%': { opacity: 0, transform: 'translate(-50%, -4px) scale(.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, 0) scale(1)' },
+});
+
+const StyledOverlay = styled(DialogPrimitive.Overlay, {
+  backgroundColor: '$bg-overlay',
+  position: 'fixed',
+  inset: 0,
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${overlayShow} 150ms linear`,
+  },
+});
+
+const StyledDialogContent = styled(DialogPrimitive.Content, {
+  position: 'fixed',
+  top: '$6',
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+
+  '@media (prefers-reduced-motion: no-preference)': {
+    animation: `${contentShow} 150ms linear`,
+  },
+  '&:focus': { outline: 'none' },
 });
 
 const StyledActions = styled('div', {
@@ -49,80 +116,70 @@ const StyledActions = styled('div', {
 });
 
 const StyledBody = styled('div', {
+  display: 'flex',
   font: '$body-small',
   color: '$text-default',
   position: 'relative',
 
   width: '100%',
   flex: 'auto',
+  flexDirection: 'column',
   minHeight: 0,
 
-  padding: '$4 $6',
-
   variants: {
-    spacing: {
-      md: { padding: '$4 $6' },
-      lg: { padding: '0 $8 $8 $8' },
+    scroll: {
+      none: {},
+      both: {},
+      vertical: {},
+      horizontal: {},
     },
-  },
-});
 
-const StyledPane = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  flex: 'auto',
-
-  [`& > ${StyledBody}`]: {
-    color: '$text-default',
-  },
-
-  variants: {
-    level: {
-      1: {
-        [`& ${StyledBody}`]: {
-          font: '$body-default',
+    padding: {
+      default: {
+        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
+          padding: '$8',
         },
       },
-      2: {
-        [`& ${StyledBody}`]: {
-          font: '$body-small',
+      none: {
+        padding: 0,
+
+        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
+          padding: '0',
         },
       },
     },
   },
+
+  compoundVariants: [{ scroll: 'none', padding: 'default', css: { padding: '$8' } }],
+
+  '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
+    // If we run into scrollbar issues, it might be because of this. We need the
+    // first div of the scroll-area to be a block instead of table, so the Code
+    // component renders its own scrollbar instead of growing out of the parent.
+    // Radix however mentions that the table is needed for scrollbar (thumb)
+    // computations.
+    //
+    // See https://github.com/radix-ui/primitives/blob/e861c1/packages/react/scroll-area/src/ScrollArea.tsx#L176-L185
+    '& > div': {
+      display: 'block !important',
+    },
+  },
 });
 
-const Title = createSlot('Title');
-const Description = createSlot('Description');
-const Body = createSlot('Body');
+type StyledPaneBodyProps = ComponentProps<typeof StyledBody>;
 
-/**
- * Rendering tabs inside this slot will reduce the amount of padding between the
- * header tabs and the content. Particularly useful in combination with
- * `<Tabs variant="underline">`.
- */
-const Tabs = createSlot('Tabs');
-
-type PaneProps = {
-  /**
-   * The level is used to determine the size and color of text and spacing.
-   */
-  level?: 1 | 2;
+type BodyProps = {
+  children?: ReactNode;
 
   /**
-   * Controls the surrounding padding and space between header and body
+   * Panes with nested panes should have no padding.
    */
-  spacing?: 'md' | 'lg';
+  padding?: StyledPaneBodyProps['padding'];
 
   /**
-   * Set to `true` to show a border between header and content
+   * Scrollbars are only shown when the content is overflowing.
    */
-  divide?: boolean;
-
-  /**
-   * The contents to show in the pane.
-   */
-  children: ReactNode;
+  scroll?: 'horizontal' | 'vertical' | 'both' | 'none';
 
   /**
    * Easily override styles. It’s like the style attribute, but it supports
@@ -131,54 +188,221 @@ type PaneProps = {
   css?: CSS;
 };
 
-const Root = forwardRef<ElementRef<typeof StyledPane>, PaneProps>(function Pane(
-  { children, level = 1, spacing = 'md', divide = false, ...props },
+const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
+  { children, scroll = 'none', padding = 'default', ...props },
   ref,
 ) {
-  const slots = getSlots(children, {
+  return (
+    <StyledBody {...props} padding={padding} scroll={scroll} ref={ref}>
+      {scroll === 'none' ? children : <ScrollArea direction={scroll}>{children}</ScrollArea>}
+    </StyledBody>
+  );
+});
+
+const StyledPlaceholderPane = styled('div', {
+  borderRadius: '$lg',
+  backgroundColor: '$bg-default',
+  border: '1px solid $border-muted',
+  width: '100%',
+});
+
+const StyledPane = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 'auto',
+
+  variants: {
+    variant: {
+      root: {},
+      nested: {},
+    },
+
+    expanded: {
+      true: {
+        width: '90vw',
+        minHeight: 'max($96, 40vh)',
+        maxWidth: '$5xl',
+        maxHeight: '85vh',
+      },
+    },
+
+    width: {
+      xxs: { flex: '1 0 $sizes-xs' },
+      xs: { flex: '1 0 $sizes-sm' },
+      sm: { flex: '1 0 $sizes-lg' },
+      md: { flex: '1 0 $sizes-2xl' },
+      lg: { flex: '1 0 $sizes-4xl' },
+      auto: { flex: '1 1 auto' },
+      full: { flex: '0 1 100%' },
+    },
+  },
+});
+
+type StyledPaneProps = ComponentProps<typeof StyledPane>;
+
+type PaneProps = {
+  /**
+   * The children to render inside the pane. This can be a react node, or a
+   * render function to get access to the panes expanded state.
+   */
+  children: ReactNode | ((options: { expanded: boolean }) => ReactNode);
+
+  /**
+   * When set to `true`, the pane gets a "full screen" action button, which shows
+   * the pane in a modal on click. Defaults to `false`.
+   */
+  expandable?: boolean;
+
+  /**
+   * The variant of the panel, one `root` panel can contain multiple `nested` panels.
+   */
+  variant?: StyledPaneProps['variant'];
+
+  /**
+   * The width of the pane. Defaults to `auto`.
+   */
+  width?: StyledPaneProps['width'];
+
+  /**
+   * Easily override styles. It’s like the style attribute, but it supports
+   * tokens, media queries, nesting and token-aware values.
+   */
+  css?: CSS;
+};
+
+const Actions = createSlot('Actions');
+
+const Title = createSlot('Title');
+const Description = createSlot('Description');
+
+/**
+ * Rendering tabs inside this slot will reduce the amount of padding between the
+ * header tabs and the content. Particularly useful in combination with
+ * `<Tabs variant="underline">`.
+ */
+const Tabs = createSlot('Tabs');
+
+const Root = forwardRef<ElementRef<typeof StyledPane>, PaneProps>(function Pane(
+  { children, expandable = false, variant = 'nested', width = 'auto', ...props },
+  forwardedRef,
+) {
+  const [expanded, setExpanded] = useState(false);
+  const portalNode = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    return createHtmlPortalNode();
+  }, []);
+  const [height, setHeight] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(typeof document !== 'undefined'), []);
+
+  const paneRef = useRef<HTMLDivElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, paneRef);
+
+  const childNodes = typeof children === 'function' ? children({ expanded }) : children;
+
+  // Use a slot for actions, so we can easily append the expand button to user-provided actions
+  const slots = getSlots(childNodes, {
     title: Title,
     description: Description,
-    body: Body,
-    actions: StyledActions,
+    actions: Actions,
     tabs: Tabs,
   });
 
-  const hasHeader = Boolean(slots.title || slots.description || slots.actions || slots.tabs);
+  const hasHeader = Boolean(slots.title || slots.description || slots.actions || slots.tabs || expandable);
+  const headerVariant = variant === 'root' ? 'toolbar' : 'pane';
+  const tabVariant = isElement(slots.tabs)
+    ? ((slots.tabs.props.variant || 'underline') as 'underline' | 'contained')
+    : undefined;
 
-  return (
-    <StyledPane level={level} {...props} ref={ref}>
+  if (variant === 'root' && tabVariant === 'underline') {
+    throw new Error('Pane variant "root" should specify tab variant "contained".');
+  }
+
+  const pane = (
+    <StyledPane {...props} width={width} variant={variant} expanded={expanded} ref={composedRefs}>
       {hasHeader && (
-        <StyledHeader level={level} spacing={spacing} noBottomPadding={Boolean(slots.tabs)} bottomBorder={divide}>
-          <Flex gap={6} align="start" justify="between">
-            <Flex direction="column" gap={level === 1 ? 2 : 1} flex="auto">
-              <Typography as={level === 1 ? 'h1' : 'h2'} variant={level === 1 ? 'h1' : 'h2'} color="default">
+        <StyledHeader variant={headerVariant}>
+          <StyledHeaderContent variant={headerVariant}>
+            <Flex
+              direction={variant === 'root' ? 'row' : 'column'}
+              gap={variant === 'root' ? 6 : undefined}
+              flex="auto"
+              align={variant === 'root' ? 'baseline' : undefined}
+            >
+              <Typography
+                as={variant === 'root' ? 'h1' : 'h2'}
+                variant="h2"
+                color="default"
+                css={variant === 'root' ? { fontSize: '1.3125rem' } : undefined}
+              >
                 {slots.title}
               </Typography>
-              {slots.description ? (
-                <Typography variant={level === 1 ? 'default' : 'small'} color={level === 1 ? 'default' : 'muted'}>
+              {slots.description && (
+                <Typography variant="small" color="muted">
                   {slots.description}
                 </Typography>
-              ) : null}
+              )}
             </Flex>
+            <StyledActions>
+              {slots.actions}
 
-            <StyledActions>{slots.actions}</StyledActions>
-          </Flex>
+              {expandable && expanded ? (
+                <DialogPrimitive.Close asChild>
+                  <IconButton icon={ExitFullScreenIcon} label="exit fullscreen" variant="secondary" />
+                </DialogPrimitive.Close>
+              ) : expandable ? (
+                <DialogPrimitive.Trigger asChild>
+                  <IconButton icon={EnterFullScreenIcon} label="enter fullscreen" variant="secondary" />
+                </DialogPrimitive.Trigger>
+              ) : null}
+            </StyledActions>
+          </StyledHeaderContent>
 
-          {slots.tabs}
+          {slots.tabs && (
+            <StyledHeaderTabs variant={headerVariant} tabs={tabVariant}>
+              {slots.tabs}
+            </StyledHeaderTabs>
+          )}
         </StyledHeader>
       )}
 
-      <StyledBody spacing={spacing}>{slots.body}</StyledBody>
       {slots.children}
     </StyledPane>
+  );
+
+  // deu react-reverse-portal, expandable panes only work on client side
+  if (!expandable || !isClient) {
+    return pane;
+  }
+
+  const onOpenChange = (open: boolean) => {
+    if (open && paneRef.current) {
+      setHeight(paneRef.current.offsetHeight);
+    }
+
+    setExpanded(open);
+  };
+
+  invariant(portalNode, 'portalNode must be defined');
+
+  return (
+    <DialogPrimitive.Root open={expanded} onOpenChange={onOpenChange} defaultOpen>
+      <InPortal node={portalNode}>{pane}</InPortal>
+
+      {!expanded ? <OutPortal node={portalNode} /> : <StyledPlaceholderPane css={{ height }} />}
+
+      <DialogPrimitive.Portal>
+        <StyledOverlay />
+        <StyledDialogContent>{expanded ? <OutPortal node={portalNode} /> : null}</StyledDialogContent>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
   );
 });
 
 export const Pane = Object.assign(Root, {
-  Root,
   Title,
   Description,
   Tabs,
-  Actions: StyledActions,
   Body,
+  Actions,
 });

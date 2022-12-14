@@ -1,6 +1,6 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, useEffect, useMemo, useState } from 'react';
+import { ElementRef, forwardRef, ReactNode, useEffect, useMemo, useState } from 'react';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 import invariant from 'tiny-invariant';
 
@@ -44,7 +44,7 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
 
 type StyledDialogContentProps = ComponentProps<typeof StyledDialogContent>;
 
-const StyledDrawer = styled(Pane.Root, {
+const StyledDrawer = styled(Pane, {
   borderLeft: '1px solid $border-muted',
   minHeight: '100%',
   backgroundColor: '$bg-app',
@@ -65,14 +65,14 @@ type DrawerProps = {
   /**
    * The children to render inside the drawer.
    */
-  children: StyledDrawerProps['children'];
+  children: ReactNode;
   /**
    * Inline variant is rendered inline like a pane, while the overlay variant is
    * rendered in a dialog and closed by clicking "outside".
    */
   variant?: StyledDialogContentProps['variant'];
   /**
-   * The width of the card. Defaults to `md`.
+   * The width of the drawer. Defaults to `md`.
    */
   width?: StyledDrawerProps['width'];
   /**
@@ -90,40 +90,38 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   forwardedRef,
 ) {
   const portalNode = useMemo(() => {
-    if (typeof window === 'undefined') return null;
+    if (typeof document === 'undefined') return null;
     return createHtmlPortalNode();
   }, []);
 
   const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsClient(true);
-    }
-  }, []);
-
-  // deu react-reverse-portal, drawer only works on client side
-  if (!isClient) return null;
-  invariant(portalNode, 'portalNode must be defined');
+  useEffect(() => setIsClient(typeof document !== 'undefined'), []);
 
   const slots = getSlots(children, {
     actions: Actions,
   });
 
+  const drawer = (
+    <StyledDrawer width={width} {...props} ref={forwardedRef}>
+      <Pane.Actions>
+        {slots.actions}
+
+        {onRequestClose ? (
+          <IconButton variant="secondary" icon={Cross2Icon} label="Close" onClick={() => onRequestClose()} />
+        ) : null}
+      </Pane.Actions>
+
+      {slots.children}
+    </StyledDrawer>
+  );
+
+  // deu react-reverse-portal, drawer only works on client side
+  if (!isClient) return drawer;
+  invariant(portalNode, 'portalNode must be defined');
+
   return (
     <DialogPrimitive.Root open={variant === 'overlay'} onOpenChange={() => onRequestClose?.()}>
-      <InPortal node={portalNode}>
-        <StyledDrawer width={width} {...props} ref={forwardedRef}>
-          <Pane.Actions>
-            {slots.actions}
-
-            {onRequestClose ? (
-              <IconButton variant="secondary" icon={Cross2Icon} label="Close" onClick={() => onRequestClose()} />
-            ) : null}
-          </Pane.Actions>
-
-          {slots.children}
-        </StyledDrawer>
-      </InPortal>
+      <InPortal node={portalNode}>{drawer}</InPortal>
 
       {variant === 'inline' ? <OutPortal node={portalNode} /> : null}
 

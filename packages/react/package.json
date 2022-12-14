@@ -10,7 +10,7 @@
   ],
   "source": "./src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/magicbell-core.esm.js",
+  "module": "dist/darkmagic-react.esm.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "files": [

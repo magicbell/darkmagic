@@ -1,14 +1,80 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
+import { cloneElement, ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
+import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 
 import { createSlot, getSlots } from '../lib/slots';
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
+import { Flex } from './flex';
 import { IconButton } from './icon-button';
-import { Pane } from './pane';
 import { ScrollArea } from './scroll-area';
+import { Typography } from './typography';
+
+const StyledHeaderContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  userSelect: 'none',
+  alignItems: 'center',
+  padding: '$4 $6',
+
+  variants: {
+    variant: {
+      default: {},
+      pane: {
+        padding: '$8 $8 0 $8',
+      },
+    },
+  },
+});
+
+const StyledHeaderTabs = styled('div', {
+  padding: '0 $6',
+
+  variants: {
+    variant: {
+      default: {},
+      pane: {
+        padding: '$4 $8 0 $8',
+      },
+    },
+
+    tabs: {
+      contained: {
+        paddingBottom: '$4',
+      },
+      underline: {},
+    },
+  },
+
+  compoundVariants: [{ variant: 'pane', tabs: 'contained', css: { paddingBottom: 0 } }],
+});
+
+const StyledHeader = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  userSelect: 'none',
+  flex: 'none',
+
+  variants: {
+    variant: {
+      default: {
+        borderBottom: `1px solid $border-muted`,
+      },
+      pane: {},
+    },
+
+    tabs: {
+      underline: {
+        [`& ${StyledHeaderTabs}`]: {
+          marginBottom: -1,
+        },
+      },
+      contained: {},
+    },
+  },
+});
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -41,7 +107,14 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
   '&:focus': { outline: 'none' },
 });
 
-const StyledCardBody = styled('div', {
+const StyledActions = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '$2',
+  flex: 'none',
+});
+
+const StyledBody = styled('div', {
   display: 'flex',
   font: '$body-small',
   color: '$text-default',
@@ -53,7 +126,36 @@ const StyledCardBody = styled('div', {
 
   '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
     padding: '$4 $6',
+  },
 
+  '&:first-child > [data-radix-scroll-area-viewport], &:first-child > * > [data-radix-scroll-area-viewport]': {
+    padding: '$6',
+  },
+
+  variants: {
+    variant: {
+      pane: {
+        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
+          padding: '$8',
+        },
+      },
+    },
+    scroll: {
+      none: {
+        padding: '$6 $4',
+        '&:only-child': {
+          padding: '$6',
+        },
+      },
+      both: {},
+      vertical: {},
+      horizontal: {},
+    },
+  },
+
+  compoundVariants: [{ scroll: 'none', variant: 'pane', css: { padding: '$8' } }],
+
+  '&& > [data-radix-scroll-area-viewport], && > * > [data-radix-scroll-area-viewport]': {
     // If we run into scrollbar issues, it might be because of this. We need the
     // first div of the scroll-area to be a block instead of table, so the Code
     // component renders its own scrollbar instead of growing out of the parent.
@@ -67,17 +169,23 @@ const StyledCardBody = styled('div', {
   },
 });
 
-type StyledCardBodyProps = ComponentProps<typeof StyledCardBody>;
-
 type BodyProps = {
   children?: ReactNode;
-} & StyledCardBodyProps;
 
-const Body = forwardRef<ElementRef<typeof StyledCardBody>, BodyProps>(function Body({ children, ...props }, ref) {
+  /**
+   * Scrollbars are only shown when the content is overflowing.
+   */
+  scroll?: 'horizontal' | 'vertical' | 'both' | 'none';
+};
+
+const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
+  { children, scroll = 'vertical', ...props },
+  ref,
+) {
   return (
-    <StyledCardBody {...props} ref={ref}>
-      <ScrollArea direction="vertical">{children}</ScrollArea>
-    </StyledCardBody>
+    <StyledBody {...props} scroll={scroll} ref={ref}>
+      {scroll === 'none' ? children : <ScrollArea direction={scroll}>{children}</ScrollArea>}
+    </StyledBody>
   );
 });
 
@@ -88,12 +196,20 @@ const StyledPlaceholderCard = styled('div', {
   width: '100%',
 });
 
-const StyledCard = styled(Pane.Root, {
-  borderRadius: '$lg',
-  backgroundColor: '$bg-app',
-  border: '1px solid $border-muted',
+const StyledCard = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 'auto',
 
   variants: {
+    variant: {
+      default: {
+        border: '1px solid $border-muted',
+        borderRadius: '$lg',
+      },
+      pane: {},
+    },
+
     expanded: {
       true: {
         width: '90vw',
@@ -105,23 +221,41 @@ const StyledCard = styled(Pane.Root, {
   },
 });
 
+type StyledCardProps = ComponentProps<typeof StyledCard>;
+
 type CardProps = {
   /**
    * The children to render inside the card. This can be a react node, or a
    * render function to get access to the cards expanded state.
    */
   children: ReactNode | ((options: { expanded: boolean }) => ReactNode);
+
   /**
    * When set to `true`, the card gets a "full screen" action button, which shows
    * the card in a modal on click. Defaults to `false`.
    */
   expandable?: boolean;
+
+  /**
+   * The variant of the panel, one `root` panel can contain multiple `nested` or `headless` panels.
+   */
+  variant?: StyledCardProps['variant'];
 };
 
 const Actions = createSlot('Actions');
 
+const Title = createSlot('Title');
+const Description = createSlot('Description');
+
+/**
+ * Rendering tabs inside this slot will reduce the amount of padding between the
+ * header tabs and the content. Particularly useful in combination with
+ * `<Tabs variant="underline">`.
+ */
+const Tabs = createSlot('Tabs');
+
 const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
-  { children, expandable = false, ...props },
+  { children, expandable = false, variant = 'default', ...props },
   forwardedRef,
 ) {
   const [expanded, setExpanded] = useState(false);
@@ -133,18 +267,68 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
 
   const childNodes = typeof children === 'function' ? children({ expanded }) : children;
 
-  if (!expandable) {
-    return (
-      <StyledCard {...props} level={2} divide expanded={expanded} ref={composedRefs}>
-        {childNodes}
-      </StyledCard>
-    );
-  }
-
   // Use a slot for actions, so we can easily append the expand button to user-provided actions
   const slots = getSlots(childNodes, {
+    title: Title,
+    description: Description,
     actions: Actions,
+    tabs: Tabs,
+    body: Body,
   });
+
+  const hasHeader = Boolean(slots.title || slots.description || slots.actions || slots.tabs || expandable);
+  const tabVariant = isElement(slots.tabs)
+    ? ((slots.tabs.props.variant || 'underline') as 'underline' | 'contained')
+    : undefined;
+
+  const body = isElement(slots.body) ? cloneElement(slots.body, { variant }) : null;
+
+  const pane = (
+    <StyledCard {...props} variant={variant} expanded={expanded} ref={composedRefs}>
+      {hasHeader && (
+        <StyledHeader variant={variant} tabs={tabVariant}>
+          <StyledHeaderContent variant={variant}>
+            <Flex direction={'column'} gap={1} flex="auto">
+              <Typography as="h2" variant="h2" color="default">
+                {slots.title}
+              </Typography>
+              {slots.description && (
+                <Typography variant="small" color="muted">
+                  {slots.description}
+                </Typography>
+              )}
+            </Flex>
+            <StyledActions>
+              {slots.actions}
+
+              {expandable && expanded ? (
+                <DialogPrimitive.Close asChild>
+                  <IconButton icon={ExitFullScreenIcon} label="exit fullscreen" variant="secondary" />
+                </DialogPrimitive.Close>
+              ) : expandable ? (
+                <DialogPrimitive.Trigger asChild>
+                  <IconButton icon={EnterFullScreenIcon} label="enter fullscreen" variant="secondary" />
+                </DialogPrimitive.Trigger>
+              ) : null}
+            </StyledActions>
+          </StyledHeaderContent>
+
+          {slots.tabs && (
+            <StyledHeaderTabs variant={variant} tabs={tabVariant}>
+              {slots.tabs}
+            </StyledHeaderTabs>
+          )}
+        </StyledHeader>
+      )}
+
+      {body}
+      {slots.children}
+    </StyledCard>
+  );
+
+  if (!expandable) {
+    return pane;
+  }
 
   const onOpenChange = (open: boolean) => {
     if (open && cardRef.current) {
@@ -156,25 +340,7 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
 
   return (
     <DialogPrimitive.Root open={expanded} onOpenChange={onOpenChange} defaultOpen>
-      <InPortal node={portalNode}>
-        <StyledCard {...props} level={2} divide expanded={expanded} ref={composedRefs}>
-          <Pane.Actions>
-            {slots.actions}
-
-            {expanded ? (
-              <DialogPrimitive.Close asChild>
-                <IconButton icon={ExitFullScreenIcon} label="exit fullscreen" variant="secondary" />
-              </DialogPrimitive.Close>
-            ) : (
-              <DialogPrimitive.Trigger asChild>
-                <IconButton icon={EnterFullScreenIcon} label="enter fullscreen" variant="secondary" />
-              </DialogPrimitive.Trigger>
-            )}
-          </Pane.Actions>
-
-          {slots.children}
-        </StyledCard>
-      </InPortal>
+      <InPortal node={portalNode}>{pane}</InPortal>
 
       {!expanded ? <OutPortal node={portalNode} /> : <StyledPlaceholderCard css={{ height }} />}
 
@@ -187,9 +353,9 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
 });
 
 export const Card = Object.assign(Root, {
-  Title: Pane.Title,
-  Description: Pane.Description,
-  Tabs: Pane.Tabs,
+  Title,
+  Description,
+  Tabs,
   Body,
   Actions,
 });

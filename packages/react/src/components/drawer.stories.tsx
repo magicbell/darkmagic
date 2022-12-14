@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStoryFn, Meta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
+
 import { Button } from './button';
 import { Code } from './code';
 import { Drawer } from './drawer';
@@ -70,7 +71,7 @@ export const WithActions: ComponentStoryFn<any> = (args) => (
       </Drawer.Actions>
 
       <Drawer.Tabs>
-        <Tabs.List>
+        <Tabs.List variant="contained">
           <Tabs.Tab value="1">Summary</Tabs.Tab>
           <Tabs.Tab value="2">Long Text</Tabs.Tab>
         </Tabs.List>
