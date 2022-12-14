@@ -5,17 +5,17 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import parserJson from 'json-stringify-pretty-compact';
 import parserTypescript from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
 import { useMemo, useState } from 'react';
 
+import { stringify as parserJson } from '../lib/json-stringify';
+import { ComponentProps, styled } from '../lib/stitches';
 import { Box } from './box';
 import { Button } from './button';
 import { CopyButton } from './copy-button';
 import { Flex } from './flex';
 import { ScrollArea } from './scroll-area';
-import { ComponentProps, styled } from '../lib/stitches';
 
 hljs.registerLanguage('json', json);
 // xml is required for jsx in javascript/typescript files
