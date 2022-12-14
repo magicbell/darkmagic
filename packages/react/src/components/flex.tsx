@@ -107,8 +107,8 @@ export const Flex = styled(Box, {
       direction: 'row',
       divide: true,
       css: {
-        '> * + *': {
-          borderLeft: '1px solid $bg-muted',
+        '& > * + *': {
+          borderLeft: '1px solid $border-muted',
         },
       },
     },
@@ -116,8 +116,8 @@ export const Flex = styled(Box, {
       direction: 'rowReverse',
       divide: true,
       css: {
-        '> * + *': {
-          borderRight: '1px solid $bg-muted',
+        '& > * + *': {
+          borderRight: '1px solid $border-muted',
         },
       },
     },
@@ -125,8 +125,8 @@ export const Flex = styled(Box, {
       direction: 'column',
       divide: true,
       css: {
-        '> * + *': {
-          borderTop: '1px solid $bg-muted',
+        '& > * + *': {
+          borderTop: '1px solid $border-muted',
         },
       },
     },
@@ -134,8 +134,8 @@ export const Flex = styled(Box, {
       direction: 'columnReverse',
       divide: true,
       css: {
-        '> * + *': {
-          borderBottom: '1px solid $bg-muted',
+        '& > * + *': {
+          borderBottom: '1px solid $border-muted',
         },
       },
     },
