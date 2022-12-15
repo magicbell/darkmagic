@@ -1,5 +1,5 @@
-import { Slot } from '@radix-ui/react-slot';
-import type { ElementType, FunctionComponent, ReactElement, ReactNode } from 'react';
+import { Slot, Slottable } from '@radix-ui/react-slot';
+import type { FunctionComponent, ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { makeComponent } from '../lib/component';
@@ -117,10 +117,6 @@ const IconWrapper = styled('span', {
   },
 });
 
-const Label = styled('span', {
-  display: 'inline-block',
-});
-
 type StyledButtonProps = ComponentProps<typeof StyledButton>;
 
 type ButtonProps = {
@@ -163,17 +159,16 @@ type ButtonProps = {
   css?: CSS;
 
   disabled?: StyledButtonProps['disabled'];
-  as?: keyof JSX.IntrinsicElements | ElementType;
   asChild?: boolean;
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { leadingIcon, trailingIcon, children, size = 'md', variant = 'primary', type = 'button', asChild, as, ...props },
+  { leadingIcon, trailingIcon, children, size = 'md', variant = 'primary', type = 'button', asChild, ...props },
   ref,
 ) {
   const LeadingIcon = makeComponent(leadingIcon);
   const TrailingIcon = makeComponent(trailingIcon);
-  const Comp = asChild ? Slot : as;
+  const Comp = asChild ? Slot : 'button';
 
   return (
     <StyledButton
@@ -191,7 +186,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         </IconWrapper>
       )}
 
-      <Label>{children}</Label>
+      <Slottable>{children}</Slottable>
 
       {TrailingIcon && (
         <IconWrapper>
