@@ -1,11 +1,12 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 import invariant from 'tiny-invariant';
 
+import { useIsClient } from '../hooks/use-is-client';
 import { createSlot, getSlots } from '../lib/slots';
 import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
 import { Flex } from './flex';
@@ -227,13 +228,13 @@ const StyledPane = styled('div', {
     },
 
     width: {
-      xxs: { flex: '1 0 $sizes-xs' },
-      xs: { flex: '1 0 $sizes-sm' },
-      sm: { flex: '1 0 $sizes-lg' },
-      md: { flex: '1 0 $sizes-2xl' },
-      lg: { flex: '1 0 $sizes-4xl' },
+      xxs: { flex: '0 0 $sizes-xs', minWidth: '1px' },
+      xs: { flex: '0 0 $sizes-sm', minWidth: '1px' },
+      sm: { flex: '0 0 $sizes-lg', minWidth: '1px' },
+      md: { flex: '0 0 $sizes-2xl', minWidth: '1px' },
+      lg: { flex: '0 0 $sizes-4xl', minWidth: '1px' },
       auto: { flex: '1 1 auto' },
-      full: { flex: '0 1 100%' },
+      full: { flex: '1 1 100%' },
     },
   },
 });
@@ -292,8 +293,7 @@ const Root = forwardRef<ElementRef<typeof StyledPane>, PaneProps>(function Pane(
     return createHtmlPortalNode();
   }, []);
   const [height, setHeight] = useState(0);
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(typeof document !== 'undefined'), []);
+  const isClient = useIsClient();
 
   const paneRef = useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, paneRef);

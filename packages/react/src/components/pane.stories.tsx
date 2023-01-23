@@ -122,5 +122,5 @@ WithCode.args = {
     </Code>
   ),
 
-  expandable: true,
+  expandable: false,
 };
