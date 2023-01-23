@@ -11,9 +11,9 @@ import {
 } from 'react';
 import { HexColorPicker } from 'react-colorful';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { makeComponent } from '../lib/component';
 import { triggerChange } from '../lib/dom';
+import { ComponentProps, CSS, styled } from '../lib/stitches';
 
 const StyledRoot = styled('div', {
   all: 'unset',
@@ -112,6 +112,7 @@ const StyledColorPicker = styled(HexColorPicker, {
     top: 'calc(100% + $2)',
     left: 0,
     width: '100%',
+    zIndex: 1,
   },
 });
 
@@ -181,6 +182,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
     onFocus,
     onBlur,
     defaultValue = '#6E56CF',
+    name,
 
     ...props
   },
@@ -188,16 +190,18 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
 ) {
   const LeadingAddon = makeComponent(leadingAddon);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
+  const visibleInputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
-  const composedRefs = useComposedRefs(forwardedRef, inputRef);
+  const composedRefs = useComposedRefs(forwardedRef, visibleInputRef);
 
-  const isControlled = typeof valueFromProps != 'undefined';
+  const isControlled = typeof valueFromProps !== 'undefined';
   const [internalValue, setInternalValue] = useState(defaultValue);
 
-  const value = valueFromProps ?? internalValue;
+  const value = (valueFromProps ?? internalValue).toUpperCase();
   const [isPickerVisible, setIsPickerVisible] = useState(false);
 
+  // TODO: fix this blur, {tab} {tab} {tab} opens a lot of pickers
   const handleBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     onBlur?.(event);
     // setIsPickerVisible(false);
@@ -208,11 +212,22 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
     setIsPickerVisible(true);
   };
 
+  let lastValue = value;
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const value = event.target.value;
+    if (value === lastValue) return;
+    lastValue = value;
+
     onChange?.(event);
 
     if (!isControlled) {
-      setInternalValue(event.target.value);
+      setInternalValue(value);
+    }
+
+    // hidden input's don't trigger onChange, and the input event doesn't trigger form.onChange, so we trigger the
+    // onChange on the visible input which will bubble up to the form
+    if (event.currentTarget === hiddenInputRef.current && event.type === 'input') {
+      triggerChange(visibleInputRef.current, value.replace('#', ''));
     }
   };
 
@@ -238,12 +253,16 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
         </StyledAddon>
       )}
 
+      {/* note that we use onInput instead of onChange, as onChange isn't triggered on hidden inputs */}
+      <input ref={hiddenInputRef} name={name} type="hidden" value={value} onInput={handleChange} />
+
       <StyledInput
         disabled={disabled}
         required={required}
         {...props}
         value={value?.replace('#', '')}
-        onChange={handleChange}
+        // update hidden input, which will trigger the change
+        onChange={(e) => triggerChange(hiddenInputRef.current, `#${e.target.value}`)}
         onFocus={handleFocus}
         onBlur={handleBlur}
         ref={composedRefs}
@@ -252,7 +271,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
       {/* The color picker doesn't directly write to state, it updates the input, and the input triggers the change. That
        way the consumer does not see a difference between a change event triggered by input or color picker. */}
       {isPickerVisible ? (
-        <StyledColorPicker color={value} onChange={(color) => triggerChange(inputRef.current, color)} />
+        <StyledColorPicker color={value} onChange={(color) => triggerChange(hiddenInputRef.current, color)} />
       ) : null}
     </StyledRoot>
   );
