@@ -21,6 +21,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${overlayShow} 150ms linear`,
   },
+  zIndex: 1,
 });
 
 const StyledDialogContent = styled(DialogPrimitive.Content, {
@@ -34,6 +35,7 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
         position: 'fixed',
         top: '0',
         right: '0',
+        zIndex: 1,
       },
       inline: {
         position: 'relative',
@@ -47,7 +49,8 @@ type StyledDialogContentProps = ComponentProps<typeof StyledDialogContent>;
 const StyledDrawer = styled(Pane, {
   borderLeft: '1px solid $border-muted',
   minHeight: '100%',
-  backgroundColor: '$bg-app',
+  backgroundColor: '$bg-app-2',
+  boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
   variants: {
     width: {
       xxs: { width: '$xs' },
@@ -102,7 +105,7 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   });
 
   const drawer = (
-    <StyledDrawer width={width} {...props} ref={forwardedRef}>
+    <StyledDrawer variant="root" width={width} {...props} ref={forwardedRef}>
       <Pane.Actions>
         {slots.actions}
 
