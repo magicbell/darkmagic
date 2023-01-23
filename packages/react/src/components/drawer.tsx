@@ -116,7 +116,7 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   );
 
   // deu react-reverse-portal, drawer only works on client side
-  if (!isClient) return drawer;
+  if (!isClient) return null;
   invariant(portalNode, 'portalNode must be defined');
 
   return (
