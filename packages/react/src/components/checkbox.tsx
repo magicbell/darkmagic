@@ -70,7 +70,6 @@ const Label = styled('label', {
   font: '$body-default',
   color: '$text-default',
   userSelect: 'none',
-  paddingLeft: '$2',
 });
 
 type StyledCheckboxProps = ComponentProps<typeof StyledCheckbox>;
