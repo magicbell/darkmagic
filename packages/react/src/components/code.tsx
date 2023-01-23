@@ -8,6 +8,7 @@ import xml from 'highlight.js/lib/languages/xml';
 import parserTypescript from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
 import { useMemo, useState } from 'react';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { stringify as parserJson } from '../lib/json-stringify';
 import { ComponentProps, styled } from '../lib/stitches';
@@ -276,13 +277,18 @@ export function Code({
         </Flex>
       ) : null}
 
-      <Box pt={showHeader ? 1 : 0}>
-        <ScrollArea direction={scroll}>
-          <StyledPre tabIndex={0} css={truncate && isCollapsed ? truncatedCss : undefined}>
-            <code className="hljs" dangerouslySetInnerHTML={{ __html: highlighted.value }} />
-          </StyledPre>
-        </ScrollArea>
-      </Box>
+      {/* We set the code snippets width, to prevent it from aut-growing of (flex) parents */}
+      <AutoSizer disableHeight>
+        {({ width }) => (
+          <Box pt={showHeader ? 1 : 0} css={{ width }}>
+            <ScrollArea direction={scroll}>
+              <StyledPre tabIndex={0} css={css} bg={bg}>
+                <code className="hljs" dangerouslySetInnerHTML={{ __html: highlighted.value }} />
+              </StyledPre>
+            </ScrollArea>
+          </Box>
+        )}
+      </AutoSizer>
 
       {truncate ? (
         <Box pt={4}>
