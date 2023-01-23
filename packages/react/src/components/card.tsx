@@ -4,7 +4,9 @@ import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
 import { cloneElement, ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
+import invariant from 'tiny-invariant';
 
+import { useIsClient } from '../hooks/use-is-client';
 import { createSlot, getSlots } from '../lib/slots';
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
 import { Flex } from './flex';
@@ -259,12 +261,16 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
   forwardedRef,
 ) {
   const [expanded, setExpanded] = useState(false);
-  const portalNode = useMemo(() => createHtmlPortalNode(), []);
+  const portalNode = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    return createHtmlPortalNode();
+  }, []);
+
   const [height, setHeight] = useState(0);
 
   const cardRef = useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, cardRef);
-
+  const isClient = useIsClient();
   const childNodes = typeof children === 'function' ? children({ expanded }) : children;
 
   // Use a slot for actions, so we can easily append the expand button to user-provided actions
@@ -326,9 +332,12 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
     </StyledCard>
   );
 
-  if (!expandable) {
+  // deu react-reverse-portal, expandable cards only work on client side
+  if (!expandable || !isClient) {
     return pane;
   }
+
+  invariant(portalNode, 'portalNode must be defined');
 
   const onOpenChange = (open: boolean) => {
     if (open && cardRef.current) {
