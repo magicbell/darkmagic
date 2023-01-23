@@ -1,10 +1,10 @@
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { createContext, ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode, useContext } from 'react';
 
-import { Box } from './box';
 import { makeComponent } from '../lib/component';
-import { Tooltip } from './tooltip';
 import { ComponentProps, styled } from '../lib/stitches';
+import { Box } from './box';
+import { Tooltip } from './tooltip';
 
 type StyledMenuProps = ComponentProps<typeof StyledMenu>;
 const StyledMenu = styled('nav', {
@@ -22,6 +22,34 @@ const StyledMenu = styled('nav', {
     variant: {
       primary: { padding: '$8 $2' },
       secondary: { padding: '$8 0 $8 $2', marginRight: '-1px' },
+    },
+  },
+});
+
+const StyledMenuGroup = styled('div', {
+  padding: '$2',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+
+  variants: {
+    divide: {
+      true: {
+        '&:before': {
+          position: 'absolute',
+          content: '""',
+          display: 'block',
+          borderTop: '1px solid $border-muted',
+          top: 0,
+          left: '$2',
+          right: '$2',
+        },
+      },
+    },
+
+    spacing: {
+      none: { gap: 0 },
+      xs: { gap: '$2' },
     },
   },
 });
@@ -106,19 +134,22 @@ const StyledMenuTitle = styled('div', {
   // Custom
   font: '$body-small-bold',
   color: '$text-muted',
-  padding: '$6 $4 $2 $4',
+  padding: '$4 $4 $2 $4',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
 
   gap: '$1',
 
-  '&:first-child': { paddingTop: '0' },
-
   variants: {
     hasLeadingAddon: { true: { paddingLeft: 0 } },
     color: {
-      highlight: { color: '$text-highlight' },
+      highlight: { color: '$text-highlight', '&:first-child': { paddingTop: 0 } },
+    },
+    action: {
+      true: {
+        padding: '$2 $4',
+      },
     },
   },
 });
@@ -168,6 +199,10 @@ const StyledLabel = styled('div', {
 
   // Custom
   padding: '0 $2',
+  flex: 'auto',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 });
 
 const IconWrapper = styled('span', {
@@ -278,4 +313,5 @@ const MenuContext = createContext<MenuProps>({ collapsed: false, variant: 'prima
 export const Menu = Object.assign(Root, {
   Title: MenuTitle,
   Item: MenuItem,
+  Group: StyledMenuGroup,
 });
