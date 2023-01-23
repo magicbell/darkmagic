@@ -24,6 +24,7 @@ const StyledHeaderContent = styled('div', {
   variants: {
     variant: {
       default: {},
+      filled: {},
       pane: {
         padding: '$8 $8 0 $8',
       },
@@ -37,6 +38,7 @@ const StyledHeaderTabs = styled('div', {
   variants: {
     variant: {
       default: {},
+      filled: {},
       pane: {
         padding: '$4 $8 0 $8',
       },
@@ -62,6 +64,9 @@ const StyledHeader = styled('div', {
   variants: {
     variant: {
       default: {
+        borderBottom: `1px solid $border-muted`,
+      },
+      filled: {
         borderBottom: `1px solid $border-muted`,
       },
       pane: {},
@@ -121,7 +126,7 @@ const StyledBody = styled('div', {
   font: '$body-small',
   color: '$text-default',
   position: 'relative',
-
+  flexDirection: 'column',
   width: '100%',
   flex: 'auto',
   minHeight: 0,
@@ -141,6 +146,12 @@ const StyledBody = styled('div', {
           padding: '$8',
         },
       },
+
+      filled: {
+        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
+          padding: '$8',
+        },
+      },
     },
     scroll: {
       none: {
@@ -155,7 +166,10 @@ const StyledBody = styled('div', {
     },
   },
 
-  compoundVariants: [{ scroll: 'none', variant: 'pane', css: { padding: '$8' } }],
+  compoundVariants: [
+    { scroll: 'none', variant: 'pane', css: { padding: '$8' } },
+    { scroll: 'none', variant: 'filled', css: { padding: '$8' } },
+  ],
 
   '&& > [data-radix-scroll-area-viewport], && > * > [data-radix-scroll-area-viewport]': {
     // If we run into scrollbar issues, it might be because of this. We need the
@@ -208,8 +222,16 @@ const StyledCard = styled('div', {
       default: {
         border: '1px solid $border-muted',
         borderRadius: '$lg',
+        backgroundColor: '$bg-app',
       },
-      pane: {},
+      filled: {
+        border: '1px solid $bg-app-2',
+        borderRadius: '$lg',
+        backgroundColor: '$bg-app-2',
+      },
+      pane: {
+        backgroundColor: '$bg-app',
+      },
     },
 
     expanded: {
