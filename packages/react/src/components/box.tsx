@@ -119,6 +119,11 @@ export const Box = styled('div', {
       hidden: {
         overflow: 'hidden',
       },
+      truncate: {
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+      },
     },
   },
 });
