@@ -144,6 +144,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   },
   ref,
 ) {
+  if (props.type === 'hidden') {
+    return <input disabled={disabled} required={required} {...props} ref={ref} />;
+  }
+
   const LeadingAddon = makeComponent(leadingAddon);
   const TrailingAddon = makeComponent(trailingAddon);
 
