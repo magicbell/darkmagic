@@ -164,6 +164,16 @@ const StyledPre = styled('pre', {
   '& .hljs .hljs-ln-n:before': {
     content: 'attr(data-line-number)',
   },
+
+  variants: {
+    bg: {
+      2: {
+        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+          backgroundColor: '$bg-app-2',
+        },
+      },
+    },
+  },
 });
 
 // based on the https://github.com/wcoder/highlightjs-line-numbers.js by @wcoder
@@ -233,6 +243,17 @@ type CodeProps = {
    * Preferred max width of lines in the code block.
    */
   printWidth?: number;
+
+  /**
+   * Show line numbers, defaults to true
+   */
+  lineNumbers?: boolean;
+
+  /**
+   * Use a different background color to match background with raised elements. For example `bg={2}` when rendering
+   * a Code component in a Drawer.
+   */
+  bg?: 2;
 };
 
 export function Code({
@@ -241,8 +262,10 @@ export function Code({
   caption,
   lineClamp = 17,
   showCopyButton = true,
+  lineNumbers = true,
   scroll,
   printWidth = 72,
+  bg,
 }: CodeProps) {
   const highlighted = useMemo(() => {
     const isTypescript = tsLanguages.has(lang);
@@ -270,10 +293,9 @@ export function Code({
   const truncate = lineClamp > 0 && highlighted.lineCount > lineClamp + buttonArea;
   const [isCollapsed, setIsCollapsed] = useState(truncate);
 
-  const truncatedCss = {
-    [`& tr:nth-child(n+${lineClamp + 1})`]: {
-      display: 'none',
-    },
+  const css = {
+    [`& tr:nth-child(n+${lineClamp + 1})`]: truncate && isCollapsed ? { display: 'none' } : {},
+    '& .hljs-ln-numbers': lineNumbers ? {} : { display: 'none' },
   };
 
   const showHeader = caption || showCopyButton;
