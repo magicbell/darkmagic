@@ -1,13 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-export function useResizeObserver(cb: (size: ResizeObserverSize) => void) {
-  const [targetRef, setTargetRef] = useState(null);
-
+export function useResizeObserver(cb: (size: ResizeObserverSize) => void, target: HTMLElement | null) {
   const callback = useRef(cb);
   callback.current = cb;
 
   useEffect(() => {
-    if (!targetRef) return;
+    if (!target) return;
 
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -24,9 +22,7 @@ export function useResizeObserver(cb: (size: ResizeObserverSize) => void) {
       }
     });
 
-    observer.observe(targetRef);
+    observer.observe(target);
     return () => observer.disconnect();
-  }, [targetRef]);
-
-  return setTargetRef;
+  }, [callback, target]);
 }
