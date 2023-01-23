@@ -18,6 +18,17 @@ export const Box = styled('div', {
       initial: { flex: '0 1 auto' },
       none: { flex: 'none' },
     },
+    mt: {
+      0: { mt: 0 },
+      1: { mt: '$1' },
+      2: { mt: '$2' },
+      3: { mt: '$3' },
+      4: { mt: '$4' },
+      5: { mt: '$5' },
+      6: { mt: '$6' },
+      7: { mt: '$7' },
+      8: { mt: '$8' },
+    },
     p: {
       0: { p: 0 },
       1: { p: '$1' },
