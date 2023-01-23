@@ -25,6 +25,7 @@ const StyledMiniCard = styled('button', {
   padding: '0 $2',
   width: '100%',
 
+  '&[type="button"]': { cursor: 'pointer' },
   '&[type="button"]:hover, &[type="button"]:focus-visible': {
     background: '$bg-hover',
   },
