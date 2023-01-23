@@ -6,4 +6,4 @@ replace({
   files: './dist/storybook/vendors~main*.js',
   from: /\.?\/stories.json/g,
   to: '/storybook/stories.json',
-}).then(x => console.dir(x, { depth: null }));
+}).then(x => console.log('patched storybook build as fix for: https://github.com/storybookjs/storybook/issues/19546'));
