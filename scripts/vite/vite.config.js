@@ -6,6 +6,7 @@ import banner from 'vite-plugin-banner';
 import GithubActionsReporter from 'vitest-github-actions-reporter';
 
 import { writeIndexFile, writeTypeDefs } from './plugins/index.js';
+import { yalcPush } from './plugins/yalcPush.js';
 import {
   createFilename,
   cwd,
@@ -46,7 +47,8 @@ export default defineConfig(async ({ mode, command }) => {
           banner(copyRightNotice),
           isAnalyze && analyze({}),
           pkg.main === 'dist/index.js' && writeIndexFile({ fileName: pkg.name }),
-          !shouldMinify && isBuild && writeTypeDefs(),
+          !shouldMinify && writeTypeDefs(),
+          !shouldMinify && yalcPush(),
         ].filter(Boolean)
       : [],
     define: {
