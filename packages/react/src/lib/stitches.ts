@@ -31,6 +31,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
     colors: {
       'bg-overlay': 'rgba(8, 9, 12, 50%)',
       'bg-app': '#1B1D29',
+      'bg-app-2': '#1E212F',
       'bg-default': '#23283B',
       'bg-hover': '#262E45',
       'bg-active': '#2A314D',
@@ -74,8 +75,11 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       'error-bg-solid-hover': '#EC5E41',
 
       'accent-1-text': '#D864D8',
+      'accent-1-bg': '#AB4ABA',
       'accent-2-text': '#0AC5B3',
+      'accent-2-bg': '#12A594',
       'accent-3-text': '#FF8B3E',
+      'accent-3-bg': '#F76808',
     },
     space: {
       1: '4px',
