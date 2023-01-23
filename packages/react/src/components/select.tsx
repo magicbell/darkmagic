@@ -1,7 +1,10 @@
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import React, { ComponentProps, ElementRef, forwardRef, ReactNode } from 'react';
 
+import { useFormReset } from '../hooks/use-form-reset';
+import { useMaybeControlled } from '../hooks/use-maybe-controlled';
 import { CSS, styled, VariantProps } from '../lib/stitches';
 
 const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
@@ -182,13 +185,12 @@ type SelectProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
-} & SelectPrimitive.SelectProps &
-  TriggerProps;
+} & Omit<SelectPrimitive.SelectProps & TriggerProps, 'onValueChange' | 'defaultValue' | 'value'>;
 
 const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function Select(
   {
     // Root
-    value,
+    value: valueFromProps,
     defaultValue,
     onValueChange,
     open,
@@ -207,15 +209,21 @@ const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function 
     disabled = false,
     ...props
   },
-  ref,
+  forwardedRef,
 ) {
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+
+  const [value, handleChange, reset] = useMaybeControlled<string>(defaultValue, valueFromProps, onValueChange);
+  useFormReset(reset, ref.current);
+
   return (
     <SelectPrimitive.Root
       name={name}
       dir={dir}
       value={value}
       defaultValue={defaultValue}
-      onValueChange={onValueChange}
+      onValueChange={handleChange}
       open={open}
       defaultOpen={defaultOpen}
       onOpenChange={onOpenChange}
@@ -227,7 +235,7 @@ const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function 
         {...props}
         size={size}
         state={state}
-        ref={ref}
+        ref={composedRefs}
       >
         <StyledSelectValue>
           <SelectPrimitive.SelectValue placeholder={placeholder} />
@@ -279,7 +287,7 @@ type SelectItemProps = {
    */
   disabled?: SelectItemPrimitiveProps['disabled'];
   /**
-   * Optional text used for typeahead purposes. By default the typeahead behavior will use the .textContent of the Select.ItemText part. Use this when the content is complex, or you have non-textual content inside.
+   * Optional text used for typeahead purposes. By default, the typeahead behavior will use the .textContent of the Select.ItemText part. Use this when the content is complex, or you have non-textual content inside.
    */
   textValue?: SelectItemPrimitiveProps['textValue'];
   /**
