@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { createContext, ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode, useContext } from 'react';
 
@@ -185,7 +186,9 @@ const MenuTitle = forwardRef<ElementRef<typeof StyledMenuTitle>, MenuTitleProps>
   return (
     <StyledMenuTitle hasLeadingAddon={Boolean(LeadingAddon)} {...props} ref={ref}>
       {LeadingAddon && <LeadingAddon />}
-      <Box flex="auto">{children}</Box>
+      <Box flex="auto" overflow="truncate">
+        {children}
+      </Box>
       {TrailingAddon && <TrailingAddon />}
     </StyledMenuTitle>
   );
@@ -235,6 +238,9 @@ type MenuItemPros = {
 
   children?: StyledMenuItemProps['children'];
   variant?: StyledMenuItemProps['variant'];
+
+  onClick?: (event: MouseEvent) => void;
+  asChild?: boolean;
 };
 
 const MenuItem = forwardRef<ElementRef<typeof StyledMenuItem>, MenuItemPros>(function MenuItem(
@@ -245,10 +251,12 @@ const MenuItem = forwardRef<ElementRef<typeof StyledMenuItem>, MenuItemPros>(fun
     variant: variantFromProps = 'primary',
     active,
     collapsed: collapsedFromProps = false,
+    asChild = false,
     ...props
   },
   ref,
 ) {
+  const comp: any = asChild ? { as: Slot } : props.onClick ? { as: 'button', type: 'button' } : { as: 'div' };
   const Icon = makeComponent(icon);
   const Addon = makeComponent(addon);
   const context = useContext(MenuContext);
@@ -259,6 +267,7 @@ const MenuItem = forwardRef<ElementRef<typeof StyledMenuItem>, MenuItemPros>(fun
   return (
     <Tooltip content={children} enabled={collapsed} side="right">
       <StyledMenuItem
+        {...comp}
         variant={variant}
         data-state={active ? 'active' : 'inactive'}
         collapsed={collapsed}
