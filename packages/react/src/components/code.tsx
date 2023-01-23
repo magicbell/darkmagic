@@ -1,10 +1,15 @@
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { HighlightResult } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
+import java from 'highlight.js/lib/languages/java';
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
+import python from 'highlight.js/lib/languages/python';
+import ruby from 'highlight.js/lib/languages/ruby';
+import shell from 'highlight.js/lib/languages/shell';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import parserHtml from 'prettier/parser-html';
 import parserTypescript from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
 import { useMemo, useState } from 'react';
@@ -23,6 +28,10 @@ hljs.registerLanguage('json', json);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('ruby', ruby);
+hljs.registerLanguage('java', java);
+hljs.registerLanguage('shell', shell);
 
 const StyledExpandIcon = styled('span', {
   display: 'inline',
@@ -190,10 +199,8 @@ function addLineNumbers(source: HighlightResult) {
   };
 }
 
-const langAliases = {
-  tsx: { highlight: 'typescript', parser: 'typescript' },
-  javascript: { highlight: 'typescript', parser: 'typescript' },
-};
+const tsLanguages = new Set(['js', 'ts', 'tsx', 'javascript', 'typescript']);
+const xmlLanguages = new Set(['xml', 'html', 'xhtml', 'svg']);
 
 type CodeProps = {
   /**
@@ -207,7 +214,7 @@ type CodeProps = {
   /**
    * What language to use for syntax highlighting
    */
-  lang: 'typescript' | 'javascript' | 'tsx' | 'json';
+  lang: 'typescript' | 'javascript' | 'tsx' | 'json' | 'xml' | 'java' | 'ruby' | 'shell' | 'python';
   /**
    * Only show the first `n` lines of code, and render a button to "show more".
    * Set to 0 to show all.
@@ -237,24 +244,27 @@ export function Code({
   scroll,
   printWidth = 72,
 }: CodeProps) {
-  const { parser = lang, highlight = lang } = langAliases[lang as keyof typeof langAliases] || {};
-
   const highlighted = useMemo(() => {
+    const isTypescript = tsLanguages.has(lang);
+    const isXml = xmlLanguages.has(lang);
+
     const formatted =
-      parser === 'json'
+      lang === 'json'
         ? parserJson(typeof children === 'string' ? JSON.parse(children) : children, { maxLength: printWidth })
             .replace(/{"/g, '{ "')
             .replace(/"}/g, '" }')
-        : prettier.format(String(children), {
-            parser,
-            plugins: [parserTypescript],
+        : isTypescript || isXml
+        ? prettier.format(String(children), {
+            parser: isTypescript ? 'typescript' : 'html',
+            plugins: isTypescript ? [parserTypescript] : [parserHtml],
             printWidth,
             singleQuote: false,
-          });
+          })
+        : String(children);
 
-    const highlighted = hljs.highlight(formatted.trim(), { language: highlight });
+    const highlighted = hljs.highlight(formatted.trim(), { language: lang });
     return addLineNumbers(highlighted);
-  }, [children, parser, highlight]);
+  }, [children, lang, printWidth]);
 
   const buttonArea = 3;
   const truncate = lineClamp > 0 && highlighted.lineCount > lineClamp + buttonArea;
