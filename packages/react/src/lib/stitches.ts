@@ -450,6 +450,34 @@ export const globalStyles = globalCss({
     color: '$text-default',
     fontFamily: 'inter',
     '-webkit-font-smoothing': 'antialiased',
+
+    '& [data-scroll]::-webkit-scrollbar': {
+      width: '$2',
+      height: '$2',
+      backgroundColor: 'transparent',
+    },
+
+    '& [data-scroll]::-webkit-scrollbar-thumb': {
+      borderRadius: '$base',
+      backgroundColor: '$bg-default',
+    },
+
+    '& [data-scroll]::-webkit-scrollbar-track': {
+      padding: 2,
+      backgroundColor: 'transparent',
+    },
+
+    '& [data-scroll="y"]': {
+      overflowY: 'auto',
+    },
+
+    '& [data-scroll="x"]': {
+      overflowX: 'auto',
+    },
+
+    '& [data-scroll="xy"]': {
+      overflow: 'auto',
+    },
   },
 });
 
