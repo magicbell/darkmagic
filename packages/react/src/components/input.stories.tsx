@@ -3,9 +3,8 @@ import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
 
 import { IconButton } from './icon-button';
-import { Typography } from './typography';
-
 import { Input } from './input';
+import { Typography } from './typography';
 
 const addons = {
   '-': undefined,

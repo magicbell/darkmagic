@@ -1,10 +1,10 @@
 import { CheckIcon, ClipboardIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 
+import { writeToClipboard } from '../lib/dom';
 import { Button } from './button';
 import { Grid } from './grid';
 import { IconButton } from './icon-button';
-import { writeToClipboard } from '../lib/dom';
 
 type CopyButtonProps = {
   value: string;

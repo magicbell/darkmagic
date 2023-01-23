@@ -21,11 +21,10 @@ import { Box } from './box';
 import { Icon } from './draft/icon';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
-import { Text } from './text';
-
 import { Menu } from './menu';
 import { MiniCard } from './mini-card';
 import { Sidebar } from './sidebar';
+import { Text } from './text';
 
 const options = {
   compose: Pencil2Icon,

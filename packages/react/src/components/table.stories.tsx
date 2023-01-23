@@ -2,6 +2,7 @@ import { ChatBubbleIcon, DesktopIcon, DotsHorizontalIcon, EnvelopeClosedIcon, Mo
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import * as fake from '~/fixtures';
+
 import { Badge } from './badge';
 import { Icon } from './draft/icon';
 import { Flex } from './flex';

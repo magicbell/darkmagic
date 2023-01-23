@@ -3,12 +3,11 @@ import { useId } from '@radix-ui/react-id';
 import { cloneElement, ElementRef, forwardRef } from 'react';
 import { isElement } from 'react-is';
 
-import { IconButton } from './icon-button';
-import { RequiredBadge } from './required-badge';
 import { ComponentProps, styled } from '../lib/stitches';
-
 import { Flex } from './flex';
+import { IconButton } from './icon-button';
 import { Label } from './label';
+import { RequiredBadge } from './required-badge';
 
 type StyledFormFieldProps = ComponentProps<typeof StyledFormField>;
 const StyledFormField = styled('div', {

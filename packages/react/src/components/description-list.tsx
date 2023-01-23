@@ -164,8 +164,6 @@ const StyledList = styled('dl', {
   gap: '0.125rem', // can't use theme token smaller than $1 (4px)
 });
 
-type StyledListProps = ComponentProps<typeof StyledList>;
-
 type RootProps = {
   /**
    * Easily override styles. It’s like the style attribute, but it supports

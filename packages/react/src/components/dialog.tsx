@@ -3,10 +3,10 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import React, { cloneElement, ElementRef, forwardRef, ReactNode } from 'react';
 import invariant from 'tiny-invariant';
 
-import { IconButton } from './icon-button';
 import { transformChildren } from '../lib/component';
 import { getSlots } from '../lib/slots';
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
+import { IconButton } from './icon-button';
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },

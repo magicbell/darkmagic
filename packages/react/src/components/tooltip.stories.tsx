@@ -4,7 +4,6 @@ import React from 'react';
 
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
-
 import { Tooltip } from './tooltip';
 
 const meta: Meta = {

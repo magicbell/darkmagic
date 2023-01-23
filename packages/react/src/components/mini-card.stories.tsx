@@ -3,12 +3,12 @@ import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
-import { IconButton } from './icon-button';
-import { Typography } from './typography';
 
 import { Icon } from './draft/icon';
+import { IconButton } from './icon-button';
 import { MiniCard } from './mini-card';
 import { Text } from './text';
+import { Typography } from './typography';
 
 const meta: Meta = {
   component: MiniCard,

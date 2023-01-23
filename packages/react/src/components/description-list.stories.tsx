@@ -1,6 +1,7 @@
 import { ComponentMeta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
+
 import { DescriptionList } from './description-list';
 
 const meta: ComponentMeta<typeof DescriptionList> = {

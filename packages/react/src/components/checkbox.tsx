@@ -3,9 +3,9 @@ import { CheckIcon } from '@radix-ui/react-icons';
 import { useId } from '@radix-ui/react-id';
 import React, { forwardRef, ReactNode } from 'react';
 
+import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Flex } from './flex';
 import { RequiredBadge } from './required-badge';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',
