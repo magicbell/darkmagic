@@ -25,6 +25,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
   },
+  zIndex: 1,
 });
 
 const StyledHeader = styled('div', {
@@ -40,7 +41,8 @@ const StyledBody = styled('div', {
 
 type StyledContentProps = ComponentProps<typeof StyledContent>;
 const StyledContent = styled(DialogPrimitive.Content, {
-  backgroundColor: '$bg-app',
+  backgroundColor: '$bg-app-2',
+  boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
   borderRadius: '$lg',
   position: 'fixed',
   top: 'min(25vh, 240px)',
@@ -49,6 +51,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   border: '1px solid $border-muted',
   maxWidth: '90vw',
   maxHeight: '85vh',
+  zIndex: 1,
 
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
