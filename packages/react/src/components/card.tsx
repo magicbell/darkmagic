@@ -19,40 +19,26 @@ const StyledHeaderContent = styled('div', {
   flexDirection: 'row',
   userSelect: 'none',
   alignItems: 'center',
-  padding: '$4 $6',
-
-  variants: {
-    variant: {
-      default: {},
-      filled: {},
-      pane: {
-        padding: '$8 $8 0 $8',
-      },
-    },
-  },
+  padding: '$8 $8 0 $8',
 });
 
 const StyledHeaderTabs = styled('div', {
-  padding: '0 $6',
-
   variants: {
-    variant: {
-      default: {},
-      filled: {},
-      pane: {
-        padding: '$4 $8 0 $8',
-      },
-    },
-
     tabs: {
       contained: {
-        paddingBottom: '$4',
+        padding: '$6 $8 $4 $8',
       },
-      underline: {},
+      underline: {
+        padding: '$6 0 0 0',
+        // move padding to tablist, so that the bottom border spans full width
+        '& > [role="tablist"]': {
+          padding: '0 $8',
+        },
+        // marginBottom: -1,
+        // borderBottom: `1px solid $border-muted`,
+      },
     },
   },
-
-  compoundVariants: [{ variant: 'pane', tabs: 'contained', css: { paddingBottom: 0 } }],
 });
 
 const StyledHeader = styled('div', {
@@ -60,27 +46,6 @@ const StyledHeader = styled('div', {
   flexDirection: 'column',
   userSelect: 'none',
   flex: 'none',
-
-  variants: {
-    variant: {
-      default: {
-        borderBottom: `1px solid $border-muted`,
-      },
-      filled: {
-        borderBottom: `1px solid $border-muted`,
-      },
-      pane: {},
-    },
-
-    tabs: {
-      underline: {
-        [`& ${StyledHeaderTabs}`]: {
-          marginBottom: -1,
-        },
-      },
-      contained: {},
-    },
-  },
 });
 
 const overlayShow = keyframes({
@@ -132,44 +97,16 @@ const StyledBody = styled('div', {
   minHeight: 0,
 
   '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
-    padding: '$4 $6',
-  },
-
-  '&:first-child > [data-radix-scroll-area-viewport], &:first-child > * > [data-radix-scroll-area-viewport]': {
-    padding: '$6',
+    padding: '$8',
   },
 
   variants: {
-    variant: {
-      pane: {
-        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
-          padding: '$8',
-        },
-      },
-
-      filled: {
-        '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
-          padding: '$8',
-        },
-      },
-    },
     scroll: {
       none: {
-        padding: '$6 $4',
-        '&:only-child': {
-          padding: '$6',
-        },
+        padding: '$8',
       },
-      both: {},
-      vertical: {},
-      horizontal: {},
     },
   },
-
-  compoundVariants: [
-    { scroll: 'none', variant: 'pane', css: { padding: '$8' } },
-    { scroll: 'none', variant: 'filled', css: { padding: '$8' } },
-  ],
 
   '&& > [data-radix-scroll-area-viewport], && > * > [data-radix-scroll-area-viewport]': {
     // If we run into scrollbar issues, it might be because of this. We need the
@@ -199,7 +136,7 @@ const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
   ref,
 ) {
   return (
-    <StyledBody {...props} scroll={scroll} ref={ref}>
+    <StyledBody {...props} scroll={scroll === 'none' ? 'none' : undefined} ref={ref}>
       {scroll === 'none' ? children : <ScrollArea direction={scroll}>{children}</ScrollArea>}
     </StyledBody>
   );
@@ -208,8 +145,16 @@ const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
 const StyledPlaceholderCard = styled('div', {
   borderRadius: '$lg',
   backgroundColor: '$bg-default',
-  border: '1px solid $border-muted',
   width: '100%',
+
+  variants: {
+    variant: {
+      outline: {
+        border: '1px solid $border-muted',
+      },
+      filled: {},
+    },
+  },
 });
 
 const StyledCard = styled('div', {
@@ -219,7 +164,7 @@ const StyledCard = styled('div', {
 
   variants: {
     variant: {
-      default: {
+      outline: {
         border: '1px solid $border-muted',
         borderRadius: '$lg',
         backgroundColor: '$bg-app',
@@ -228,9 +173,6 @@ const StyledCard = styled('div', {
         border: '1px solid $bg-app-2',
         borderRadius: '$lg',
         backgroundColor: '$bg-app-2',
-      },
-      pane: {
-        backgroundColor: '$bg-app',
       },
     },
 
@@ -279,7 +221,7 @@ const Description = createSlot('Description');
 const Tabs = createSlot('Tabs');
 
 const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
-  { children, expandable = false, variant = 'default', ...props },
+  { children, expandable = false, variant = 'outline', ...props },
   forwardedRef,
 ) {
   const [expanded, setExpanded] = useState(false);
@@ -314,9 +256,9 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
   const pane = (
     <StyledCard {...props} variant={variant} expanded={expanded} ref={composedRefs}>
       {hasHeader && (
-        <StyledHeader variant={variant} tabs={tabVariant}>
-          <StyledHeaderContent variant={variant}>
-            <Flex direction={'column'} gap={1} flex="auto">
+        <StyledHeader>
+          <StyledHeaderContent>
+            <Flex direction="column" gap={1} flex="auto">
               <Typography as="h2" variant="h2" color="default">
                 {slots.title}
               </Typography>
@@ -329,11 +271,11 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
             <StyledActions>
               {slots.actions}
 
-              {expandable && expanded ? (
+              {expandable && expanded && isClient ? (
                 <DialogPrimitive.Close asChild>
                   <IconButton icon={ExitFullScreenIcon} label="exit fullscreen" variant="secondary" />
                 </DialogPrimitive.Close>
-              ) : expandable ? (
+              ) : expandable && isClient ? (
                 <DialogPrimitive.Trigger asChild>
                   <IconButton icon={EnterFullScreenIcon} label="enter fullscreen" variant="secondary" />
                 </DialogPrimitive.Trigger>
@@ -341,11 +283,7 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
             </StyledActions>
           </StyledHeaderContent>
 
-          {slots.tabs && (
-            <StyledHeaderTabs variant={variant} tabs={tabVariant}>
-              {slots.tabs}
-            </StyledHeaderTabs>
-          )}
+          {slots.tabs && <StyledHeaderTabs tabs={tabVariant}>{slots.tabs}</StyledHeaderTabs>}
         </StyledHeader>
       )}
 
@@ -373,7 +311,7 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
     <DialogPrimitive.Root open={expanded} onOpenChange={onOpenChange} defaultOpen>
       <InPortal node={portalNode}>{pane}</InPortal>
 
-      {!expanded ? <OutPortal node={portalNode} /> : <StyledPlaceholderCard css={{ height }} />}
+      {!expanded ? <OutPortal node={portalNode} /> : <StyledPlaceholderCard variant={variant} css={{ height }} />}
 
       <DialogPrimitive.Portal>
         <StyledOverlay />

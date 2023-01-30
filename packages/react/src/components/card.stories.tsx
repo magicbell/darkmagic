@@ -13,7 +13,7 @@ const meta: Meta = {
   component: Card,
   args: {},
   argTypes: {
-    variant: { control: 'select', options: ['default', 'pane'] },
+    variant: { control: 'select', options: ['outline', 'filled'] },
     scroll: { control: 'select', options: ['horizontal', 'vertical', 'both', 'none'] },
     padding: { control: 'select', options: ['default', 'none'] },
     tabs: { control: 'select', options: ['contained', 'underline'] },
