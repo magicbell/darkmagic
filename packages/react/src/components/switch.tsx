@@ -1,9 +1,12 @@
 import { blackA } from '@radix-ui/colors';
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import { useId } from '@radix-ui/react-id';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import React, { forwardRef, ReactNode } from 'react';
 
+import { useFormReset } from '../hooks/use-form-reset';
+import { useMaybeControlled } from '../hooks/use-maybe-controlled';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
@@ -98,14 +101,42 @@ type SwitchProps = {
 } & StyledSwitchProps;
 
 export const Switch = forwardRef<React.ElementRef<typeof StyledSwitch>, SwitchProps>(function Switch(
-  { children, required = false, disabled = false, labelPosition = 'trailing', tooltip, ...props },
-  ref,
+  {
+    children,
+    required = false,
+    disabled = false,
+    labelPosition = 'trailing',
+    tooltip,
+    defaultChecked,
+    checked: checkedFromProps,
+    onCheckedChange,
+    ...props
+  },
+  forwardedRef,
 ) {
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+
+  const [checked, handleCheckedChange, reset] = useMaybeControlled<boolean>(
+    defaultChecked,
+    checkedFromProps,
+    onCheckedChange,
+  );
+  useFormReset(reset, ref.current);
+
   const generatedId = useId();
   const id = props.id || generatedId;
 
   const control = (
-    <StyledSwitch id={id} disabled={disabled} required={required} {...props} ref={ref}>
+    <StyledSwitch
+      id={id}
+      disabled={disabled}
+      required={required}
+      {...props}
+      checked={checked}
+      onCheckedChange={handleCheckedChange}
+      ref={composedRefs}
+    >
       <StyledThumb />
     </StyledSwitch>
   );
