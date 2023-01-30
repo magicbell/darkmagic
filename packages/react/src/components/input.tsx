@@ -159,7 +159,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         </StyledAddon>
       )}
 
-      <StyledInput disabled={disabled} required={required} {...props} ref={ref} />
+      <StyledInput
+        disabled={disabled}
+        required={required}
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck={false}
+        {...props}
+        ref={ref}
+      />
 
       {TrailingAddon && (
         <StyledAddon>
