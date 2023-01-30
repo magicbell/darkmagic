@@ -28,18 +28,14 @@ const slideLeftAndFade = keyframes({
 type StyledContentProps = ComponentProps<typeof StyledContent>;
 const StyledContent = styled(PopoverPrimitive.Content, {
   borderRadius: '$base',
-  backgroundColor: '$bg-app',
+  backgroundColor: '$bg-app-2',
+  boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
   border: '1px solid $border-muted',
   padding: '$3 $4',
-  gap: '$3',
   display: 'flex',
   flexDirection: 'column',
 
   '&:focus': { outline: 'none' },
-
-  '& > *:first-child': {
-    paddingRight: '$6',
-  },
 
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '400ms',
@@ -71,6 +67,7 @@ const StyledClose = styled(PopoverPrimitive.Close, {
 
 const Title = styled('div', {
   font: '$heading-md',
+  paddingRight: '$6',
 });
 
 const Body = styled('div');
