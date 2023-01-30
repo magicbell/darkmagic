@@ -30,6 +30,7 @@ const StyledButton = styled('button', {
   '&:focus': { outline: 'none' },
   // use a data attribute for compatibility with as="a"
   '&[data-disabled]': { opacity: 0.65, pointerEvents: 'none' },
+  transition: 'background-color .2s ease, color .2s ease, opacity .2s ease',
 
   variants: {
     size: {
@@ -148,6 +149,10 @@ type ButtonProps = {
    * The name of the button. Submitted with its owning form as part of a name/value pair.
    */
   name?: StyledButtonProps['name'];
+  /**
+   * The value of the button. Submitted with its owning form as part of a name/value pair.
+   */
+  value?: StyledButtonProps['value'];
   /**
    * The type of button, this controls the action it takes when clicked in a form.
    */
