@@ -77,7 +77,9 @@ export const SecondaryWithTitle = {
           </Menu.Item>
         ))}
 
-        <Menu.Title addon={<IconButton icon={PlusIcon} variant="secondary" size="sm" label="add" />}>Menu</Menu.Title>
+        <Menu.Title trailingAddon={<IconButton icon={PlusIcon} variant="secondary" size="sm" label="add" />}>
+          Menu
+        </Menu.Title>
         {Object.entries(options).map(([key]) => (
           <Menu.Item key={key} active={key === 'log'}>
             {key}
