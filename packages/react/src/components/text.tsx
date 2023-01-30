@@ -17,13 +17,13 @@ export const Text = forwardRef<ElementRef<typeof Flex>, TextProps>(function Text
 ) {
   const primaryNode = (
     <Typography variant={bold ? 'bold' : 'small'} color={highlight ? 'highlight' : 'default'} truncate>
-      {primary}
+      {primary == null ? secondary : primary}
     </Typography>
   );
 
   const secondaryNode = (
     <Typography variant="small" color="muted" truncate>
-      {secondary}
+      {primary != null ? secondary : null}
     </Typography>
   );
 
