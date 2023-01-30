@@ -125,6 +125,10 @@ export type TypographyProps = {
    */
   css?: CSS;
 
+  /**
+   * The text alignment.
+   */
+  align?: StyledTypographyProps['align'];
   children?: ReactNode;
   as?: keyof JSX.IntrinsicElements;
 };
