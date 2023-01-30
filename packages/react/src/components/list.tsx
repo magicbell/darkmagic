@@ -3,7 +3,7 @@ import { ElementRef, forwardRef } from 'react';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Listable } from './listable';
 
-type ItemProps = ComponentProps<typeof Listable>;
+type ItemProps = ComponentProps<typeof Listable.Item>;
 
 const Item = forwardRef<ElementRef<'li'>, ItemProps>(function Item({ children, ...props }, ref) {
   return (
