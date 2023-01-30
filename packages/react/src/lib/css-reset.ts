@@ -47,4 +47,7 @@ export const cssReset = {
   '#root, #__next': {
     isolation: 'isolate',
   },
+
+  // fix the hidden attribute, browsers tend to ignore it when a display attribute is set
+  '[hidden]': { display: 'none !important' },
 };
