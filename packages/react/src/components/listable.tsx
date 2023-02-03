@@ -74,6 +74,12 @@ const StyledCell = styled('div', {
       auto: { width: 'auto' },
       full: { minWidth: 1, flex: '1 1 auto' },
     },
+
+    align: {
+      left: { textAlign: 'left' },
+      center: { textAlign: 'center' },
+      right: { textAlign: 'right' },
+    },
   },
 });
 
@@ -105,6 +111,10 @@ export type ListableCellProps = {
 
   children?: StyledCellProps['children'];
   divide?: StyledCellProps['divide'];
+  /**
+   * (Text) align the content of the cell.
+   */
+  align?: StyledCellProps['align'];
 };
 
 const Cell = forwardRef<ElementRef<typeof StyledCell>, ListableCellProps>(function Cell(
