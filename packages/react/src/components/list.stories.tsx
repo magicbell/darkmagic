@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
 
-import { Icon } from './draft/icon';
+import { Avatar } from './avatar';
 import { IconButton } from './icon-button';
 import { List } from './list';
 import { Text } from './text';
@@ -15,10 +15,7 @@ const meta: Meta = {
     children: fake.listData.map((row) => (
       <List.Item key={row.id}>
         <List.Cell width="min">
-          <Icon color={((fake.names.indexOf(row.author) % 3) + 1) as any}>
-            {row.author[0]}
-            {row.author.slice(-1)}
-          </Icon>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
         </List.Cell>
         <List.Cell width="full">
           <Text primary={row.event} secondary={row.id} />

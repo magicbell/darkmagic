@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
 
-import { Icon } from './draft/icon';
+import { Avatar } from './avatar';
 import { IconButton } from './icon-button';
 import { MiniCard } from './mini-card';
 import { Text } from './text';
@@ -13,11 +13,7 @@ import { Typography } from './typography';
 const meta: Meta = {
   component: MiniCard,
   args: {
-    icon: (
-      <Icon color={1} variant="square">
-        MB
-      </Icon>
-    ),
+    icon: <Avatar color="accent-1">MB</Avatar>,
     children: <Text primary="MB production" secondary="MagicBell" />,
     addon: <IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />,
   },
@@ -30,9 +26,9 @@ export const Basic = {
   args: {
     onClick: null,
     icon: (
-      <Icon color={1} variant="square">
+      <Avatar color="accent-1" variant="square">
         MB
-      </Icon>
+      </Avatar>
     ),
     children: <Text primary="MB production" secondary="MagicBell" highlight reverse />,
     addon: <IconButton icon={ChevronDownIcon} variant="ghost" label="menu" />,
@@ -43,9 +39,9 @@ export const Clickable = {
   args: {
     onClick: action('onClick'),
     icon: (
-      <Icon color={1} variant="square">
+      <Avatar color="accent-1" variant="square">
         MB
-      </Icon>
+      </Avatar>
     ),
     children: <Text primary="MB production" secondary="MagicBell" />,
     addon: (
@@ -58,7 +54,11 @@ export const Clickable = {
 
 export const Profile = {
   args: {
-    icon: <Icon color={2}>PD</Icon>,
+    icon: (
+      <Avatar color="accent-2" variant="circle" src="https://i.pravatar.cc/150?u=person.doe@example.com">
+        Person Doe
+      </Avatar>
+    ),
     children: <Text primary="Person Doe" secondary="person@example.com" />,
     addon: <IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />,
   },
@@ -66,7 +66,11 @@ export const Profile = {
 
 export const TruncatedText = {
   args: {
-    icon: <Icon color={2}>PD</Icon>,
+    icon: (
+      <Avatar color="accent-2" variant="circle" src="https://i.pravatar.cc/150?u=person.doe@example.com">
+        Person Doe
+      </Avatar>
+    ),
     children: <Text primary="Person Doe" secondary={fake.listData[0].event.repeat(3)} />,
     addon: <IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />,
   },

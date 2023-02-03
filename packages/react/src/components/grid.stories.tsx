@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 
 import * as fake from '~/fixtures';
 
-import { Icon } from './draft/icon';
+import { Avatar } from './avatar';
 import { Grid } from './grid';
 import { IconButton } from './icon-button';
 import { Text } from './text';
@@ -19,10 +19,7 @@ const meta: ComponentMeta<typeof Grid> = {
     children: fake.listData.map((row) => (
       <Fragment key={row.id}>
         <Grid.Cell>
-          <Icon color={((fake.names.indexOf(row.author) % 3) + 1) as any}>
-            {row.author[0]}
-            {row.author.slice(-1)}
-          </Icon>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
         </Grid.Cell>
         <Grid.Cell>
           <Text primary={row.event} secondary={row.id} />

@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
 
-import { Icon } from './draft/icon';
+import { Avatar } from './avatar';
 import { IconButton } from './icon-button';
 import { Listable } from './listable';
 import { Text } from './text';
@@ -16,10 +16,7 @@ const meta: ComponentMeta<typeof Listable> = {
     children: fake.listData.map((row) => (
       <Listable.Item key={row.id}>
         <Listable.Cell width="min">
-          <Icon color={((fake.names.indexOf(row.author) % 3) + 1) as any}>
-            {row.author[0]}
-            {row.author.slice(-1)}
-          </Icon>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
         </Listable.Cell>
         <Listable.Cell width="full">
           <Text primary={row.event} secondary={row.id} />

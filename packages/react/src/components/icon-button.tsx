@@ -3,8 +3,8 @@ import type { FunctionComponent, ReactElement } from 'react';
 import { forwardRef } from 'react';
 import invariant from 'tiny-invariant';
 
-import { makeComponent } from '../lib/component';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { Icon } from './icon';
 
 const StyledButton = styled('button', {
   // Reset
@@ -103,18 +103,6 @@ const StyledButton = styled('button', {
   },
 });
 
-const IconWrapper = styled('span', {
-  display: 'inline-flex',
-  flex: 'none',
-  justifyContent: 'center',
-  alignItems: 'center',
-
-  '& > svg': {
-    width: '$4',
-    height: '$4',
-  },
-});
-
 type StyledButtonProps = ComponentProps<typeof StyledButton>;
 
 type ButtonProps = {
@@ -161,16 +149,13 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Bu
   { icon, label, size = 'md', variant = 'primary', type = 'button', ...props },
   ref,
 ) {
-  const Icon = makeComponent(icon);
-  invariant(Icon, 'IconButton requires element or component as icon prop');
+  invariant(icon, 'IconButton requires element or component as icon prop');
 
   return (
     <StyledButton type={type} variant={variant} size={size} {...props} ref={ref}>
-      <IconWrapper>
-        <AccessibleIcon label={label}>
-          <Icon />
-        </AccessibleIcon>
-      </IconWrapper>
+      <AccessibleIcon label={label}>
+        <Icon iconSize={size === 'lg' ? 'md' : 'sm'} icon={icon} />
+      </AccessibleIcon>
     </StyledButton>
   );
 });

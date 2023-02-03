@@ -80,7 +80,12 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       'accent-2-bg': '#12A594',
       'accent-3-text': '#FF8B3E',
       'accent-3-bg': '#F76808',
+      'accent-4-text': '#00C2D7',
+      'accent-4-bg': '#05A2C2',
+      'accent-5-text': '#F65CB6',
+      'accent-5-bg': '#D6409F',
     },
+
     space: {
       1: '4px',
       2: '8px',

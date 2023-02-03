@@ -17,8 +17,8 @@ import { Fragment } from 'react';
 import { ChartIcon } from '../icons/chart-icon';
 import { LogIcon } from '../icons/log-icon';
 import StatusIcon from '../icons/status-icon';
+import { Avatar } from './avatar';
 import { Box } from './box';
-import { Icon } from './draft/icon';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
 import { Menu } from './menu';
@@ -74,9 +74,9 @@ export const Primary = {
         <MiniCard
           css={{ borderBottom: '1px solid $border-muted' }}
           icon={
-            <Icon color={1} variant="square">
+            <Avatar color="accent-1" variant="square">
               MB
-            </Icon>
+            </Avatar>
           }
           addon={<IconButton icon={ChevronDownIcon} variant="ghost" label="menu" />}
         >
@@ -89,9 +89,9 @@ export const Primary = {
 
         <MiniCard
           icon={
-            <Icon color={3} variant="circle">
-              PD
-            </Icon>
+            <Avatar color="accent-3" variant="circle">
+              Person Doe
+            </Avatar>
           }
           addon={<IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />}
         >
@@ -140,9 +140,9 @@ export const SubNav = {
         <MiniCard
           css={{ borderBottom: '1px solid $border-muted' }}
           icon={
-            <Icon color={1} variant="square">
+            <Avatar color="accent-1" variant="square">
               MB
-            </Icon>
+            </Avatar>
           }
           addon={<IconButton icon={ChevronDownIcon} variant="ghost" label="menu" />}
         >
@@ -169,9 +169,9 @@ export const SubNav = {
 
         <MiniCard
           icon={
-            <Icon color={3} variant="circle">
-              PD
-            </Icon>
+            <Avatar color="accent-3" variant="circle">
+              Person Doe
+            </Avatar>
           }
           addon={<IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />}
         >

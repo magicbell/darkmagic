@@ -3,8 +3,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import * as fake from '~/fixtures';
 
+import { Avatar } from './avatar';
 import { Badge } from './badge';
-import { Icon } from './draft/icon';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
 import { SortButton } from './sort-button';
@@ -137,10 +137,7 @@ export const Contained: ComponentStory<typeof Table> = (args) => (
       {fake.listData.map((row) => (
         <Table.Row key={row.id}>
           <Table.Cell width="min">
-            <Icon color={((fake.names.indexOf(row.author) % 3) + 1) as any}>
-              {row.author[0]}
-              {row.author.slice(-1)}
-            </Icon>
+            <Avatar color={`accent-${(fake.names.indexOf(row.author) % 5) + 1}` as any}>{row.author}</Avatar>
           </Table.Cell>
           <Table.Cell width="auto">
             <Text primary={row.event} secondary={row.id} />
