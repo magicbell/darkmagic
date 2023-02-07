@@ -36,6 +36,7 @@ export * from './components/tabs';
 export * from './components/tag';
 export * from './components/text';
 export * from './components/textarea';
+export * from './components/toggle-group';
 export * from './components/tooltip';
 export * from './components/typography';
 export * from './hooks/use-form-reset';
