@@ -65,6 +65,8 @@ const StyledCell = styled('div', {
     },
 
     width: {
+      '3xs': { minWidth: '$14' },
+      xxs: { minWidth: '$24' },
       xs: { width: '$30' },
       sm: { width: '$50' },
       md: { width: '$70' },
