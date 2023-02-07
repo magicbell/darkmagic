@@ -15,6 +15,7 @@ const StyledIcon = styled('div', {
   defaultVariants: {
     iconSize: 'md',
     containerSize: 'hug',
+    color: 'default',
   },
 
   variants: {
@@ -53,7 +54,7 @@ const StyledIcon = styled('div', {
 
     color: {
       default: {
-        color: '$text-default',
+        color: 'inherit',
       },
       primary: {
         color: '$text-link',
