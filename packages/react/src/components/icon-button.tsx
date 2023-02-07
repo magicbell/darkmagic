@@ -1,5 +1,6 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
-import type { FunctionComponent, ReactElement } from 'react';
+import { Slot, Slottable } from '@radix-ui/react-slot';
+import type { FunctionComponent, ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import invariant from 'tiny-invariant';
 
@@ -143,19 +144,25 @@ type ButtonProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
+  asChild?: boolean;
+  children?: ReactNode;
 } & StyledButtonProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { icon, label, size = 'md', variant = 'primary', type = 'button', ...props },
+  { icon, label, size = 'md', variant = 'primary', type = 'button', asChild, children, ...props },
   ref,
 ) {
   invariant(icon, 'IconButton requires element or component as icon prop');
 
+  const Comp = asChild ? Slot : 'button';
+
   return (
-    <StyledButton type={type} variant={variant} size={size} {...props} ref={ref}>
+    <StyledButton as={Comp} type={type} variant={variant} size={size} {...props} ref={ref}>
       <AccessibleIcon label={label}>
         <Icon iconSize={size === 'lg' ? 'md' : 'sm'} icon={icon} />
       </AccessibleIcon>
+
+      <Slottable>{children}</Slottable>
     </StyledButton>
   );
 });
