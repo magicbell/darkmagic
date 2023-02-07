@@ -1,5 +1,7 @@
-import { styled } from '../lib/stitches';
+import { ComponentProps, styled } from '../lib/stitches';
 import { Box } from './box';
+
+export type FlexProps = ComponentProps<typeof Flex>;
 
 export const Flex = styled(Box, {
   boxSizing: 'border-box',

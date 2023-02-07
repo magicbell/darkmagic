@@ -29,6 +29,7 @@ export * from './components/scroll-area';
 export * from './components/select';
 export * from './components/sidebar';
 export * from './components/sort-button';
+export * from './components/stack';
 export * from './components/switch';
 export * from './components/table';
 export * from './components/tabs';
