@@ -7,6 +7,10 @@ import { useFormReset } from '../hooks/use-form-reset';
 import { useMaybeControlled } from '../hooks/use-maybe-controlled';
 import { CSS, styled, VariantProps } from '../lib/stitches';
 
+const StyledPortal = styled(SelectPrimitive.Portal, {
+  zIndex: 10,
+});
+
 const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   all: 'unset',
   boxSizing: 'border-box',
@@ -244,7 +248,7 @@ const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function 
           <ChevronDownIcon />
         </StyledIcon>
       </StyledTrigger>
-      <SelectPrimitive.Portal>
+      <StyledPortal>
         <StyledContent>
           <StyledScrollUpButton>
             <ChevronUpIcon />
@@ -254,7 +258,7 @@ const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function 
             <ChevronDownIcon />
           </StyledScrollDownButton>
         </StyledContent>
-      </SelectPrimitive.Portal>
+      </StyledPortal>
     </SelectPrimitive.Root>
   );
 });
