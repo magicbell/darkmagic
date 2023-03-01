@@ -138,6 +138,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     disabled = false,
     required = false,
     css,
+    className,
 
     // input
     ...props
@@ -152,7 +153,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const TrailingAddon = makeComponent(trailingAddon);
 
   return (
-    <StyledRoot data-disabled={disabled || undefined} size={size} state={state} css={css}>
+    <StyledRoot data-disabled={disabled || undefined} size={size} state={state} css={css} className={className}>
       {LeadingAddon && (
         <StyledAddon>
           <LeadingAddon />
