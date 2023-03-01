@@ -109,11 +109,16 @@ export const Box = styled('div', {
     height: {
       full: { height: '100%' },
     },
-    outline: {
-      true: {
-        border: '1px solid $bg-muted',
-        borderRadius: '$xl',
-      },
+    border: {
+      muted: { border: '1px solid $border-muted' },
+    },
+    background: {
+      default: { background: '$bg-default' },
+      app: { backgroundColor: '$bg-app' },
+    },
+    rounded: {
+      md: { borderRadius: '$base' },
+      lg: { borderRadius: '$lg' },
     },
     overflow: {
       hidden: {
