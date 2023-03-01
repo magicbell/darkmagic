@@ -10,6 +10,7 @@ const AvatarRoot = styled(AvatarPrimitive.Root, {
   verticalAlign: 'middle',
   overflow: 'hidden',
   userSelect: 'none',
+  flex: 'none',
 
   defaultVariants: {
     variant: 'circle',
@@ -89,6 +90,19 @@ const AvatarFallback = styled(AvatarPrimitive.Fallback, {
       },
     },
   },
+
+  compoundVariants: [
+    { fill: true, color: 'primary', css: { $$color: '$colors$primary-bg' } },
+    { fill: true, color: 'error', css: { $$color: '$colors$error-bg-solid' } },
+    { fill: true, color: 'warning', css: { $$color: '$colors$warning-bg-solid' } },
+    { fill: true, color: 'success', css: { $$color: '$colors$success-bg-solid' } },
+    { fill: true, color: 'info', css: { $$color: '$colors$info-bg-solid' } },
+    { fill: true, color: 'accent-1', css: { $$color: '$colors$accent-1-bg' } },
+    { fill: true, color: 'accent-2', css: { $$color: '$colors$accent-2-bg' } },
+    { fill: true, color: 'accent-3', css: { $$color: '$colors$accent-3-bg' } },
+    { fill: true, color: 'accent-4', css: { $$color: '$colors$accent-4-bg' } },
+    { fill: true, color: 'accent-5', css: { $$color: '$colors$accent-5-bg' } },
+  ],
 });
 
 type AvatarRootProps = ComponentProps<typeof AvatarRoot>;
