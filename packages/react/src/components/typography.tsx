@@ -23,6 +23,13 @@ const StyledTypography = styled('div', {
         whiteSpace: 'nowrap',
       },
     },
+
+    noSelect: {
+      true: {
+        userSelect: 'none',
+      },
+    },
+
     variant: {
       h1: {
         font: '$heading-lg',
@@ -119,6 +126,11 @@ export type TypographyProps = {
    * Whether the text should be able to span multiple lines.
    */
   noWrap?: StyledTypographyProps['noWrap'];
+  /**
+   * Whether the text should be selectable.
+   */
+  noSelect?: StyledTypographyProps['noSelect'];
+
   /**
    * Easily override styles. It’s like the style attribute, but it supports
    * tokens, media queries, nesting and token-aware values.
