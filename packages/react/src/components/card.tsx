@@ -8,7 +8,7 @@ import invariant from 'tiny-invariant';
 
 import { useIsClient } from '../hooks/use-is-client';
 import { createSlot, getSlots } from '../lib/slots';
-import { ComponentProps, keyframes, styled } from '../lib/stitches';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
 import { ScrollArea } from './scroll-area';
@@ -206,6 +206,12 @@ type CardProps = {
    * The variant of the panel, one `root` panel can contain multiple `nested` or `headless` panels.
    */
   variant?: StyledCardProps['variant'];
+
+  /**
+   * Easily override styles. It’s like the style attribute, but it supports
+   * tokens, media queries, nesting and token-aware values.
+   */
+  css?: CSS;
 };
 
 const Actions = createSlot('Actions');
