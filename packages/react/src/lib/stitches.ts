@@ -66,7 +66,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       'warning-border': '#693F05',
       'warning-bg-solid': '#FFB224',
 
-      'error.bg': '#3B1813',
+      'error-bg': '#3B1813',
       'error-bg-hover': '#481A14',
       'error-bg-active': '#541C15',
       'error-border': '#7F2315',
