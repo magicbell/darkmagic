@@ -1,4 +1,4 @@
-import { forwardRef, FunctionComponent, ReactElement } from 'react';
+import { ChangeEventHandler, forwardRef, FunctionComponent, ReactElement, useCallback } from 'react';
 
 import { makeComponent } from '../lib/component';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
@@ -120,6 +120,11 @@ type InputProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
+
+  /**
+   * A callback that is triggered when the value changes.
+   */
+  onValueChange?: (value: string) => void | undefined;
 } & Omit<StyledRootProps, 'onChange'> &
   Omit<StyledInputProps, 'size'>;
 
@@ -139,12 +144,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     required = false,
     css,
     className,
+    onChange,
+    onValueChange,
 
     // input
     ...props
   },
   ref,
 ) {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    (event) => {
+      onChange?.(event);
+      onValueChange?.(event.target.value);
+    },
+    [onChange, onValueChange],
+  );
+
   if (props.type === 'hidden') {
     return <input disabled={disabled} required={required} {...props} ref={ref} />;
   }
@@ -167,6 +182,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         autoCorrect="off"
         spellCheck={false}
         {...props}
+        onChange={handleChange}
         ref={ref}
       />
 
