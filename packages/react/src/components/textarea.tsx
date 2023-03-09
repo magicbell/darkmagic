@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot';
 import { forwardRef } from 'react';
 
 import { ComponentProps, CSS, styled } from '../lib/stitches';
@@ -28,7 +29,7 @@ const StyledTextArea = styled('textarea', {
   '&::after': { boxSizing: 'border-box' },
 
   '&:hover': { backgroundColor: '$bg-hover' },
-  '&:focus, &:active': { backgroundColor: `$bg-active` },
+  '&:focus, &:focus-within, &:active': { backgroundColor: `$bg-active` },
   '&::placeholder': { color: '$text-muted' },
 
   '&:disabled': {
@@ -39,10 +40,14 @@ const StyledTextArea = styled('textarea', {
 
   variants: {
     size: {
+      xs: {
+        minHeight: '$10',
+        lineHeight: '$sizes$10',
+        padding: '0 calc($3 - 1px)',
+      },
       sm: {
         minHeight: '$20',
         padding: 'calc($1 - 1px) calc($3 - 1px)',
-        font: '$body-small',
       },
       md: {
         minHeight: '$30',
@@ -103,11 +108,24 @@ type TextAreaProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
+  asChild?: boolean;
 } & StyledTextAreaProps;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
-  { size = 'md', state = 'initial', disabled = false, required = false, ...props },
+  { size = 'md', state = 'initial', disabled = false, required = false, asChild, ...props },
   ref,
 ) {
-  return <StyledTextArea size={size} state={state} disabled={disabled} required={required} {...props} ref={ref} />;
+  const Comp = asChild ? Slot : 'textarea';
+  return (
+    <StyledTextArea
+      as={Comp}
+      size={size}
+      state={state}
+      disabled={disabled}
+      required={required}
+      rows={size === 'xs' ? 1 : undefined}
+      {...props}
+      ref={ref}
+    />
+  );
 });
