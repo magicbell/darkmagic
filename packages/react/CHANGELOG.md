@@ -1,5 +1,16 @@
 # @darkmagic/react
 
+## 0.7.0
+
+### Minor Changes
+
+- [`a371672`](https://github.com/magicbell-io/darkmagic/commit/a371672c19dadf4d290633734490e13f47864a75) Thanks [@smeijer](https://github.com/smeijer)! - Various small fixes:
+
+  fix: correct color token
+  feat: add flex gap 10
+  feat: add asChild to TextArea for use with content-editables
+  feat: add onValueChange to input
+
 ## 0.6.0
 
 ### Minor Changes
