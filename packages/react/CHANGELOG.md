@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.7.1
+
+### Patch Changes
+
+- [`6f4ea64`](https://github.com/magicbell-io/darkmagic/commit/6f4ea64cb6cf810ebb6974a2bb15fd108935a013) Thanks [@smeijer](https://github.com/smeijer)! - remove height from table cell
+
 ## 0.7.0
 
 ### Minor Changes
