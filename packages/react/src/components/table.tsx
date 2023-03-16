@@ -75,7 +75,6 @@ const HeaderCell = forwardRef<ElementRef<'th'>, StyledCellProps>(function Header
 const StyledCell = styled(Listable.Cell, {
   display: 'table-cell',
   flex: 'unset',
-  height: '1px',
   width: '1px',
 
   '&& > a[data-listable-cell-content]': {
