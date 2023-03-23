@@ -1,14 +1,21 @@
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { HighlightResult } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
+import bash from 'highlight.js/lib/languages/bash';
+import clojure from 'highlight.js/lib/languages/clojure';
+import go from 'highlight.js/lib/languages/go';
+import graphql from 'highlight.js/lib/languages/graphql';
 import java from 'highlight.js/lib/languages/java';
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
+import php from 'highlight.js/lib/languages/php';
 import python from 'highlight.js/lib/languages/python';
 import ruby from 'highlight.js/lib/languages/ruby';
 import shell from 'highlight.js/lib/languages/shell';
+import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import curl from 'highlightjs-curl';
 import parserHtml from 'prettier/parser-html';
 import parserTypescript from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
@@ -26,12 +33,20 @@ import { ScrollArea } from './scroll-area';
 hljs.registerLanguage('json', json);
 // xml is required for jsx in javascript/typescript files
 hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('clojure', clojure);
+hljs.registerLanguage('curl', curl);
+hljs.registerLanguage('go', go);
+hljs.registerLanguage('graphql', graphql);
+hljs.registerLanguage('java', java);
 hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('node', javascript);
+hljs.registerLanguage('php', php);
 hljs.registerLanguage('python', python);
 hljs.registerLanguage('ruby', ruby);
-hljs.registerLanguage('java', java);
 hljs.registerLanguage('shell', shell);
+hljs.registerLanguage('swift', swift);
+hljs.registerLanguage('typescript', typescript);
 
 const StyledExpandIcon = styled('span', {
   display: 'inline',
@@ -209,7 +224,7 @@ function addLineNumbers(source: HighlightResult) {
   };
 }
 
-const tsLanguages = new Set(['js', 'ts', 'tsx', 'javascript', 'typescript']);
+const tsLanguages = new Set(['js', 'ts', 'node', 'tsx', 'javascript', 'typescript']);
 const xmlLanguages = new Set(['xml', 'html', 'xhtml', 'svg']);
 
 type CodeProps = {
@@ -224,7 +239,24 @@ type CodeProps = {
   /**
    * What language to use for syntax highlighting
    */
-  lang: 'typescript' | 'javascript' | 'tsx' | 'json' | 'xml' | 'java' | 'ruby' | 'shell' | 'python';
+  lang:
+    | 'bash'
+    | 'clojure'
+    | 'curl'
+    | 'go'
+    | 'graphql'
+    | 'java'
+    | 'javascript'
+    | 'json'
+    | 'node'
+    | 'php'
+    | 'python'
+    | 'ruby'
+    | 'shell'
+    | 'swift'
+    | 'tsx'
+    | 'typescript'
+    | 'xml';
   /**
    * Only show the first `n` lines of code, and render a button to "show more".
    * Set to 0 to show all.
