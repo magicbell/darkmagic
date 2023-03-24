@@ -124,6 +124,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
       disabled={disabled}
       required={required}
       rows={size === 'xs' ? 1 : undefined}
+      autoComplete="off"
+      autoCorrect="off"
+      data-lpignore="true"
+      data-form-type="other"
+      spellCheck={false}
       {...props}
       ref={ref}
     />

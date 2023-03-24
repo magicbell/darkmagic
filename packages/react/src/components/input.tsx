@@ -180,6 +180,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         required={required}
         autoComplete="off"
         autoCorrect="off"
+        data-lpignore="true"
+        data-form-type="other"
         spellCheck={false}
         {...props}
         onChange={handleChange}
