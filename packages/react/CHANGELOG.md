@@ -1,5 +1,15 @@
 # @darkmagic/react
 
+## 0.8.0
+
+### Minor Changes
+
+- [#4](https://github.com/magicbell-io/darkmagic/pull/4) [`45ca254`](https://github.com/magicbell-io/darkmagic/commit/45ca25449e7bedde1d7178a5f2de59fce1d98584) Thanks [@hoprr](https://github.com/hoprr)! - feat: add code highlight support for bash, clojure, curl, go, graphql, node, php and swift
+
+### Patch Changes
+
+- [`6591f6a`](https://github.com/magicbell-io/darkmagic/commit/6591f6a6c4fb42c79c2d41d4da783a376f79967f) Thanks [@smeijer](https://github.com/smeijer)! - feat: disable autocomplete for lastpass and dashlane"
+
 ## 0.7.1
 
 ### Patch Changes
