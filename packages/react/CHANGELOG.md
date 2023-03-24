@@ -8,7 +8,7 @@
 
 ### Patch Changes
 
-- [`6591f6a`](https://github.com/magicbell-io/darkmagic/commit/6591f6a6c4fb42c79c2d41d4da783a376f79967f) Thanks [@smeijer](https://github.com/smeijer)! - feat: disable autocomplete for lastpass and dashlane"
+- [`6591f6a`](https://github.com/magicbell-io/darkmagic/commit/6591f6a6c4fb42c79c2d41d4da783a376f79967f) Thanks [@smeijer](https://github.com/smeijer)! - feat: disable autocomplete for lastpass and dashlane
 
 ## 0.7.1
 
