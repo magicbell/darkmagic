@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.8.1
+
+### Patch Changes
+
+- [`0c9d11e`](https://github.com/magicbell-io/darkmagic/commit/0c9d11e4aec4af52b4356b32c04b63bac40e9e36) Thanks [@smeijer](https://github.com/smeijer)! - fix: accept nodes as value for description list items
+
 ## 0.8.0
 
 ### Minor Changes
