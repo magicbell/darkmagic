@@ -141,7 +141,7 @@ const Item = forwardRef<ElementRef<'div'>, ItemProps>(function Item(
     <StyledItem stacked={stacked} labelWidth={labelWidth} truncate={truncate} {...props} ref={ref}>
       <dd>{label}</dd>
       <StyledValue muted={!hasValue}>
-        <dt>{hasValue ? String(value) : 'n/a'}</dt>
+        <dt>{hasValue ? value : 'n/a'}</dt>
         {hasValue && showCopyButton && (
           <StyledAddon>
             <CopyButton variant="text" value={String(copyValue)} />
