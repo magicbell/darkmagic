@@ -49,7 +49,7 @@ const StyledHeaderTabs = styled('div', {
   variants: {
     variant: {
       toolbar: { paddingTop: '$8' },
-      pane: { paddingTop: '$2' },
+      pane: { paddingTop: '$6' },
     },
     tabs: {
       contained: {},
