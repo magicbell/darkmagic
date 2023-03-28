@@ -10,6 +10,10 @@ const meta: Meta = {
     lang: 'json',
     caption: 'JSON',
     lineClamp: 17,
+    bg: 1,
+  },
+  argTypes: {
+    bg: { control: 'select', options: [1, 2, 3] },
   },
 };
 
