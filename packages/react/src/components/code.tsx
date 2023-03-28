@@ -65,7 +65,7 @@ const StyledCopyButton = styled('div', {
   top: '$2',
   right: '$2',
   opacity: 0,
-  transition: 'all .18s ease-out',
+  transition: 'all .14s ease-out',
   zIndex: 1,
 });
 
