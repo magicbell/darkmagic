@@ -51,10 +51,17 @@ const StyledContent = styled(PopoverPrimitive.Content, {
 
   variants: {
     width: {
-      xs: { width: '$2xs' },
-      sm: { width: '$xs' },
-      md: { width: '$sm' },
-      lg: { width: '$lg' },
+      xs: { width: '$2xs', borderRadius: '$sm' },
+      sm: { width: '$xs', borderRadius: '$md' },
+      md: { width: '$sm', borderRadius: '$md' },
+      lg: { width: '$lg', borderRadius: '$lg' },
+    },
+    padding: {
+      none: { padding: '0' },
+      sm: { padding: '$sm' },
+      md: { padding: '$md' },
+      lg: { padding: '$lg' },
+      xl: { padding: '$xl' },
     },
   },
 });
@@ -93,6 +100,10 @@ type ContentProps = {
    * The width of the popover. Defaults to `md`.
    */
   width?: StyledContentProps['width'];
+  /**
+   * The padding of the popover. Defaults to `md`.
+   */
+  padding?: StyledContentProps['padding'];
   /**
    * Set to `false` to hide the close button.
    */
@@ -169,12 +180,12 @@ type ContentProps = {
 };
 
 const Content = forwardRef<ElementRef<typeof StyledContent>, ContentProps>(function Content(
-  { children, width = 'md', showCloseButton = true, ...props },
+  { children, width = 'md', padding = 'md', showCloseButton = true, ...props },
   ref,
 ) {
   return (
     <PopoverPrimitive.Portal>
-      <StyledContent width={width} {...props} ref={ref}>
+      <StyledContent width={width} padding={padding} {...props} ref={ref}>
         {children}
 
         {showCloseButton && (

@@ -13,7 +13,7 @@ const Component: ComponentStoryFn<any> = (args) => (
     <Popover.Trigger>
       <IconButton label="Update sender" icon={MixerHorizontalIcon} />
     </Popover.Trigger>
-    <Popover.Content sideOffset={8} side={args.side}>
+    <Popover.Content sideOffset={8} side={args.side} padding={args.padding}>
       <Popover.Title>Update Sender</Popover.Title>
       <Popover.Body>
         <Flex css={{ flexDirection: 'column', gap: 10 }}>
@@ -34,8 +34,11 @@ const meta: Meta = {
   args: {
     open: true,
     content: 'Popover content',
+    padding: 'none',
   },
-  argTypes: {},
+  argTypes: {
+    padding: { control: 'select', options: ['none', 'sm', 'md', 'lg', 'xl'] },
+  },
   decorators: [
     (Story) => (
       <Flex align="center" justify="center" height="full">
