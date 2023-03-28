@@ -26,6 +26,7 @@ const StyledButton = styled('button', {
   borderRadius: '$base',
   fontWeight: '$normal',
   gap: '$2',
+  cursor: 'pointer',
 
   '&:focus': { outline: 'none' },
   // use a data attribute for compatibility with as="a"
