@@ -46,6 +46,6 @@ export function CopyButton({ value, onCopied, variant = 'icon' }: CopyButtonProp
       </Grid>
     </Button>
   ) : (
-    <IconButton css={css} onClick={handleClick} label="copy to clipboard" size="sm" variant="ghost" icon={icon} />
+    <IconButton css={css} onClick={handleClick} label="copy to clipboard" size="md" variant="ghost" icon={icon} />
   );
 }
