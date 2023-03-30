@@ -14,8 +14,10 @@
   - Set copyButton in code component to show on hover
   - Set copyButton variant="icon" to size="md"
 
-- [#9](https://github.com/magicbell-io/darkmagic/pull/9) [`a3c621b`](https://github.com/magicbell-io/darkmagic/commit/a3c621b2100484178e5a8f26c33e7835b0be92b6) Thanks [@kgray-MB](https://github.com/kgray-MB)! - Update style preview drawers from being scrollable
-  Change default drawer background color to 'bg-app'
+- [#9](https://github.com/magicbell-io/darkmagic/pull/9) [`a3c621b`](https://github.com/magicbell-io/darkmagic/commit/a3c621b2100484178e5a8f26c33e7835b0be92b6) Thanks [@kgray-MB](https://github.com/kgray-MB)! 
+
+  - Update style preview drawers from being scrollable
+  - Change default drawer background color to 'bg-app'
 
 ## 0.8.1
 
