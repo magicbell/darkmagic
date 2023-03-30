@@ -48,8 +48,8 @@ type StyledDialogContentProps = ComponentProps<typeof StyledDialogContent>;
 
 const StyledDrawer = styled(Pane, {
   borderLeft: '1px solid $border-muted',
-  minHeight: '100%',
-  backgroundColor: '$bg-app-2',
+  height: '100%',
+  backgroundColor: '$bg-app',
   boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
   variants: {
     width: {
