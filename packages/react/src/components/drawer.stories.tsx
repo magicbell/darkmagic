@@ -4,6 +4,7 @@ import { ComponentStoryFn, Meta } from '@storybook/react';
 
 import * as fake from '~/fixtures';
 
+import { Box } from './box';
 import { Button } from './button';
 import { Code } from './code';
 import { Drawer } from './drawer';
@@ -47,8 +48,9 @@ export const Overlay: ComponentStoryFn<any> = (args) => (
   <Drawer variant={args.variant}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
-
-    <Drawer.Body>Drawer content</Drawer.Body>
+    <Drawer.Body scroll="vertical">
+      <Box css={{ height: '200vh' }}>Drawer content - scrollable</Box>
+    </Drawer.Body>
   </Drawer>
 );
 
