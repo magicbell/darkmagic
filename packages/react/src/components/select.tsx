@@ -24,6 +24,7 @@ const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   backgroundColor: '$bg-default',
   color: '$text-default',
   border: '1px solid transparent',
+  cursor: 'pointer',
 
   '&::before': { boxSizing: 'border-box' },
   '&::after': { boxSizing: 'border-box' },

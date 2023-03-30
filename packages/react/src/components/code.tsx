@@ -60,6 +60,15 @@ const StyledExpandIcon = styled('span', {
   },
 });
 
+const StyledCopyButton = styled('div', {
+  position: 'absolute',
+  top: '$2',
+  right: '$2',
+  opacity: 0,
+  transition: 'all .14s ease-out',
+  zIndex: 1,
+});
+
 const StyledTitle = styled('div', {
   font: '$body-small-bold',
   color: '$text-muted',
@@ -179,11 +188,27 @@ const StyledPre = styled('pre', {
     content: 'attr(data-line-number)',
   },
 
+  // copy button
+
+  [`&:hover ${StyledCopyButton}`]: {
+    opacity: 1,
+  },
+
   variants: {
     bg: {
+      1: {
+        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+          backgroundColor: '$bg-app',
+        },
+      },
       2: {
         '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
           backgroundColor: '$bg-app-2',
+        },
+      },
+      3: {
+        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+          backgroundColor: '$bg-default',
         },
       },
     },
@@ -329,14 +354,13 @@ export function Code({
     '& .hljs-ln-numbers': lineNumbers ? {} : { display: 'none' },
   };
 
-  const showHeader = caption || showCopyButton;
+  const showHeader = caption;
 
   return (
     <Box>
       {showHeader ? (
         <Flex justify="between">
           <StyledTitle>{caption}</StyledTitle>
-          {showCopyButton && <CopyButton value={String(highlighted.code)} />}
         </Flex>
       ) : null}
 
@@ -346,6 +370,11 @@ export function Code({
           <Box pt={showHeader ? 1 : 0} css={{ width }}>
             <ScrollArea direction={scroll}>
               <StyledPre tabIndex={0} css={css} bg={bg}>
+                {showCopyButton && (
+                  <StyledCopyButton>
+                    <CopyButton value={String(highlighted.code)} />
+                  </StyledCopyButton>
+                )}
                 <code className="hljs" dangerouslySetInnerHTML={{ __html: highlighted.value }} />
               </StyledPre>
             </ScrollArea>

@@ -25,6 +25,7 @@ const StyledButton = styled('button', {
 
   // Custom
   borderRadius: '$base',
+  cursor: 'pointer',
 
   '&:focus': { outline: 'none' },
   '&&:disabled': { opacity: 0.65, pointerEvents: 'none' },

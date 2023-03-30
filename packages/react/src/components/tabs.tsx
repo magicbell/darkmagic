@@ -71,6 +71,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   display: 'inline-flex',
   alignItems: 'center',
   boxSizing: 'border-box',
+  cursor: 'pointer',
 
   userSelect: 'none',
   whiteSpace: 'nowrap',
