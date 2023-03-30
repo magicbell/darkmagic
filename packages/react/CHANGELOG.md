@@ -4,8 +4,9 @@
 
 ### Minor Changes
 
-- [#7](https://github.com/magicbell-io/darkmagic/pull/7) [`6d1edd6`](https://github.com/magicbell-io/darkmagic/commit/6d1edd6d9c304b77d013049a90c8e704312823ba) Thanks [@kgray-MB](https://github.com/kgray-MB)! - - Set cursor style to 'pointer' for button, iconButton, select, and tabs
+- [#7](https://github.com/magicbell-io/darkmagic/pull/7) [`6d1edd6`](https://github.com/magicbell-io/darkmagic/commit/6d1edd6d9c304b77d013049a90c8e704312823ba) Thanks [@kgray-MB](https://github.com/kgray-MB)!
 
+  - Set cursor style to 'pointer' for button, iconButton, select, and tabs
   - Added 'padding' prop to popover (default: 'md')
   - Set padding between pane title and tabs to '$6' (was '$2')
   - Added options '2' and '3' to 'bg' prop for code component
