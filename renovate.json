@@ -1,10 +1,43 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
+  "schedule": ["before 5am every weekday"],
   "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "automerge": false
+    },
     {
       "matchPackagePatterns": ["@radix-ui"],
       "groupName": "radix-ui packages"
+    },
+    {
+      "matchPackagePatterns": ["eslint"],
+      "groupName": "eslint packages",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchPackagePatterns": ["prettier"],
+      "groupName": "prettier packages",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchPackagePatterns": ["vite"],
+      "groupName": "vite packages",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchPackagePatterns": ["typescript"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchPackagePatterns": ["tsx"],
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
