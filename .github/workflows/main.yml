@@ -12,6 +12,7 @@ on:
       - '!all-contributors/**'
   pull_request:
     types: [opened, synchronize, reopened]
+  merge_queue:
 
 jobs:
   setup:

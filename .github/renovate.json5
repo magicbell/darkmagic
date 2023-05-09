@@ -1,0 +1,55 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:base', ':disableDependencyDashboard'],
+  schedule: ['before 5am every weekday'],
+  postUpdateOptions: ['yarnDedupeHighest'],
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true,
+  },
+  packageRules: [
+    {
+      matchPackagePatterns: ['*'],
+      automerge: false,
+    },
+    {
+      matchDepTypes: ['devDependencies'],
+      automerge: true,
+      automergeType: 'pr',
+      matchUpdateTypes: ['minor', 'patch'],
+      matchCurrentVersion: ',!/^0/',
+    },
+    {
+      matchPackagePatterns: ['@radix-ui'],
+      groupName: 'radix-ui packages',
+    },
+    {
+      matchPackagePatterns: ['eslint'],
+      groupName: 'eslint packages',
+      automerge: true,
+      automergeType: 'pr',
+    },
+    {
+      matchPackagePatterns: ['prettier'],
+      groupName: 'prettier packages',
+      automerge: true,
+      automergeType: 'pr',
+    },
+    {
+      matchPackagePatterns: ['vite'],
+      groupName: 'vite packages',
+      automerge: true,
+      automergeType: 'pr',
+    },
+    {
+      matchPackagePatterns: ['typescript'],
+      automerge: true,
+      automergeType: 'pr',
+    },
+    {
+      matchPackagePatterns: ['tsx'],
+      automerge: true,
+      automergeType: 'pr',
+    },
+  ],
+}

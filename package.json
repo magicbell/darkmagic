@@ -28,7 +28,7 @@
     "postinstall": "husky install && node scripts/sync-paths.js && manypkg check",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:release": "yarn build && changeset publish",
+    "changeset:release": "yarn build && yarn prettier --write '{packages,example}/*/{package.json,CHANGELOG.md}' '.changeset/*.json' && changeset publish",
     "console": "ts-node"
   },
   "lint-staged": {
