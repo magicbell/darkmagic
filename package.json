@@ -46,7 +46,7 @@
     "@babel/core": "^7.15.5",
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
-    "@manypkg/cli": "^0.19.1",
+    "@manypkg/cli": "^0.20.0",
     "@size-limit/preset-small-lib": "^8.0.1",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-info": "^5.3.21",
