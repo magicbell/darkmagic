@@ -1,6 +1,8 @@
 name: Renovate
 on:
-  pull_request_target:
+  push:
+    branches:
+      - 'renovate/**'
     paths:
       - '.github/workflows/renovate.yml'
       - '**/yarn.lock'

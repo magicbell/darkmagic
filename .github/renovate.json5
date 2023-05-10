@@ -17,7 +17,7 @@
     {
       matchDepTypes: ['devDependencies'],
       automerge: true,
-      automergeType: 'pr',
+      automergeType: 'branch',
       matchUpdateTypes: ['minor', 'patch'],
       matchCurrentVersion: ',!/^0/'
     },
@@ -29,29 +29,29 @@
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint packages',
       automerge: true,
-      automergeType: 'pr'
+      automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['prettier'],
       groupName: 'prettier packages',
       automerge: true,
-      automergeType: 'pr'
+      automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['vite'],
       groupName: 'vite packages',
       automerge: true,
-      automergeType: 'pr'
+      automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['typescript'],
       automerge: true,
-      automergeType: 'pr'
+      automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['tsx'],
       automerge: true,
-      automergeType: 'pr'
+      automergeType: 'branch'
     }
   ]
 }
