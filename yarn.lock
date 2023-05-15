@@ -1249,7 +1249,7 @@
   dependencies:
     "@changesets/types" "^5.2.1"
 
-"@changesets/changelog-github@^0.4.6":
+"@changesets/changelog-github@^0.4.8":
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/@changesets/changelog-github/-/changelog-github-0.4.8.tgz#b7f8ae85d0c0ff08028d924c5e59a1cbd3742634"
   integrity sha512-jR1DHibkMAb5v/8ym77E4AMNWZKB5NPzw5a5Wtqm1JepAuIF+hrKp2u04NKM14oBZhHglkCfrla9uq8ORnK/dw==
