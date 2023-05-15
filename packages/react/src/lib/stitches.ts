@@ -443,15 +443,9 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
 
 export const globalStyles = globalCss({
   ...cssReset,
-  '@font-face': [
-    {
-      fontFamily: 'Inter',
-      src: 'local("Inter"), url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap")',
-    },
-    {
-      fontFamily: 'Fira Code',
-      src: 'local("Fira Code"), url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap")',
-    },
+  '@import': [
+    'url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap")',
+    'url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap")',
   ],
   body: {
     background: '$bg-app',
