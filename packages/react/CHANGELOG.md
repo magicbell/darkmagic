@@ -1,5 +1,45 @@
 # @darkmagic/react
 
+## 0.9.1
+
+### Patch Changes
+
+- [#29](https://github.com/magicbell-io/darkmagic/pull/29) [`3a52f91`](https://github.com/magicbell-io/darkmagic/commit/3a52f913722eb46d14d8f54720a9f223e7825b78) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `prettier` to `^2.8.8`.
+  - updated `@types/prettier` to `^2.7.2`.
+
+- [#17](https://github.com/magicbell-io/darkmagic/pull/17) [`6318426`](https://github.com/magicbell-io/darkmagic/commit/6318426586d15ed7faff9a96ac9a7d200890d578) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `@radix-ui/react-accessible-icon` to `^1.0.2`.
+  - updated `@radix-ui/react-accordion` to `^1.1.1`.
+  - updated `@radix-ui/react-alert-dialog` to `^1.0.3`.
+  - updated `@radix-ui/react-aspect-ratio` to `^1.0.2`.
+  - updated `@radix-ui/react-avatar` to `^1.0.2`.
+  - updated `@radix-ui/react-checkbox` to `^1.0.3`.
+  - updated `@radix-ui/react-collapsible` to `^1.0.2`.
+  - updated `@radix-ui/react-dialog` to `^1.0.3`.
+  - updated `@radix-ui/react-hover-card` to `^1.0.5`.
+  - updated `@radix-ui/react-icons` to `^1.3.0`.
+  - updated `@radix-ui/react-navigation-menu` to `^1.1.2`.
+  - updated `@radix-ui/react-popover` to `^1.0.5`.
+  - updated `@radix-ui/react-radio-group` to `^1.1.2`.
+  - updated `@radix-ui/react-scroll-area` to `^1.0.3`.
+  - updated `@radix-ui/react-select` to `^1.2.1`.
+  - updated `@radix-ui/react-separator` to `^1.0.2`.
+  - updated `@radix-ui/react-slider` to `^1.1.1`.
+  - updated `@radix-ui/react-slot` to `^1.0.1`.
+  - updated `@radix-ui/react-switch` to `^1.0.2`.
+  - updated `@radix-ui/react-tabs` to `^1.0.3`.
+  - updated `@radix-ui/react-toast` to `^1.1.3`.
+  - updated `@radix-ui/react-toggle` to `^1.0.2`.
+  - updated `@radix-ui/react-toggle-group` to `^1.0.3`.
+  - updated `@radix-ui/react-toolbar` to `^1.0.3`.
+  - updated `@radix-ui/react-tooltip` to `^1.0.5`.
+  - updated `@radix-ui/react-visually-hidden` to `^1.0.2`.
+
+- [#30](https://github.com/magicbell-io/darkmagic/pull/30) [`8903bc6`](https://github.com/magicbell-io/darkmagic/commit/8903bc6d40feb61f22703f1d98e2525dc4b5147d) Thanks [@smeijer](https://github.com/smeijer)! - fix: ensure that fonts are properly imported
+
 ## 0.9.0
 
 ### Minor Changes
@@ -14,7 +54,7 @@
   - Set copyButton in code component to show on hover
   - Set copyButton variant="icon" to size="md"
 
-- [#9](https://github.com/magicbell-io/darkmagic/pull/9) [`a3c621b`](https://github.com/magicbell-io/darkmagic/commit/a3c621b2100484178e5a8f26c33e7835b0be92b6) Thanks [@kgray-MB](https://github.com/kgray-MB)! 
+- [#9](https://github.com/magicbell-io/darkmagic/pull/9) [`a3c621b`](https://github.com/magicbell-io/darkmagic/commit/a3c621b2100484178e5a8f26c33e7835b0be92b6) Thanks [@kgray-MB](https://github.com/kgray-MB)!
 
   - Update style preview drawers from being scrollable
   - Change default drawer background color to 'bg-app'
