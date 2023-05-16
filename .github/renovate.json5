@@ -23,6 +23,13 @@
       matchCurrentVersion: ',!/^0/'
     },
     {
+      matchPaths: ['package.json'],
+      automerge: true,
+      automergeType: 'branch',
+      matchUpdateTypes: ['minor', 'patch'],
+      matchCurrentVersion: ',!/^0/'
+    },
+    {
       matchPackagePatterns: ['@radix-ui'],
       groupName: 'radix-ui packages'
     },
