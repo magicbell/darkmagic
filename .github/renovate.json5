@@ -12,10 +12,6 @@
   },
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
-      automerge: false
-    },
-    {
       matchDepTypes: ['devDependencies'],
       automerge: true,
       automergeType: 'branch',
@@ -23,7 +19,7 @@
       matchCurrentVersion: ',!/^0/'
     },
     {
-      matchPaths: ['package.json'],
+      matchFiles: ['package.json'],
       automerge: true,
       automergeType: 'branch',
       matchUpdateTypes: ['minor', 'patch'],
@@ -36,29 +32,24 @@
     {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint packages',
-      automerge: true,
       automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['prettier'],
       groupName: 'prettier packages',
-      automerge: true,
       automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['vite'],
       groupName: 'vite packages',
-      automerge: true,
       automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['typescript'],
-      automerge: true,
       automergeType: 'branch'
     },
     {
       matchPackagePatterns: ['tsx'],
-      automerge: true,
       automergeType: 'branch'
     }
   ]
