@@ -9,12 +9,9 @@ on:
       - 'alpha'
       - 'beta'
       - 'renovate/**'
-      - 'all-contributors/**'
+      - '!all-contributors/**'
   pull_request:
     types: [opened, synchronize, reopened]
-    branches-ignore:
-      - 'renovate/**'
-      - 'all-contributors/**'
 
 jobs:
   setup:
