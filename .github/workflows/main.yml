@@ -9,6 +9,7 @@ on:
       - 'alpha'
       - 'beta'
       - 'renovate/**'
+    branches-ignore:
       - 'all-contributors/**'
   pull_request:
     types: [opened, synchronize, reopened]
