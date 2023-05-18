@@ -16,14 +16,14 @@
       automerge: true,
       automergeType: 'branch',
       matchUpdateTypes: ['minor', 'patch'],
-      matchCurrentVersion: ',!/^0/'
+      matchCurrentVersion: '!/^0/'
     },
     {
-      matchFiles: ['package.json'],
+      matchFiles: ['package.json', 'yarn.lock'],
       automerge: true,
       automergeType: 'branch',
       matchUpdateTypes: ['minor', 'patch'],
-      matchCurrentVersion: ',!/^0/'
+      matchCurrentVersion: '!/^0/'
     },
     {
       matchPackagePatterns: ['@radix-ui'],
