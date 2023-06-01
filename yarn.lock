@@ -10000,10 +10000,10 @@ is-weakref@^1.0.2:
   dependencies:
     call-bind "^1.0.2"
 
-is-what@^4.1.10:
-  version "4.1.10"
-  resolved "https://registry.yarnpkg.com/is-what/-/is-what-4.1.10.tgz#f058289f9ed83483fe819721b28c88ce4a4ddb52"
-  integrity sha512-JBy26nXqBUwzTfgj6T5Y/UgXSmRd+03FTq5v3P+N1cOmOtI1hz7dBn+ZfqM7c86qqWTNBEH98h3pkpmI6USnQA==
+is-what@^4.1.12:
+  version "4.1.12"
+  resolved "https://registry.yarnpkg.com/is-what/-/is-what-4.1.12.tgz#22524ed1c82a81104c41f525ce467990716df0f5"
+  integrity sha512-w7JwFt3gIzbzpp+I//2Ov2UeTGgKM10PxJRD6yf7yGruT3415CdT8TDR6F9/mBAakZKsIaysQVVvxryctQUbnw==
 
 is-whitespace-character@^1.0.0:
   version "1.0.4"
