@@ -366,7 +366,7 @@ export function Code({
 
       {/* We set the code snippets width, to prevent it from aut-growing of (flex) parents */}
       <AutoSizer disableHeight>
-        {({ width }) => (
+        {({ width }: { width: number }) => (
           <Box pt={showHeader ? 1 : 0} css={{ width }}>
             <ScrollArea direction={scroll}>
               <StyledPre tabIndex={0} css={css} bg={bg}>
