@@ -366,7 +366,7 @@ export function Code({
       lang === 'json'
         ? parserJson(typeof children === 'string' ? JSON.parse(children) : children, { maxLength: printWidth })
             .replace(/{"/g, '{ "')
-            .replace(/"}/g, '" }')
+            .replace(/(["\]])}/g, '$1 }')
         : isTypescript || isXml
         ? prettier.format(String(children), {
             parser: isTypescript ? 'typescript' : 'html',
