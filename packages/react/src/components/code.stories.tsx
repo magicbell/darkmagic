@@ -14,6 +14,7 @@ const meta: Meta = {
   },
   argTypes: {
     bg: { control: 'select', options: [1, 2, 3] },
+    padding: { control: 'select', options: ['none', 'sm', 'md'] },
   },
 };
 
