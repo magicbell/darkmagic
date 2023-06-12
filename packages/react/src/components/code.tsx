@@ -62,8 +62,8 @@ const StyledExpandIcon = styled('span', {
 
 const StyledCopyButton = styled('div', {
   position: 'absolute',
-  top: '$2',
-  right: '$2',
+  top: 0,
+  right: 0,
   opacity: 0,
   transition: 'all .14s ease-out',
   zIndex: 1,
@@ -188,26 +188,20 @@ const StyledPre = styled('pre', {
     content: 'attr(data-line-number)',
   },
 
-  // copy button
-
-  [`&:hover ${StyledCopyButton}`]: {
-    opacity: 1,
-  },
-
   variants: {
     bg: {
       1: {
-        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+        '& code.hljs, & .hljs-ln td.hljs-ln-numbers': {
           backgroundColor: '$bg-app',
         },
       },
       2: {
-        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+        '& code.hljs, & .hljs-ln td.hljs-ln-numbers': {
           backgroundColor: '$bg-app-2',
         },
       },
       3: {
-        '& .hljs, & .hljs-ln td.hljs-ln-numbers': {
+        '& code.hljs, & .hljs-ln td.hljs-ln-numbers': {
           backgroundColor: '$bg-default',
         },
       },
@@ -306,11 +300,51 @@ type CodeProps = {
   lineNumbers?: boolean;
 
   /**
+   * Padding around the code block. Defaults to `sm`.
+   */
+  padding?: 'none' | 'sm' | 'md';
+
+  /**
    * Use a different background color to match background with raised elements. For example `bg={2}` when rendering
    * a Code component in a Drawer.
    */
-  bg?: 2;
+  bg?: 1 | 2 | 3;
 };
+
+const Wrapper = styled('div', {
+  borderRadius: '$lg',
+  position: 'relative',
+
+  [`&:hover ${StyledCopyButton}`]: {
+    opacity: 1,
+  },
+
+  variants: {
+    bg: {
+      1: {
+        backgroundColor: '$bg-app',
+      },
+      2: {
+        backgroundColor: '$bg-app-2',
+      },
+      3: {
+        backgroundColor: '$bg-default',
+      },
+    },
+
+    padding: {
+      none: {
+        padding: 0,
+      },
+      sm: {
+        padding: '$2',
+      },
+      md: {
+        padding: '$2 $4',
+      },
+    },
+  },
+});
 
 export function Code({
   children,
@@ -321,7 +355,8 @@ export function Code({
   lineNumbers = true,
   scroll,
   printWidth = 72,
-  bg,
+  bg = 1,
+  padding = 'sm',
 }: CodeProps) {
   const highlighted = useMemo(() => {
     const isTypescript = tsLanguages.has(lang);
@@ -331,7 +366,7 @@ export function Code({
       lang === 'json'
         ? parserJson(typeof children === 'string' ? JSON.parse(children) : children, { maxLength: printWidth })
             .replace(/{"/g, '{ "')
-            .replace(/"}/g, '" }')
+            .replace(/(["\]])}/g, '$1 }')
         : isTypescript || isXml
         ? prettier.format(String(children), {
             parser: isTypescript ? 'typescript' : 'html',
@@ -354,11 +389,9 @@ export function Code({
     '& .hljs-ln-numbers': lineNumbers ? {} : { display: 'none' },
   };
 
-  const showHeader = caption;
-
   return (
     <Box>
-      {showHeader ? (
+      {caption ? (
         <Flex justify="between">
           <StyledTitle>{caption}</StyledTitle>
         </Flex>
@@ -367,18 +400,18 @@ export function Code({
       {/* We set the code snippets width, to prevent it from aut-growing of (flex) parents */}
       <AutoSizer disableHeight>
         {({ width }: { width: number }) => (
-          <Box pt={showHeader ? 1 : 0} css={{ width }}>
+          <Wrapper data-width={width} padding={padding} bg={bg} css={{ width }}>
+            {showCopyButton && (
+              <StyledCopyButton>
+                <CopyButton value={String(highlighted.code)} />
+              </StyledCopyButton>
+            )}
             <ScrollArea direction={scroll}>
               <StyledPre tabIndex={0} css={css} bg={bg}>
-                {showCopyButton && (
-                  <StyledCopyButton>
-                    <CopyButton value={String(highlighted.code)} />
-                  </StyledCopyButton>
-                )}
                 <code className="hljs" dangerouslySetInnerHTML={{ __html: highlighted.value }} />
               </StyledPre>
             </ScrollArea>
-          </Box>
+          </Wrapper>
         )}
       </AutoSizer>
 
