@@ -1,5 +1,25 @@
 # @darkmagic/react
 
+## 0.10.0
+
+### Minor Changes
+
+- [#42](https://github.com/magicbell-io/darkmagic/pull/42) [`266a102`](https://github.com/magicbell-io/darkmagic/commit/266a102aa0bebc2803ffd8141e6e017239c23e9b) Thanks [@smeijer](https://github.com/smeijer)! - add padding and border radius to Code
+
+### Patch Changes
+
+- [#45](https://github.com/magicbell-io/darkmagic/pull/45) [`3f1e1f9`](https://github.com/magicbell-io/darkmagic/commit/3f1e1f91bb6fe15a30f15709baa5c56ec84e2df2) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `is-what` to `^4.1.15`.
+
+- [#40](https://github.com/magicbell-io/darkmagic/pull/40) [`8d5b990`](https://github.com/magicbell-io/darkmagic/commit/8d5b9909c3637dca2640695fdd18d86fa5a5c2c6) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `is-what` to `^4.1.10`.
+
+- [#36](https://github.com/magicbell-io/darkmagic/pull/36) [`7e40dc0`](https://github.com/magicbell-io/darkmagic/commit/7e40dc0c2ea5c3624c9c357f90c3abd43498cbd5) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `is-what` to `^4.1.9`.
+
 ## 0.9.1
 
 ### Patch Changes
