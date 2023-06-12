@@ -3,6 +3,10 @@
   extends: ['config:base'],
   postUpdateOptions: ['yarnDedupeHighest'],
   rangeStrategy: 'bump',
+  prCreation: 'status-success',
+  pruneBranchAfterAutomerge: true,
+  pruneStaleBranches: true,
+
   lockFileMaintenance: {
     enabled: true,
     automerge: true

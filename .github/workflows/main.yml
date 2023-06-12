@@ -1,17 +1,8 @@
 name: Tests
 on:
   push:
-    branches:
-      # Match SemVer major release branches, e.g. "2.x" or ".x"
-      - '[0-9]+.x'
-      - 'main'
-      - 'next'
-      - 'alpha'
-      - 'beta'
-      - 'renovate/**'
-      - '!all-contributors/**'
-  pull_request:
-    types: [opened, synchronize, reopened]
+    branches-ignore:
+      - all-contributors/**
 
 jobs:
   setup:
