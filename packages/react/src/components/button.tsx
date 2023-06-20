@@ -40,6 +40,14 @@ const StyledButton = styled('button', {
       lg: { height: '$12', padding: '0 $4', font: '$body-default' },
     },
 
+    width: {
+      auto: { width: 'auto', truncate: true },
+      sm: { width: '$20', truncate: true },
+      md: { width: '$30', truncate: true },
+      lg: { width: '$40', truncate: true },
+      full: { width: '100%', truncate: true },
+    },
+
     variant: {
       primary: {
         backgroundColor: '$primary-bg',
@@ -130,6 +138,12 @@ type ButtonProps = {
    * The size of the button
    */
   size?: StyledButtonProps['size'];
+
+  /**
+   * The width of the button
+   */
+  width?: StyledButtonProps['width'];
+
   /**
    * An optional icon to show before the button text.
    */

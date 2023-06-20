@@ -24,6 +24,7 @@ const meta: Meta = {
     trailingIcon: { control: 'select', options: ['-', ...iconNames], mapping: iconMap },
     variant: { control: 'select' },
     size: { control: 'select' },
+    width: { control: 'select' },
     type: { control: 'select' },
     onClick: { action: 'onClick', table: { category: 'events' } },
   },
