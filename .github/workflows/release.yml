@@ -21,5 +21,5 @@ jobs:
           commit: 'chore: version packages'
           title: 'next release'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BELLA_ACTION_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
