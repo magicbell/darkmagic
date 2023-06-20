@@ -1,5 +1,19 @@
 # @darkmagic/react
 
+## 0.11.0
+
+### Minor Changes
+
+- [`f15c53f`](https://github.com/magicbell-io/darkmagic/commit/f15c53f1e180eca730728975c286f38461415c4f) Thanks [@smeijer](https://github.com/smeijer)! - The button component now supports a fixed width via the `width` prop.
+
+- [`231f97d`](https://github.com/magicbell-io/darkmagic/commit/231f97dbb140e8f7c8faa8fb0812f25c44e9ff67) Thanks [@smeijer](https://github.com/smeijer)! - Card component now supports a `gap` property to control spacing between card title/description and body.
+
+### Patch Changes
+
+- [#46](https://github.com/magicbell-io/darkmagic/pull/46) [`2bc9226`](https://github.com/magicbell-io/darkmagic/commit/2bc9226459ad89866a61d1e30c04aed94e8bfa4a) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `tiny-invariant` to `^1.3.1`.
+
 ## 0.10.0
 
 ### Minor Changes
