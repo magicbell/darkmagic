@@ -98,12 +98,14 @@ const StyledBody = styled('div', {
 
   '& > [data-radix-scroll-area-viewport], & > * > [data-radix-scroll-area-viewport]': {
     padding: '$8',
+    paddingTop: '$$gap',
   },
 
   variants: {
     scroll: {
       none: {
         padding: '$8',
+        paddingTop: '$$gap',
       },
     },
   },
@@ -184,6 +186,15 @@ const StyledCard = styled('div', {
         maxHeight: '85vh',
       },
     },
+
+    gap: {
+      none: {
+        $$gap: 0,
+      },
+      md: {
+        $$gap: '$sizes$8',
+      },
+    },
   },
 });
 
@@ -208,6 +219,11 @@ type CardProps = {
   variant?: StyledCardProps['variant'];
 
   /**
+   * The gap between the title/description and body
+   */
+  gap?: StyledCardProps['gap'];
+
+  /**
    * Easily override styles. It’s like the style attribute, but it supports
    * tokens, media queries, nesting and token-aware values.
    */
@@ -227,7 +243,7 @@ const Description = createSlot('Description');
 const Tabs = createSlot('Tabs');
 
 const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
-  { children, expandable = false, variant = 'outline', ...props },
+  { children, expandable = false, variant = 'outline', gap = 'md', ...props },
   forwardedRef,
 ) {
   const [expanded, setExpanded] = useState(false);
@@ -260,7 +276,7 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
   const body = isElement(slots.body) ? cloneElement(slots.body, { variant }) : null;
 
   const pane = (
-    <StyledCard {...props} variant={variant} expanded={expanded} ref={composedRefs}>
+    <StyledCard {...props} gap={gap} variant={variant} expanded={expanded} ref={composedRefs}>
       {hasHeader && (
         <StyledHeader>
           <StyledHeaderContent>
