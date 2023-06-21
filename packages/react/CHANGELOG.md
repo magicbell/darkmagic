@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.12.0
+
+### Minor Changes
+
+- [#59](https://github.com/magicbell-io/darkmagic/pull/59) [`128e51b`](https://github.com/magicbell-io/darkmagic/commit/128e51be64d7abadc54b0a18a81324b6ed9ba13f) Thanks [@smeijer](https://github.com/smeijer)! - add loading, error, and success state to button component
+
 ## 0.11.0
 
 ### Minor Changes
