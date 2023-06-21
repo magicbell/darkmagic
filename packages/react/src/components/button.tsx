@@ -274,7 +274,13 @@ const StyledLoader = styled('div', {
 function State({ state }: { state: 'idle' | 'loading' | 'error' | 'success' }) {
   return (
     <StyledLoader aria-hidden={true} data-state={state}>
-      {state === 'loading' ? <Spinner /> : state === 'success' ? <CheckIcon /> : <ExclamationTriangleIcon />}
+      {state === 'loading' ? (
+        <Spinner />
+      ) : state === 'success' ? (
+        <CheckIcon />
+      ) : state === 'error' ? (
+        <ExclamationTriangleIcon />
+      ) : null}
     </StyledLoader>
   );
 }
