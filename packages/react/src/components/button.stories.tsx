@@ -27,6 +27,8 @@ const meta: Meta = {
     width: { control: 'select' },
     type: { control: 'select' },
     onClick: { action: 'onClick', table: { category: 'events' } },
+    state: { control: 'select', options: ['idle', 'loading', 'success', 'error'] },
+    stateResetDelay: { control: 'number' },
   },
 };
 

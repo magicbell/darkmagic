@@ -62,6 +62,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
         'success-bg': '#132819',
         'success-border': '#245530',
         'success-bg-solid': '#46A758',
+        'success-bg-solid-hover': '#5DB46B',
 
         'warning-bg': '#341C00',
         'warning-border': '#693F05',
