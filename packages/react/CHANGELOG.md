@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.12.1
+
+### Patch Changes
+
+- [#61](https://github.com/magicbell-io/darkmagic/pull/61) [`edfe623`](https://github.com/magicbell-io/darkmagic/commit/edfe62304992eb1ec98ea2d8b66ff0ff92a5dd1e) Thanks [@smeijer](https://github.com/smeijer)! - fix: default to button idle state
+
 ## 0.12.0
 
 ### Minor Changes
