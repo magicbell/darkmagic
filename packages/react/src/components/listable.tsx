@@ -27,8 +27,6 @@ const StyledCell = styled('div', {
   alignItems: 'center',
   flex: 'none',
 
-  position: 'relative',
-
   defaultVariants: {
     truncate: false,
   },
