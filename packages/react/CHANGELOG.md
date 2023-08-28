@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.13.0
+
+### Minor Changes
+
+- [`46a184d`](https://github.com/magicbell-io/darkmagic/commit/46a184daac05e0c54182c98aeede24d5a989393c) Thanks [@smeijer](https://github.com/smeijer)! - chore: remove relative position from table cells
+
 ## 0.12.1
 
 ### Patch Changes
