@@ -6,6 +6,7 @@ import invariant from 'tiny-invariant';
 
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Icon } from './icon';
+import { Tooltip } from './tooltip';
 
 const StyledButton = styled('button', {
   // Reset
@@ -117,6 +118,14 @@ type ButtonProps = {
    */
   label: string;
   /**
+   * A tooltip to display when hovering the button. This will wrap the button in a `Tooltip` component.
+   */
+  tooltip?: string;
+  /**
+   * A keyboard shortcut to display next to the button. This will add a `kbd` tag to the Tooltip.
+   */
+  shortcut?: string;
+  /**
    * The button style.
    */
   variant?: StyledButtonProps['variant'];
@@ -150,14 +159,14 @@ type ButtonProps = {
 } & StyledButtonProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { icon, label, size = 'md', variant = 'primary', type = 'button', asChild, children, ...props },
+  { icon, label, size = 'md', variant = 'primary', type = 'button', asChild, children, tooltip, shortcut, ...props },
   ref,
 ) {
   invariant(icon, 'IconButton requires element or component as icon prop');
 
   const Comp = asChild ? Slot : 'button';
 
-  return (
+  const button = (
     <StyledButton as={Comp} type={type} variant={variant} size={size} {...props} ref={ref}>
       <AccessibleIcon label={label}>
         <Icon iconSize={size === 'lg' ? 'md' : 'sm'} icon={icon} />
@@ -165,5 +174,13 @@ export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Bu
 
       <Slottable>{children}</Slottable>
     </StyledButton>
+  );
+
+  if (!tooltip && !shortcut) return button;
+
+  return (
+    <Tooltip content={tooltip} shortcut={shortcut}>
+      {button}
+    </Tooltip>
   );
 });
