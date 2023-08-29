@@ -21,6 +21,7 @@ import { Avatar } from './avatar';
 import { Box } from './box';
 import { Flex } from './flex';
 import { IconButton } from './icon-button';
+import { Kbd } from './kbd';
 import { Menu } from './menu';
 import { MiniCard } from './mini-card';
 import { Sidebar } from './sidebar';
@@ -44,7 +45,20 @@ const options2 = {
 function getMenuItems(menuProps = {}) {
   return Object.entries(options).map(([key, icon]) => (
     <Menu.Item variant="primary" key={key} active={key === 'log'} icon={icon} {...menuProps}>
-      {key}
+      <Flex
+        justify="between"
+        align="center"
+        css={{
+          '& > kbd': {
+            opacity: 0,
+          },
+          '&:hover > kbd': {
+            opacity: 1,
+          },
+        }}
+      >
+        <span>{key}</span> <Kbd shortcut={`g ${key[0]}`} />
+      </Flex>
     </Menu.Item>
   ));
 }

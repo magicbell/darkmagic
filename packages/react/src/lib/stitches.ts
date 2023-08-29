@@ -133,6 +133,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
         md: '1rem',
         sm: '0.875rem',
         xs: '0.8125rem',
+        xxs: '0.75rem',
       },
       lineHeights: {
         '3': '.75rem',
@@ -480,6 +481,10 @@ export const globalStyles = globalCss({
 
     '& [data-scroll="xy"]': {
       overflow: 'auto',
+    },
+
+    '[data-radix-popper-content-wrapper]': {
+      zIndex: '999 !important',
     },
   },
 });

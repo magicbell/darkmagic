@@ -7,7 +7,9 @@ import invariant from 'tiny-invariant';
 import { createSlot, getSlots } from '../lib/slots';
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
 import { IconButton } from './icon-button';
+import { Kbd } from './kbd';
 import { Pane } from './pane';
+import { Tooltip } from './tooltip';
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -84,6 +86,20 @@ type DrawerProps = {
    */
   onRequestClose?: () => void;
   /**
+   * Event handler called when focus moves into the component after opening. It
+   * can be prevented by calling event.preventDefault.
+   */
+  onOpenAutoFocus?: (event: Event) => void;
+  /**
+   * Event handler called when focus moves to the trigger after closing. It can
+   * be prevented by calling event.preventDefault.
+   */
+  onCloseAutoFocus?: (event: Event) => void;
+  /**
+   * Event handler called when the user clicks outside the drawer.
+   */
+  onClickOutside?: (event: CustomEvent<{ originalEvent: PointerEvent }>) => void;
+  /**
    * Whether the drawer blocks interaction with the page underneath. Defaults to
    * `true` for the overlay variant, and `false` for the inline variant.
    */
@@ -94,7 +110,17 @@ type DrawerProps = {
 const Actions = createSlot('Actions');
 
 const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function Drawer(
-  { children, variant = 'inline', width = 'md', onRequestClose, modal = variant === 'overlay', ...props },
+  {
+    children,
+    variant = 'inline',
+    width = 'md',
+    onRequestClose,
+    modal = variant === 'overlay',
+    onClickOutside,
+    onOpenAutoFocus,
+    onCloseAutoFocus,
+    ...props
+  },
   forwardedRef,
 ) {
   const portalNode = useMemo(() => {
@@ -115,7 +141,17 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
         {slots.actions}
 
         {onRequestClose ? (
-          <IconButton variant="secondary" icon={Cross2Icon} label="Close" onClick={() => onRequestClose()} />
+          <Tooltip
+            content={
+              <>
+                <span>Close</span>
+                <Kbd shortcut="Esc" />
+              </>
+            }
+            side="bottom"
+          >
+            <IconButton variant="secondary" icon={Cross2Icon} label="Close" onClick={() => onRequestClose()} />
+          </Tooltip>
         ) : null}
       </Pane.Actions>
 
@@ -127,7 +163,9 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   if (!isClient) return null;
   invariant(portalNode, 'portalNode must be defined');
 
-  const onPointerDownOutside = !modal
+  const handlePointerDown = onClickOutside
+    ? onClickOutside
+    : !modal
     ? (event: CustomEvent<{ originalEvent: PointerEvent }>) => event.preventDefault()
     : undefined;
 
@@ -140,7 +178,12 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
       <DialogPrimitive.Portal>
         {modal !== false ? <StyledOverlay /> : null}
 
-        <StyledDialogContent variant={variant} onPointerDownOutside={onPointerDownOutside}>
+        <StyledDialogContent
+          variant={variant}
+          onPointerDownOutside={handlePointerDown}
+          onOpenAutoFocus={onOpenAutoFocus}
+          onCloseAutoFocus={onCloseAutoFocus}
+        >
           {variant === 'overlay' ? <OutPortal node={portalNode} /> : null}
         </StyledDialogContent>
       </DialogPrimitive.Portal>
