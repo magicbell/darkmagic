@@ -83,13 +83,18 @@ type DrawerProps = {
    * close button will not get rendered if this property is not provided.
    */
   onRequestClose?: () => void;
+  /**
+   * Whether the drawer blocks interaction with the page underneath. Defaults to
+   * `true` for the overlay variant, and `false` for the inline variant.
+   */
+  modal?: boolean;
 };
 
 // Use a slot for actions, so we can easily add a close button to user-provided actions
 const Actions = createSlot('Actions');
 
 const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function Drawer(
-  { children, variant = 'inline', width = 'md', onRequestClose, ...props },
+  { children, variant = 'inline', width = 'md', onRequestClose, modal = variant === 'overlay', ...props },
   forwardedRef,
 ) {
   const portalNode = useMemo(() => {
@@ -122,16 +127,20 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   if (!isClient) return null;
   invariant(portalNode, 'portalNode must be defined');
 
+  const onPointerDownOutside = !modal
+    ? (event: CustomEvent<{ originalEvent: PointerEvent }>) => event.preventDefault()
+    : undefined;
+
   return (
-    <DialogPrimitive.Root open={variant === 'overlay'} onOpenChange={() => onRequestClose?.()}>
+    <DialogPrimitive.Root modal={modal} open={variant === 'overlay'} onOpenChange={() => onRequestClose?.()}>
       <InPortal node={portalNode}>{drawer}</InPortal>
 
       {variant === 'inline' ? <OutPortal node={portalNode} /> : null}
 
       <DialogPrimitive.Portal>
-        <StyledOverlay />
+        {modal !== false ? <StyledOverlay /> : null}
 
-        <StyledDialogContent variant={variant}>
+        <StyledDialogContent variant={variant} onPointerDownOutside={onPointerDownOutside}>
           {variant === 'overlay' ? <OutPortal node={portalNode} /> : null}
         </StyledDialogContent>
       </DialogPrimitive.Portal>
