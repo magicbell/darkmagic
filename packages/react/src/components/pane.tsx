@@ -20,6 +20,7 @@ const StyledHeaderContent = styled('div', {
   userSelect: 'none',
   alignItems: 'center',
   padding: '0 $8',
+  gap: '$2',
 
   variants: {
     variant: {
@@ -328,12 +329,14 @@ const Root = forwardRef<ElementRef<typeof StyledPane>, PaneProps>(function Pane(
               gap={variant === 'root' ? 6 : undefined}
               flex="auto"
               align={variant === 'root' ? 'baseline' : undefined}
+              css={{ minWidth: 1 }}
             >
               <Typography
                 as={variant === 'root' ? 'h1' : 'h2'}
                 variant="h2"
                 color="default"
                 css={variant === 'root' ? { fontSize: '1.3125rem' } : undefined}
+                truncate
               >
                 {slots.title}
               </Typography>
