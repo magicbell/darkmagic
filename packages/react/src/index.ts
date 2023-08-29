@@ -16,6 +16,7 @@ export * from './components/grid';
 export * from './components/icon';
 export * from './components/icon-button';
 export * from './components/input';
+export * from './components/kbd';
 export * from './components/label';
 export * from './components/list';
 export * from './components/listable';
