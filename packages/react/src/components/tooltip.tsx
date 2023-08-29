@@ -2,6 +2,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import React, { ElementRef, forwardRef } from 'react';
 
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
+import { Kbd } from './kbd';
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -26,11 +27,14 @@ const slideLeftAndFade = keyframes({
 type StyledContentProps = ComponentProps<typeof StyledContent>;
 const StyledContent = styled(TooltipPrimitive.Content, {
   borderRadius: '$base',
-  padding: 'calc($1/2) $4',
+  padding: '$1 $4',
   font: '$body-small',
   color: '$text-default',
   backgroundColor: '$primary-bg',
   userSelect: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '$1',
 
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '400ms',
@@ -57,6 +61,10 @@ type TooltipProps = {
    * The content to display in the tooltip.
    */
   content: StyledContentProps['children'];
+  /**
+   * Shortcut to press to trigger the button in this tooltip
+   */
+  shortcut?: string;
   /**
    * The element to use as the trigger.
    */
@@ -153,6 +161,7 @@ const Root = forwardRef<ElementRef<typeof StyledContent>, TooltipProps>(function
     // custom
     children,
     content,
+    shortcut,
     enabled,
 
     // content
@@ -174,7 +183,14 @@ const Root = forwardRef<ElementRef<typeof StyledContent>, TooltipProps>(function
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
       <TooltipPrimitive.Portal>
         <StyledContent sideOffset={sideOffset} {...props} ref={ref}>
-          {content}
+          {shortcut ? (
+            <>
+              <span>{content}</span>
+              <Kbd shortcut={shortcut} />
+            </>
+          ) : (
+            content
+          )}
           <StyledArrow width={6} height={7} />
         </StyledContent>
       </TooltipPrimitive.Portal>
