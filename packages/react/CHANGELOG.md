@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.14.0
+
+### Minor Changes
+
+- [`baa24a8`](https://github.com/magicbell-io/darkmagic/commit/baa24a828c1334d052f62b3451b727a4c8681318) Thanks [@smeijer](https://github.com/smeijer)! - Add support for non modal drawers. When providing `modal={fals}` to a drawer,
+  it will not render an overlay, interaction with the page below is still possible,
+  and interaction with the page below will not result in closing the drawer.
+
+### Patch Changes
+
+- [`c60c9b8`](https://github.com/magicbell-io/darkmagic/commit/c60c9b820c41ed6849aae1b315611da5289b500a) Thanks [@smeijer](https://github.com/smeijer)! - fix pane title truncation
+
 ## 0.13.0
 
 ### Minor Changes
