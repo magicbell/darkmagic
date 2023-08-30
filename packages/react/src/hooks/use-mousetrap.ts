@@ -17,7 +17,7 @@ export function useMousetrap(
   useEffect(() => {
     // When ref === null, the ref was provided but the element isn't mounted (yet). Return early
     // so we don't mistakenly bind to the window.
-    if (ref === null) return;
+    if (ref === null || !keyString) return;
 
     const mousetrap = ref ? Mousetrap(ref) : Mousetrap;
 
