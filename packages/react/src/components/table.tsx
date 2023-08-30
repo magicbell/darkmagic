@@ -89,6 +89,7 @@ const StyledCell = styled(Listable.Cell, {
 
   variants: {
     width: {
+      '4xs': { minWidth: '$10' },
       '3xs': { minWidth: '$14' },
       xxs: { minWidth: '$24' },
       xs: { minWidth: '$30' },
