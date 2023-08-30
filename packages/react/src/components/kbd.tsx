@@ -22,7 +22,9 @@ const Container = styled('kbd', {
 });
 
 export function Kbd({ shortcut }: { shortcut: string }) {
-  const keys = shortcut.split(' ');
+  // default to empty string, it can be null while unmounting a component that still
+  // renders a tooltip with shortcut, say for example the drawer close button.
+  const keys = (shortcut || '').split(' ');
 
   return (
     <Container>
