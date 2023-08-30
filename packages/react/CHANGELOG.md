@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.15.0
+
+### Minor Changes
+
+- [`32526cc`](https://github.com/magicbell-io/darkmagic/commit/32526ccf74e823425f1c7765fd1f99988cc5fed8) Thanks [@smeijer](https://github.com/smeijer)! - - add `kbd` component to show shortcuts
+  - export `writeToClipboard` function
+  - add support for `shortcut` to tooltip
+  - add support for `tooltip` to `IconButton`
+  - add tooltip to `Drawer` close button
+  - add `4xs` cell width for icon columns
+  - don't bind mousetrap when no key is provided
+
 ## 0.14.0
 
 ### Minor Changes
