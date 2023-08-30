@@ -400,7 +400,7 @@ export function Code({
       {/* We set the code snippets width, to prevent it from aut-growing of (flex) parents */}
       <AutoSizer disableHeight>
         {({ width }: { width: number }) => (
-          <Wrapper data-width={width} padding={padding} bg={bg} css={{ width }}>
+          <Wrapper padding={padding} bg={bg} css={{ width }}>
             {showCopyButton && (
               <StyledCopyButton>
                 <CopyButton value={String(highlighted.code)} />
