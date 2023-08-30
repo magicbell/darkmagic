@@ -44,4 +44,5 @@ export * from './components/typography';
 export * from './hooks/use-form-reset';
 export * from './hooks/use-mousetrap';
 export * from './hooks/use-resize-observer';
+export * from './lib/dom';
 export * from './lib/stitches';
