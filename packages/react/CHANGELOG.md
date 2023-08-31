@@ -1,5 +1,63 @@
 # @darkmagic/react
 
+## 0.16.0
+
+### Minor Changes
+
+- [`64e2ece`](https://github.com/magicbell-io/darkmagic/commit/64e2ece16c9e1beb5dcad844b7e8fe40e205cead) Thanks [@smeijer](https://github.com/smeijer)! - Add native shortcut support to `Button` and `IconButton` components. With this
+  change we no longer need to use `mousetrap` to bind shortcuts to buttons. Instead,
+  we can just add a prop to the button and it will handle the rest. The shortcut
+  is shown in a tooltip when hovering over the button.
+
+  Using button:
+
+  ```tsx
+  <Button tooltip="save" shortcut="mod+s">
+    Save
+  </Button>
+  ```
+
+  Using icon button:
+
+  ```tsx
+  <IconButton tooltip="save" shortcut="mod+s" icon={SaveIcon} />
+  ```
+
+### Patch Changes
+
+- [#51](https://github.com/magicbell-io/darkmagic/pull/51) [`5967a0f`](https://github.com/magicbell-io/darkmagic/commit/5967a0f43796d9f3b0a1265a1ddddcfcadafda52) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `react` to `>= 18.2.0`.
+
+- [#54](https://github.com/magicbell-io/darkmagic/pull/54) [`730a7a2`](https://github.com/magicbell-io/darkmagic/commit/730a7a2f51cddcf55d4315e239b79906062b6187) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `@radix-ui/colors` to `^0.1.9`.
+  - updated `@radix-ui/react-accessible-icon` to `^1.0.3`.
+  - updated `@radix-ui/react-accordion` to `^1.1.2`.
+  - updated `@radix-ui/react-alert-dialog` to `^1.0.4`.
+  - updated `@radix-ui/react-aspect-ratio` to `^1.0.3`.
+  - updated `@radix-ui/react-avatar` to `^1.0.3`.
+  - updated `@radix-ui/react-checkbox` to `^1.0.4`.
+  - updated `@radix-ui/react-collapsible` to `^1.0.3`.
+  - updated `@radix-ui/react-dialog` to `^1.0.4`.
+  - updated `@radix-ui/react-hover-card` to `^1.0.6`.
+  - updated `@radix-ui/react-navigation-menu` to `^1.1.3`.
+  - updated `@radix-ui/react-popover` to `^1.0.6`.
+  - updated `@radix-ui/react-radio-group` to `^1.1.3`.
+  - updated `@radix-ui/react-scroll-area` to `^1.0.4`.
+  - updated `@radix-ui/react-select` to `^1.2.2`.
+  - updated `@radix-ui/react-separator` to `^1.0.3`.
+  - updated `@radix-ui/react-slider` to `^1.1.2`.
+  - updated `@radix-ui/react-slot` to `^1.0.2`.
+  - updated `@radix-ui/react-switch` to `^1.0.3`.
+  - updated `@radix-ui/react-tabs` to `^1.0.4`.
+  - updated `@radix-ui/react-toast` to `^1.1.4`.
+  - updated `@radix-ui/react-toggle` to `^1.0.3`.
+  - updated `@radix-ui/react-toggle-group` to `^1.0.4`.
+  - updated `@radix-ui/react-toolbar` to `^1.0.4`.
+  - updated `@radix-ui/react-tooltip` to `^1.0.6`.
+  - updated `@radix-ui/react-visually-hidden` to `^1.0.3`.
+
 ## 0.15.0
 
 ### Minor Changes
