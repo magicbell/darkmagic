@@ -5,7 +5,7 @@ export type MousetrapAction = 'keypress' | 'keydown' | 'keyup';
 export type MousetrapHandler = (event: ExtendedKeyboardEvent, combo: string) => void | boolean;
 
 export function useMousetrap(
-  key: string | string[],
+  key: string | string[] | null | undefined,
   callback: MousetrapHandler,
   ref?: HTMLElement | null,
   action?: MousetrapAction,
@@ -22,10 +22,11 @@ export function useMousetrap(
     const mousetrap = ref ? Mousetrap(ref) : Mousetrap;
 
     const fn: MousetrapHandler = (...args) => cb.current(...args);
-    mousetrap.bind(key, fn, action);
+    const keys = keyString.split(',');
+    mousetrap.bind(keys, fn, action);
 
     return () => {
-      mousetrap.unbind(key, action);
+      mousetrap.unbind(keys, action);
     };
 
     // Ignore eslint, we flatten the key to a string to support unstable arrays

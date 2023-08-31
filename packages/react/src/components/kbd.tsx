@@ -5,12 +5,13 @@ import { styled } from '../lib/stitches';
 const Box = styled('div', {
   backgroundColor: 'rgba(255, 255, 255, .08)',
   borderRadius: '$sm',
-  font: '$mono',
-  fontSize: '$xxs',
-  padding: '1px 4px',
-  margin: '-2px 2px',
+  font: '$caption',
+  fontSize: '$3xs',
+  padding: '2px',
   whiteSpace: 'nowrap',
   lineHeight: 'normal',
+  minWidth: '$4',
+  textAlign: 'center',
 });
 
 const Container = styled('kbd', {
@@ -19,23 +20,39 @@ const Container = styled('kbd', {
   alignItems: 'center',
   flexWrap: 'nowrap',
   flexDirection: 'row',
+  gap: '$1',
 });
 
-export function Kbd({ shortcut }: { shortcut: string }) {
+const replacements: Record<string, string> = {
+  mod: '⌘',
+  ctrl: '⌃',
+  alt: '⌥',
+  shift: '⇧',
+};
+
+export function Kbd({ shortcut, showPlus = false }: { shortcut: string; showPlus?: boolean }) {
   // default to empty string, it can be null while unmounting a component that still
   // renders a tooltip with shortcut, say for example the drawer close button.
-  const keys = (shortcut || '').split(' ');
+  const keys = (shortcut || '')
+    .replace(/\+/g, ' + ')
+    .split('')
+    .reduce(
+      (acc, n) => {
+        if (n === ' ') {
+          acc.push('');
+        } else {
+          acc[acc.length - 1] += n;
+        }
+        return acc;
+      },
+      [''],
+    )
+    .filter(showPlus ? Boolean : (x) => x && x !== '+');
 
   return (
     <Container>
       {keys.map((key, idx) =>
-        idx === 0 ? (
-          <Box key={idx}>{key}</Box>
-        ) : (
-          <Fragment key={idx}>
-            + <Box key={idx}>{key}</Box>
-          </Fragment>
-        ),
+        key === '+' ? <Fragment key={idx}>+</Fragment> : <Box key={idx}>{replacements[key] || key}</Box>,
       )}
     </Container>
   );

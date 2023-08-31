@@ -1,11 +1,14 @@
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { CheckIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import type { FunctionComponent, ReactElement, ReactNode } from 'react';
-import { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 
+import useMousetrap from '../hooks/use-mousetrap';
 import { makeComponent } from '../lib/component';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Spinner } from './spinner';
+import { Tooltip } from './tooltip';
 
 const StyledButton = styled('button', {
   // Reset
@@ -247,7 +250,14 @@ type ButtonProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
-
+  /**
+   * A tooltip to display when hovering the button. This will wrap the button in a `Tooltip` component.
+   */
+  tooltip?: string;
+  /**
+   * A keyboard shortcut to display next to the button. This will add a `kbd` tag to the Tooltip.
+   */
+  shortcut?: string;
   /**
    * Use state to control the button’s appearance. The error and success state will be reset to idle after the stateResetDelay.
    */
@@ -296,13 +306,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     asChild,
     state,
     stateResetDelay = 1500,
+    tooltip,
+    shortcut,
     ...props
   },
-  ref,
+  forwardedRef,
 ) {
   const LeadingIcon = makeComponent(leadingIcon);
   const TrailingIcon = makeComponent(trailingIcon);
   const Comp = asChild ? Slot : 'button';
+
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+
+  useMousetrap(shortcut, (e) => {
+    if (props.disabled || !ref.current) return;
+    e.preventDefault();
+    ref.current.click();
+  });
 
   if (asChild && state != null) {
     throw new Error('You cannot use `state` and `asChild` together');
@@ -317,7 +338,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     return () => clearTimeout(timeout);
   }, [state, stateResetDelay]);
 
-  return (
+  const button = (
     <StyledButton
       as={Comp}
       data-disabled={props.disabled || undefined}
@@ -325,7 +346,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       variant={variant}
       size={size}
       {...props}
-      ref={ref}
+      ref={composedRefs}
       icons={LeadingIcon && TrailingIcon ? 'both' : LeadingIcon ? 'leading' : TrailingIcon ? 'trailing' : 'none'}
       data-state={derivedState}
     >
@@ -349,5 +370,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
 
       {derivedState && <State state={derivedState} />}
     </StyledButton>
+  );
+
+  if (!tooltip && !shortcut) return button;
+
+  return (
+    <Tooltip content={tooltip} shortcut={shortcut}>
+      {button}
+    </Tooltip>
   );
 });

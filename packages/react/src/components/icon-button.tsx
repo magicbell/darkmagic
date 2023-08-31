@@ -1,9 +1,11 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
+import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import type { FunctionComponent, ReactElement, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import invariant from 'tiny-invariant';
 
+import useMousetrap from '../hooks/use-mousetrap';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Icon } from './icon';
 import { Tooltip } from './tooltip';
@@ -160,14 +162,23 @@ type ButtonProps = {
 
 export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { icon, label, size = 'md', variant = 'primary', type = 'button', asChild, children, tooltip, shortcut, ...props },
-  ref,
+  forwardedRef,
 ) {
   invariant(icon, 'IconButton requires element or component as icon prop');
 
   const Comp = asChild ? Slot : 'button';
 
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
+
+  useMousetrap(shortcut, (e) => {
+    if (!ref.current) return;
+    e.preventDefault();
+    ref.current.click();
+  });
+
   const button = (
-    <StyledButton as={Comp} type={type} variant={variant} size={size} {...props} ref={ref}>
+    <StyledButton as={Comp} type={type} variant={variant} size={size} {...props} ref={composedRefs}>
       <AccessibleIcon label={label}>
         <Icon iconSize={size === 'lg' ? 'md' : 'sm'} icon={icon} />
       </AccessibleIcon>

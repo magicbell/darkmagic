@@ -134,6 +134,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
         sm: '0.875rem',
         xs: '0.8125rem',
         xxs: '0.75rem',
+        '3xs': '0.6875rem',
       },
       lineHeights: {
         '3': '.75rem',

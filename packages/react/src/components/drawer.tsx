@@ -7,9 +7,7 @@ import invariant from 'tiny-invariant';
 import { createSlot, getSlots } from '../lib/slots';
 import { ComponentProps, keyframes, styled } from '../lib/stitches';
 import { IconButton } from './icon-button';
-import { Kbd } from './kbd';
 import { Pane } from './pane';
-import { Tooltip } from './tooltip';
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -141,17 +139,14 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
         {slots.actions}
 
         {onRequestClose ? (
-          <Tooltip
-            content={
-              <>
-                <span>Close</span>
-                <Kbd shortcut="Esc" />
-              </>
-            }
-            side="bottom"
-          >
-            <IconButton variant="secondary" icon={Cross2Icon} label="Close" onClick={() => onRequestClose()} />
-          </Tooltip>
+          <IconButton
+            tooltip="Close"
+            shortcut="esc"
+            variant="secondary"
+            icon={Cross2Icon}
+            label="Close"
+            onClick={() => onRequestClose()}
+          />
         ) : null}
       </Pane.Actions>
 
