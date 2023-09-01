@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.17.0
+
+### Minor Changes
+
+- [`ab22716`](https://github.com/magicbell-io/darkmagic/commit/ab2271674462b9f3eda396f5ddbdc8d842c137b8) Thanks [@smeijer](https://github.com/smeijer)! - add badge variants (outline, filled, dot)
+
 ## 0.16.0
 
 ### Minor Changes
