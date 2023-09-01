@@ -15,11 +15,13 @@ const meta: Meta = {
     children: 'badge',
     color: 'muted',
     icon: '-',
+    variant: 'dot',
   },
   argTypes: {
     children: { name: 'label', control: 'text' },
     color: { control: 'select' },
     icon: { control: 'select', options: ['-', ...iconNames], mapping: iconMap },
+    variant: { control: 'select', options: ['dot', 'filled', 'outline'] },
   },
 };
 

@@ -4,12 +4,16 @@ import { makeComponent } from '../lib/component';
 import { ComponentProps, styled } from '../lib/stitches';
 
 const StyledBadge = styled('div', {
-  font: '$body-small',
-  color: '$text-default',
+  font: '$caption',
+  fontSize: '$3xs',
+  textTransform: 'uppercase',
+  height: '$5',
   display: 'inline-flex',
   alignItems: 'center',
   userSelect: 'none',
   gap: '$2',
+  padding: '0 10px',
+  borderRadius: '$full',
 
   '& svg': {
     flex: 'none',
@@ -17,14 +21,32 @@ const StyledBadge = styled('div', {
 
   variants: {
     color: {
-      muted: { '& svg': { color: '$text-muted' } },
-      info: { '& svg': { color: '$text-info' } },
-      success: { '& svg': { color: '$text-success' } },
-      warning: { '& svg': { color: '$text-warning' } },
-      error: { '& svg': { color: '$text-error' } },
-      'accent-1': { '& svg': { color: '$accent-1-text' } },
-      'accent-2': { '& svg': { color: '$accent-2-text' } },
-      'accent-3': { '& svg': { color: '$accent-3-text' } },
+      default: { $$color: '$colors$text-default' },
+      muted: { $$color: '$colors$text-muted' },
+      info: { $$color: '$colors$text-info' },
+      success: { $$color: '$colors$text-success' },
+      warning: { $$color: '$colors$text-warning' },
+      error: { $$color: '$colors$text-error' },
+      'accent-1': { $$color: '$colors$accent-1-text' },
+      'accent-2': { $$color: '$colors$accent-2-text' },
+      'accent-3': { $$color: '$colors$accent-3-text' },
+    },
+    variant: {
+      filled: {
+        background: '$$color',
+        color: '$text-default',
+      },
+      dot: {
+        border: '1px solid $border-muted',
+        color: '$text-default',
+        '& svg': { color: '$$color' },
+        padding: '0 $2',
+      },
+      outline: {
+        '& svg': { color: '$$color' },
+        border: '1px solid $$color',
+        color: '$$color',
+      },
     },
   },
 });
@@ -51,17 +73,21 @@ type BadgeProps = {
    * The label to show. Any valid React node is allowed, but a short string is recommended.
    */
   children?: ReactNode;
+  /**
+   * The variant of the badge.
+   */
+  variant?: StyledBadgeProps['variant'];
 };
 
 export const Badge = forwardRef<ElementRef<typeof StyledBadge>, BadgeProps>(function Badge(
-  { icon, color = 'muted', children, ...props },
+  { icon, color = 'muted', children, variant = 'dot', ...props },
   ref,
 ) {
-  const Icon = makeComponent(icon) || DotIcon;
+  const Icon = makeComponent(icon) || (variant === 'dot' ? DotIcon : null);
 
   return (
-    <StyledBadge color={color} {...props} ref={ref}>
-      <Icon aria-hidden="true" />
+    <StyledBadge color={color} variant={variant} {...props} ref={ref}>
+      {Icon ? <Icon aria-hidden="true" /> : null}
       {children ? <div>{children}</div> : null}
     </StyledBadge>
   );
