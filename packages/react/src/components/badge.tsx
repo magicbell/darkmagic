@@ -37,7 +37,6 @@ const StyledBadge = styled('div', {
         color: '$text-default',
       },
       dot: {
-        border: '1px solid $border-muted',
         color: '$text-default',
         '& svg': { color: '$$color' },
         padding: '0 $2',
