@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.17.1
+
+### Patch Changes
+
+- [`422b3ac`](https://github.com/magicbell-io/darkmagic/commit/422b3ac365f107ee45f4160db1375e65daf69a4c) Thanks [@smeijer](https://github.com/smeijer)! - remove border from badge dot variant
+
 ## 0.17.0
 
 ### Minor Changes
