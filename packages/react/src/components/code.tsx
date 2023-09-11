@@ -350,7 +350,7 @@ export function Code({
   children,
   lang,
   caption,
-  lineClamp = 17,
+  lineClamp = 0,
   showCopyButton = true,
   lineNumbers = true,
   scroll,
