@@ -12586,10 +12586,10 @@ pkg-dir@^5.0.0:
   dependencies:
     find-up "^5.0.0"
 
-playroom@^0.31.0:
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.31.0.tgz#878c334d6f41eec8e701b7a2b05be82acea4dfe9"
-  integrity sha512-hu3KfoxcrZRK0SnumEkpzeEXUnRvND2/qygm1K3mzaiibcyky4uczWhvpqWic24WZpVJBegz4YLw/bwx8/WAgg==
+playroom@^0.32.1:
+  version "0.32.1"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.32.1.tgz#5f8ecb0a950189ccac18fc77209b7c21f2ea509c"
+  integrity sha512-b/0jLzDRKBLRdEE6O1HC7fWEp+bDfocyipsQL9yN26c0hcZ5vgiKammf7HHX5iYYTvSTrBlZ0oDSJJUfksdZdQ==
   dependencies:
     "@babel/cli" "^7.19.3"
     "@babel/core" "^7.20.5"
@@ -12640,7 +12640,7 @@ playroom@^0.31.0:
     react-use "^17.4.0"
     read-pkg-up "^7.0.1"
     scope-eval "^1.0.0"
-    typescript "^4.5.4"
+    typescript ">=5.0.0"
     use-debounce "^9.0.2"
     webpack "^5.75.0"
     webpack-dev-server "^4.11.1"
@@ -15447,12 +15447,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@^4.5.4:
-  version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
-  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
-
-typescript@^5.2.2:
+typescript@>=5.0.0, typescript@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
