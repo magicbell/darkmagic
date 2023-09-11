@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.18.0
+
+### Minor Changes
+
+- [`7b4acf8`](https://github.com/magicbell-io/darkmagic/commit/7b4acf811f5db458fadecfde9048acfb5e32c676) Thanks [@smeijer](https://github.com/smeijer)! - change Code default lineclamp to 0
+
 ## 0.17.1
 
 ### Patch Changes
