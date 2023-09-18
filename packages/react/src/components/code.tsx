@@ -15,9 +15,6 @@ import shell from 'highlight.js/lib/languages/shell';
 import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import parserHtml from 'prettier/parser-html';
-import parserTypescript from 'prettier/parser-typescript';
-import prettier from 'prettier/standalone';
 import { useMemo, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -242,9 +239,6 @@ function addLineNumbers(source: HighlightResult) {
   };
 }
 
-const tsLanguages = new Set(['js', 'ts', 'node', 'tsx', 'javascript', 'typescript']);
-const xmlLanguages = new Set(['xml', 'html', 'xhtml', 'svg']);
-
 type CodeProps = {
   /**
    * The code to be rendered.
@@ -359,21 +353,11 @@ export function Code({
   padding = 'sm',
 }: CodeProps) {
   const highlighted = useMemo(() => {
-    const isTypescript = tsLanguages.has(lang);
-    const isXml = xmlLanguages.has(lang);
-
     const formatted =
       lang === 'json'
         ? parserJson(typeof children === 'string' ? JSON.parse(children) : children, { maxLength: printWidth })
             .replace(/{"/g, '{ "')
             .replace(/(["\]])}/g, '$1 }')
-        : isTypescript || isXml
-        ? prettier.format(String(children), {
-            parser: isTypescript ? 'typescript' : 'html',
-            plugins: isTypescript ? [parserTypescript] : [parserHtml],
-            printWidth,
-            singleQuote: false,
-          })
         : String(children);
 
     const highlighted = hljs.highlight(formatted.trim(), { language: lang });
