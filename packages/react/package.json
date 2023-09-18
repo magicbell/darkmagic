@@ -83,7 +83,6 @@
   },
   "devDependencies": {
     "@types/mousetrap": "^1.6.11",
-    "@types/prettier": "^2.7.2",
     "@types/react-is": "^17.0.3",
     "react": "^18.2.0"
   },

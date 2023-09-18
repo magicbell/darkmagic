@@ -39,9 +39,6 @@
       "eslint --fix"
     ]
   },
-  "engines": {
-    "node": ">=v18.17.1"
-  },
   "dependencies": {
     "@babel/core": "^7.22.20",
     "@changesets/changelog-github": "^0.4.8",

@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fsp from 'fs/promises';
 import path from 'path';
 import prettier from 'prettier';
 import glob from 'tiny-glob';
@@ -19,35 +20,35 @@ async function getPackages() {
   );
 }
 
-function writeJson(filepath, json) {
-  const data = prettier.format(JSON.stringify(json, null, 2), {
+async function writeJson(filepath, json) {
+  const data = await prettier.format(JSON.stringify(json, null, 2), {
     parser: 'json',
   });
 
-  fs.writeFileSync(filepath, data, 'utf-8');
+  await fsp.writeFile(filepath, data, { encoding: 'utf-8' });
 }
 
-function writePathsToTsConfig(pkgs) {
+async function writePathsToTsConfig(pkgs) {
   const tsConfig = readJSON('./tsconfig.json');
 
   const others = Object.entries(tsConfig.compilerOptions.paths).filter(([k]) => k[0] === '~');
 
   const locals = pkgs.map(([k, v]) => [k, [`${v}/src`]]);
   tsConfig.compilerOptions.paths = Object.fromEntries([...others, ...locals]);
-  writeJson('./tsconfig.json', tsConfig);
+  await writeJson('./tsconfig.json', tsConfig);
 }
 
-function writeAliasToExamplePackageJson(pkgs) {
+async function writeAliasToExamplePackageJson(pkgs) {
   const pkgJson = readJSON('./example/package.json');
 
   const others = Object.entries(pkgJson.alias).filter(([, v]) => !v.startsWith('../packages/'));
 
   const locals = pkgs.map(([k, v]) => [k, `../${v}`]);
   pkgJson.alias = Object.fromEntries([...others, ...locals]);
-  writeJson('./example/package.json', pkgJson);
+  await writeJson('./example/package.json', pkgJson);
 }
 
-getPackages().then((pkgs) => {
-  writePathsToTsConfig(pkgs);
-  writeAliasToExamplePackageJson(pkgs);
-});
+// run
+const pkgs = await getPackages();
+await writePathsToTsConfig(pkgs);
+await writeAliasToExamplePackageJson(pkgs);
