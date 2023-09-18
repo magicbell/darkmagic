@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.19.0
+
+### Minor Changes
+
+- [`e0f14ed`](https://github.com/magicbell-io/darkmagic/commit/e0f14eda1edb5aab0f5e5e692ea6ff6e99a00db9) Thanks [@smeijer](https://github.com/smeijer)! - remove prettier formatting from code component
+
 ## 0.18.0
 
 ### Minor Changes
