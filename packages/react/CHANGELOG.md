@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.20.0
+
+### Minor Changes
+
+- [#84](https://github.com/magicbell-io/darkmagic/pull/84) [`71b69e8`](https://github.com/magicbell-io/darkmagic/commit/71b69e8f0c1bd3a051eaecf795b07210f5c2de22) Thanks [@smeijer](https://github.com/smeijer)! - use rollup 'preserve modules' to prevent bundling the dist files and improve tree shaking
+
 ## 0.19.0
 
 ### Minor Changes
