@@ -84,6 +84,7 @@ export default defineConfig(async ({ mode, command }) => {
         output: {
           exports: 'named',
           globals: globalModules,
+          preserveModules: true,
         },
       },
     },

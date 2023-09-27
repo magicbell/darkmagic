@@ -2386,7 +2386,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/react-compose-refs@1.0.1":
+"@radix-ui/react-compose-refs@1.0.1", "@radix-ui/react-compose-refs@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-1.0.1.tgz#7ed868b66946aa6030e580b1ffca386dd4d21989"
   integrity sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==
@@ -2556,7 +2556,7 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "1.0.0"
 
-"@radix-ui/react-id@1.0.1":
+"@radix-ui/react-id@1.0.1", "@radix-ui/react-id@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-id/-/react-id-1.0.1.tgz#73cdc181f650e4df24f0b6a5b7aa426b912c88c0"
   integrity sha512-tI7sT/kqYp8p96yGWY1OAnLHrqDgzHefRBKQ2YAkBS5ja7QLcZ9Z/uY7bEjPUatf8RomoXM8/1sMj1IJaE5UzQ==
