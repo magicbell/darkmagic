@@ -33,5 +33,3 @@ export function useMousetrap(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyString, cb, ref, action]);
 }
-
-export default useMousetrap;

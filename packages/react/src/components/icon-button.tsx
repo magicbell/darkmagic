@@ -5,7 +5,7 @@ import type { FunctionComponent, ReactElement, ReactNode } from 'react';
 import React, { forwardRef } from 'react';
 import invariant from 'tiny-invariant';
 
-import useMousetrap from '../hooks/use-mousetrap';
+import { useMousetrap } from '../hooks/use-mousetrap';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Icon } from './icon';
 import { Tooltip } from './tooltip';
