@@ -4,7 +4,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import type { FunctionComponent, ReactElement, ReactNode } from 'react';
 import React, { forwardRef, useEffect, useState } from 'react';
 
-import useMousetrap from '../hooks/use-mousetrap';
+import { useMousetrap } from '../hooks/use-mousetrap';
 import { makeComponent } from '../lib/component';
 import { ComponentProps, CSS, styled } from '../lib/stitches';
 import { Spinner } from './spinner';
