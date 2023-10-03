@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import * as React from 'react';
 
 export function useFormReset(cb: () => void, elem: HTMLElement | null) {
-  const callback = useRef(cb);
+  const callback = React.useRef(cb);
   callback.current = cb;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!elem) return;
     const form = elem.closest('form');
     if (!form) return;

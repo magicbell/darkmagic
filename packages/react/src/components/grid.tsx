@@ -1,6 +1,6 @@
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledCell = styled('div', {
   display: 'flex',
@@ -138,7 +138,7 @@ type CellProps = {
   /**
    * The content of the cell. Any valid ReactNode is allowed.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Easily override styles. It’s like the style attribute, but it supports
    * tokens, media queries, nesting and token-aware values.
@@ -146,7 +146,7 @@ type CellProps = {
   css?: CSS;
 };
 
-const Cell = forwardRef<ElementRef<'div'>, CellProps>(function Cell(props, ref) {
+const Cell = React.forwardRef<React.ElementRef<'div'>, CellProps>(function Cell(props, ref) {
   return <StyledCell {...props} ref={ref} />;
 });
 
@@ -259,7 +259,7 @@ type RootProps = {
   /**
    * The grid contents, usually `Grid.Cell` components.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Easily override styles. It’s like the style attribute, but it supports
    * tokens, media queries, nesting and token-aware values.
@@ -267,7 +267,7 @@ type RootProps = {
   css?: CSS;
 };
 
-const Root = forwardRef<ElementRef<'div'>, RootProps>(function Grid({ spacing = 'xs', ...props }, ref) {
+const Root = React.forwardRef<React.ElementRef<'div'>, RootProps>(function Grid({ spacing = 'xs', ...props }, ref) {
   return <StyledGrid spacing={spacing} {...props} ref={ref} />;
 });
 

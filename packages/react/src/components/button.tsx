@@ -1,14 +1,13 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { CheckIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Slot, Slottable } from '@radix-ui/react-slot';
-import type { FunctionComponent, ReactElement, ReactNode } from 'react';
-import React, { forwardRef, useEffect, useState } from 'react';
+import * as React from 'react';
 
-import { useMousetrap } from '../hooks/use-mousetrap';
-import { makeComponent } from '../lib/component';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Spinner } from './spinner';
-import { Tooltip } from './tooltip';
+import { useMousetrap } from '../hooks/use-mousetrap.js';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Spinner } from './spinner.js';
+import { Tooltip } from './tooltip.js';
 
 const StyledButton = styled('button', {
   // Reset
@@ -220,15 +219,15 @@ type ButtonProps = {
   /**
    * An optional icon to show before the button text.
    */
-  leadingIcon?: FunctionComponent | ReactElement;
+  leadingIcon?: React.FunctionComponent | React.ReactElement;
   /**
    * An optional icon to show after the button text.
    */
-  trailingIcon?: FunctionComponent | ReactElement;
+  trailingIcon?: React.FunctionComponent | React.ReactElement;
   /**
    * The text label to show on the button
    */
-  children: ReactNode;
+  children: React.ReactNode;
   /**
    * Event handler called when the button is clicked.
    */
@@ -295,7 +294,7 @@ function State({ state }: { state: 'idle' | 'loading' | 'error' | 'success' }) {
   );
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
     leadingIcon,
     trailingIcon,
@@ -329,8 +328,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     throw new Error('You cannot use `state` and `asChild` together');
   }
 
-  const [derivedState, setDerivedState] = useState<ButtonProps['state']>(state || 'idle');
-  useEffect(() => {
+  const [derivedState, setDerivedState] = React.useState<ButtonProps['state']>(state || 'idle');
+  React.useEffect(() => {
     setDerivedState(state);
 
     if (state !== 'success' && state !== 'error') return;

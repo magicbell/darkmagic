@@ -1,8 +1,8 @@
-import { cloneElement, ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { mapChildren } from '../lib/component';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { CopyButton } from './copy-button';
+import { mapChildren } from '../lib/component.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { CopyButton } from './copy-button.js';
 
 const StyledAddon = styled('div', {
   flex: 'none',
@@ -102,11 +102,11 @@ type ItemProps = {
    * A short description of what the value represents. This will be shown before
    * or above the value.
    */
-  label: ReactNode;
+  label: React.ReactNode;
   /**
    * The value to display.
    */
-  value: ReactNode;
+  value: React.ReactNode;
   /**
    * The value to copy to the clipboard when the copy button is clicked. Defaults
    * to `value`.
@@ -122,7 +122,7 @@ type ItemProps = {
   showCopyButton?: boolean;
 } & StyledItemProps;
 
-const Item = forwardRef<ElementRef<'div'>, ItemProps>(function Item(
+const Item = React.forwardRef<React.ElementRef<'div'>, ItemProps>(function Item(
   {
     stacked = false,
     labelWidth = 'sm',
@@ -181,21 +181,21 @@ type RootProps = {
   /**
    * The children to render, usually `DescriptionList.Item` components.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Only show the first line of the value and truncate the rest.
    */
   truncate?: boolean;
 };
 
-const Root = forwardRef<HTMLDListElement, RootProps>(function DescriptionList(
+const Root = React.forwardRef<HTMLDListElement, RootProps>(function DescriptionList(
   { variant = 'table', labelWidth = 'sm', children, truncate, ...props },
   ref,
 ) {
   return (
     <StyledList {...props} ref={ref}>
       {mapChildren(children, (child) =>
-        cloneElement(child, { labelWidth, stacked: variant === 'stacked', truncate, ...child.props }),
+        React.cloneElement(child, { labelWidth, stacked: variant === 'stacked', truncate, ...child.props }),
       )}
     </StyledList>
   );

@@ -1,8 +1,8 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import React, { ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, keyframes, styled } from '../lib/stitches';
-import { Kbd } from './kbd';
+import { ComponentProps, keyframes, styled } from '../lib/stitches.js';
+import { Kbd } from './kbd.js';
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -149,7 +149,7 @@ type TooltipProps = {
   hideWhenDetached?: StyledContentProps['hideWhenDetached'];
 };
 
-const Root = forwardRef<ElementRef<typeof StyledContent>, TooltipProps>(function Tooltip(
+const Root = React.forwardRef<React.ElementRef<typeof StyledContent>, TooltipProps>(function Tooltip(
   {
     // root
     defaultOpen,

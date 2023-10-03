@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledTextArea = styled('textarea', {
   unset: 'all',
@@ -111,7 +111,7 @@ type TextAreaProps = {
   asChild?: boolean;
 } & StyledTextAreaProps;
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
   { size = 'md', state = 'initial', disabled = false, required = false, asChild, ...props },
   ref,
 ) {

@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import * as React from 'react';
 
 export function useResizeObserver(cb: (size: ResizeObserverSize) => void, target: HTMLElement | null) {
-  const callback = useRef(cb);
+  const callback = React.useRef(cb);
   callback.current = cb;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!target) return;
 
     const observer = new ResizeObserver((entries) => {

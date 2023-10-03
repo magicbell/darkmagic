@@ -1,4 +1,4 @@
-import { arrayElement, uuidv4 } from './utils';
+import { arrayElement, uuidv4 } from './utils.js';
 
 export const names = ['Jane Doe', 'John Johnson', 'Jack Robinson'];
 export const sources = ['Sales Contract', 'GitHub Issue', 'Twitter'];

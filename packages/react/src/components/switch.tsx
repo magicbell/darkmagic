@@ -3,14 +3,14 @@ import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import { useId } from '@radix-ui/react-id';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
-import React, { forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { useFormReset } from '../hooks/use-form-reset';
-import { useMaybeControlled } from '../hooks/use-maybe-controlled';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { RequiredBadge } from './required-badge';
+import { useFormReset } from '../hooks/use-form-reset.js';
+import { useMaybeControlled } from '../hooks/use-maybe-controlled.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { RequiredBadge } from './required-badge.js';
 
 const Label = styled('label', {
   font: '$body-default',
@@ -56,7 +56,7 @@ type SwitchProps = {
   /**
    * The label that will be shown next to the checkbox.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * On which side of the switch the label should be shown.
    */
@@ -100,7 +100,7 @@ type SwitchProps = {
   css?: CSS;
 } & StyledSwitchProps;
 
-export const Switch = forwardRef<React.ElementRef<typeof StyledSwitch>, SwitchProps>(function Switch(
+export const Switch = React.forwardRef<React.ElementRef<typeof StyledSwitch>, SwitchProps>(function Switch(
   {
     children,
     required = false,

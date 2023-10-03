@@ -2,13 +2,13 @@ import { AccessibleIcon } from '@radix-ui/react-accessible-icon';
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import type { FunctionComponent, ReactElement, ReactNode } from 'react';
-import React, { forwardRef } from 'react';
+import * as React from 'react';
 import invariant from 'tiny-invariant';
 
-import { useMousetrap } from '../hooks/use-mousetrap';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Icon } from './icon';
-import { Tooltip } from './tooltip';
+import { useMousetrap } from '../hooks/use-mousetrap.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Icon } from './icon.js';
+import { Tooltip } from './tooltip.js';
 
 const StyledButton = styled('button', {
   // Reset
@@ -160,7 +160,7 @@ type ButtonProps = {
   children?: ReactNode;
 } & StyledButtonProps;
 
-export const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+export const IconButton = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { icon, label, size = 'md', variant = 'primary', type = 'button', asChild, children, tooltip, shortcut, ...props },
   forwardedRef,
 ) {

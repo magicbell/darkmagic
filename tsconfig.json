@@ -1,14 +1,30 @@
 {
-  "extends": "./tsconfig.build.json",
-  "include": ["packages", "scripts", "types", "vitest/globals"],
   "compilerOptions": {
+    "composite": false,
+    "target": "ES2018",
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "jsx": "react",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
     "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "~/fixtures": ["fixtures"],
       "~/sb-decorators": [".storybook/decorators"],
       "@darkmagic/react": ["packages/react/src"]
-    },
-    "noEmit": true
-  }
+    }
+  },
+  "references": [
+    {
+      "path": "./packages/react/tsconfig-esm.json"
+    }
+  ],
+  "exclude": ["**/*.stories.*", "**/*.spec.*", "**/*.test.*", "dist", "node_modules"]
 }

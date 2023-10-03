@@ -1,12 +1,12 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import React, { cloneElement, ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 import invariant from 'tiny-invariant';
 
-import { transformChildren } from '../lib/component';
-import { getSlots } from '../lib/slots';
-import { ComponentProps, keyframes, styled } from '../lib/stitches';
-import { IconButton } from './icon-button';
+import { transformChildren } from '../lib/component.js';
+import { getSlots } from '../lib/slots.js';
+import { ComponentProps, keyframes, styled } from '../lib/stitches.js';
+import { IconButton } from './icon-button.js';
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -90,7 +90,7 @@ type TriggerProps = {
   children: ComponentProps<typeof DialogPrimitive.Trigger>['children'];
 };
 
-const Trigger = forwardRef<ElementRef<typeof DialogPrimitive.Trigger>, TriggerProps>(function Trigger(
+const Trigger = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Trigger>, TriggerProps>(function Trigger(
   { children, ...props },
   ref,
 ) {
@@ -149,7 +149,7 @@ type ContentProps = {
   children: StyledContentProps['children'];
 } & StyledContentProps;
 
-const Content = forwardRef<ElementRef<typeof DialogPrimitive.Content>, ContentProps>(function Content(
+const Content = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, ContentProps>(function Content(
   { children, width = 'sm', showCloseButton = true, ...props },
   forwardedRef,
 ) {
@@ -212,7 +212,7 @@ type DialogProps = {
    * The contents, usually a button wrapped in `Dialog.Trigger` and a `Dialog.Content`
    * component.
    */
-  children: ReactNode;
+  children: React.ReactNode;
 } & RootProps;
 
 const Root = function Dialog({ children, dismissable = true, ...props }: DialogProps) {
@@ -227,7 +227,7 @@ const Root = function Dialog({ children, dismissable = true, ...props }: DialogP
   return (
     <DialogPrimitive.Root {...props} onOpenChange={onOpenChange} modal={modal}>
       {transformChildren(children, (child) => {
-        if (child.type === Content) return cloneElement(child, { showCloseButton: dismissable, ...child.props });
+        if (child.type === Content) return React.cloneElement(child, { showCloseButton: dismissable, ...child.props });
         return child;
       })}
     </DialogPrimitive.Root>

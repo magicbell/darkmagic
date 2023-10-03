@@ -1,7 +1,7 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, styled } from '../lib/stitches';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const AvatarRoot = styled(AvatarPrimitive.Root, {
   display: 'inline-flex',
@@ -120,7 +120,7 @@ type AvatarProps = {
   /**
    * A fallback property to render if no image is provided or not loaded in time.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * The size of the avatar.
    */
@@ -144,7 +144,7 @@ function getLetters(value: string) {
     .slice(0, 2);
 }
 
-export const Avatar = forwardRef<ElementRef<typeof AvatarRoot>, AvatarProps>(function Avatar(
+export const Avatar = React.forwardRef<React.ElementRef<typeof AvatarRoot>, AvatarProps>(function Avatar(
   { src, alt, size = 'md', color = 'default', variant = 'circle', children }: AvatarProps,
   forwardedRef,
 ) {

@@ -1,8 +1,8 @@
-import { FunctionComponent, ReactElement } from 'react';
+import * as React from 'react';
 import invariant from 'tiny-invariant';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const StyledIcon = styled('div', {
   color: '$text-default',
@@ -98,7 +98,7 @@ type IconProps = {
   /**
    * The icon to display.
    */
-  icon: FunctionComponent | ReactElement;
+  icon: React.FunctionComponent | React.ReactElement;
   /**
    * The size of the icon
    */

@@ -1,23 +1,26 @@
-import { Children, cloneElement, ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 import invariant from 'tiny-invariant';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Listable, ListableCellProps } from './listable';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Listable, ListableCellProps } from './listable.js';
 
 const StyledHead = styled('thead', {});
 
 type HeadProps = ComponentProps<typeof StyledHead>;
-const Head = forwardRef<ElementRef<typeof StyledHead>, HeadProps>(function Head({ children, ...props }, ref) {
+const Head = React.forwardRef<React.ElementRef<typeof StyledHead>, HeadProps>(function Head(
+  { children, ...props },
+  ref,
+) {
   return (
     <StyledHead {...props} ref={ref}>
-      {Children.map(children, (rowElem) =>
+      {React.Children.map(children, (rowElem) =>
         isElement(rowElem)
-          ? cloneElement(rowElem, {
+          ? React.cloneElement(rowElem as React.ReactElement, {
               spacing: 'xs',
               interactive: false,
               ...rowElem.props,
-              children: Children.map(rowElem.props.children, (cellElem) =>
+              children: React.Children.map(rowElem.props.children, (cellElem) =>
                 isElement(cellElem) ? <HeaderCell {...cellElem.props} /> : cellElem,
               ),
             })
@@ -30,7 +33,7 @@ const Head = forwardRef<ElementRef<typeof StyledHead>, HeadProps>(function Head(
 const StyledBody = styled('tbody', {});
 
 type BodyProps = ComponentProps<typeof StyledBody>;
-const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(props, ref) {
+const Body = React.forwardRef<React.ElementRef<typeof StyledBody>, BodyProps>(function Body(props, ref) {
   return <StyledBody {...props} ref={ref} />;
 });
 
@@ -41,7 +44,7 @@ const StyledRow = styled('tr', {
 });
 
 type RowProps = ComponentProps<typeof Listable.Item>;
-const Row = forwardRef<ElementRef<'tr'>, RowProps>(function Row({ children, ...props }, ref) {
+const Row = React.forwardRef<React.ElementRef<'tr'>, RowProps>(function Row({ children, ...props }, ref) {
   return (
     <Listable.Item asChild {...props}>
       <StyledRow ref={ref}>{children}</StyledRow>
@@ -62,8 +65,11 @@ const StyledTH = styled('th', {
  * HeaderCell is an "internal" component, the public Table only exposes Cell.
  * Header maps Cells to HeaderCell.
  */
-const HeaderCell = forwardRef<ElementRef<'th'>, StyledCellProps>(function HeaderCell({ children, ...props }, ref) {
-  const hasSingleElementChild = Children.count(children) === 1 && isElement(children);
+const HeaderCell = React.forwardRef<React.ElementRef<'th'>, StyledCellProps>(function HeaderCell(
+  { children, ...props },
+  ref,
+) {
+  const hasSingleElementChild = React.Children.count(children) === 1 && isElement(children);
 
   return (
     <StyledCell asChild padOnlyChild={hasSingleElementChild} {...props} ref={ref}>
@@ -110,7 +116,10 @@ export type TableCellProps = {
   width?: StyledCellProps['width'];
 } & Omit<ListableCellProps, 'width'>;
 
-const Cell = forwardRef<ElementRef<'td'>, TableCellProps>(function Cell({ children, width, ...props }, ref) {
+const Cell = React.forwardRef<React.ElementRef<'td'>, TableCellProps>(function Cell(
+  { children, width, ...props },
+  ref,
+) {
   return (
     // We need the cast, as TS doesn't see that StyledCell inherits Listable.Cell variants
     <StyledCell asChild width={width as StyledCellProps['width']} {...props}>
@@ -133,12 +142,12 @@ type RootProps = {
   ComponentProps<typeof Listable>;
 
 // TODO: contained with header has visual bug
-const Root = forwardRef<ElementRef<'table'>, RootProps>(function Table(
+const Root = React.forwardRef<React.ElementRef<'table'>, RootProps>(function Table(
   { spacing = 'sm', variant = 'default', children, ...props },
   ref,
 ) {
   const isContained = variant === 'contained';
-  const hasHeader = Children.toArray(children).some((child) => isElement(child) && child?.type === Head);
+  const hasHeader = React.Children.toArray(children).some((child) => isElement(child) && child?.type === Head);
   invariant(!(isContained && hasHeader), 'Table: contained variant is to be used without a header.');
 
   return (

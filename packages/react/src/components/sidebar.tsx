@@ -1,7 +1,7 @@
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, styled } from '../lib/stitches';
-import { Menu } from './menu';
+import { ComponentProps, styled } from '../lib/stitches.js';
+import { Menu } from './menu.js';
 
 const StyledSidebar = styled('div', {
   // Reset
@@ -56,10 +56,13 @@ type RootProps = {
   /**
    * The children to render, usually components of type `Menu` and `MiniCard`.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const Root = forwardRef<ElementRef<typeof StyledSidebar>, RootProps>(function Sidebar({ children, ...props }, ref) {
+const Root = React.forwardRef<React.ElementRef<typeof StyledSidebar>, RootProps>(function Sidebar(
+  { children, ...props },
+  ref,
+) {
   return (
     <StyledSidebar ref={ref} {...props}>
       {children}

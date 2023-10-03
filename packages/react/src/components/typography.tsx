@@ -1,6 +1,6 @@
-import { forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledTypography = styled('div', {
   lineHeight: '1',
@@ -141,11 +141,11 @@ export type TypographyProps = {
    * The text alignment.
    */
   align?: StyledTypographyProps['align'];
-  children?: ReactNode;
+  children?: React.ReactNode;
   as?: keyof JSX.IntrinsicElements;
 };
 
-export const Typography = forwardRef<HTMLDivElement, TypographyProps>(function Typography(
+export const Typography = React.forwardRef<HTMLDivElement, TypographyProps>(function Typography(
   { variant = 'default', color = 'default', ...props },
   ref,
 ) {

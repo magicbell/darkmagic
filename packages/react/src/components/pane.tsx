@@ -1,18 +1,18 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 import invariant from 'tiny-invariant';
 
-import { useIsClient } from '../hooks/use-is-client';
-import { createSlot, getSlots } from '../lib/slots';
-import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { ScrollArea } from './scroll-area';
-import { Typography } from './typography';
+import { useIsClient } from '../hooks/use-is-client.js';
+import { createSlot, getSlots } from '../lib/slots.js';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { ScrollArea } from './scroll-area.js';
+import { Typography } from './typography.js';
 
 const StyledHeaderContent = styled('div', {
   display: 'flex',
@@ -171,7 +171,7 @@ const StyledBody = styled('div', {
 type StyledPaneBodyProps = ComponentProps<typeof StyledBody>;
 
 type BodyProps = {
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Panes with nested panes should have no padding.
@@ -190,7 +190,7 @@ type BodyProps = {
   css?: CSS;
 };
 
-const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
+const Body = React.forwardRef<React.ElementRef<typeof StyledBody>, BodyProps>(function Body(
   { children, scroll = 'none', padding = 'default', ...props },
   ref,
 ) {
@@ -247,7 +247,7 @@ type PaneProps = {
    * The children to render inside the pane. This can be a react node, or a
    * render function to get access to the panes expanded state.
    */
-  children: ReactNode | ((options: { expanded: boolean }) => ReactNode);
+  children: React.ReactNode | ((options: { expanded: boolean }) => React.ReactNode);
 
   /**
    * When set to `true`, the pane gets a "full screen" action button, which shows
@@ -284,19 +284,19 @@ const Description = createSlot('Description');
  */
 const Tabs = createSlot('Tabs');
 
-const Root = forwardRef<ElementRef<typeof StyledPane>, PaneProps>(function Pane(
+const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(function Pane(
   { children, expandable = false, variant = 'nested', width = 'auto', ...props },
   forwardedRef,
 ) {
-  const [expanded, setExpanded] = useState(false);
-  const portalNode = useMemo(() => {
+  const [expanded, setExpanded] = React.useState(false);
+  const portalNode = React.useMemo(() => {
     if (typeof document === 'undefined') return null;
     return createHtmlPortalNode();
   }, []);
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = React.useState(0);
   const isClient = useIsClient();
 
-  const paneRef = useRef<HTMLDivElement>(null);
+  const paneRef = React.useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, paneRef);
 
   const childNodes = typeof children === 'function' ? children({ expanded }) : children;

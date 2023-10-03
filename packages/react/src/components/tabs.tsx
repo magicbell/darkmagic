@@ -1,10 +1,10 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { isPrimitive } from 'is-what';
-import { Children, cloneElement, ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: 'flex',
@@ -52,14 +52,14 @@ type ListProps = {
   size?: StyledListProps['size'];
 } & ComponentProps<typeof StyledList>;
 
-const List = forwardRef<ElementRef<typeof StyledList>, ListProps>(function List(
+const List = React.forwardRef<React.ElementRef<typeof StyledList>, ListProps>(function List(
   { children, variant = 'underline', size = 'md', ...props },
   ref,
 ) {
   return (
     <StyledList variant={variant} size={size} {...props} ref={ref}>
-      {Children.map(children, (child) =>
-        isElement(child) ? cloneElement(child, { variant, size, ...child.props }) : child,
+      {React.Children.map(children, (child) =>
+        isElement(child) ? React.cloneElement(child as React.ReactElement, { variant, size, ...child.props }) : child,
       )}
     </StyledList>
   );
@@ -136,10 +136,10 @@ const TabAddon = styled('div', {
 
 type TabProps = {
   children?: string;
-  addon?: FunctionComponent | ReactElement | string | number;
+  addon?: React.FunctionComponent | React.ReactElement | string | number;
 } & ComponentProps<typeof StyledTrigger>;
 
-const Tab = forwardRef<ElementRef<typeof StyledTrigger>, TabProps>(function Trigger(
+const Tab = React.forwardRef<React.ElementRef<typeof StyledTrigger>, TabProps>(function Trigger(
   { addon, variant = 'underline', size = 'md', children, ...props },
   ref,
 ) {
@@ -172,11 +172,14 @@ type TabsProps = {
    * Event handler called when the value changes.
    */
   onValueChange?: StyledTabsProps['onValueChange'];
-  children?: ReactNode;
+  children?: React.ReactNode;
 } & StyledTabsProps;
 
-const Root = forwardRef<ElementRef<typeof StyledTabs>, TabsProps>(function Tabs({ children, ...props }, ref) {
-  const hasSingleChild = Children.toArray(children).length === 1;
+const Root = React.forwardRef<React.ElementRef<typeof StyledTabs>, TabsProps>(function Tabs(
+  { children, ...props },
+  ref,
+) {
+  const hasSingleChild = React.Children.toArray(children).length === 1;
 
   return (
     <StyledTabs asChild={hasSingleChild} {...props} ref={ref}>

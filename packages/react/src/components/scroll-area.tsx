@@ -1,8 +1,8 @@
 import { blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import React, { ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, styled } from '../lib/stitches';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const SCROLLBAR_SIZE = 10;
 
@@ -58,30 +58,29 @@ const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
 });
 
 type ScrollAreaProps = {
-  children: ReactNode;
+  children: React.ReactNode;
   direction?: 'horizontal' | 'vertical' | 'both' | 'none';
 } & ComponentProps<typeof StyledViewport>;
 
-export const ScrollArea = forwardRef<ElementRef<typeof StyledScrollArea>, ScrollAreaProps>(function ScrollArea(
-  { children, direction = 'both', ...props },
-  ref,
-) {
-  return (
-    <StyledScrollArea ref={ref}>
-      <StyledViewport {...props}>{children}</StyledViewport>
+export const ScrollArea = React.forwardRef<React.ElementRef<typeof StyledScrollArea>, ScrollAreaProps>(
+  function ScrollArea({ children, direction = 'both', ...props }, ref) {
+    return (
+      <StyledScrollArea ref={ref}>
+        <StyledViewport {...props}>{children}</StyledViewport>
 
-      {['vertical', 'both'].includes(direction) && (
-        <StyledScrollbar orientation="vertical">
-          <StyledThumb />
-        </StyledScrollbar>
-      )}
+        {['vertical', 'both'].includes(direction) && (
+          <StyledScrollbar orientation="vertical">
+            <StyledThumb />
+          </StyledScrollbar>
+        )}
 
-      {['horizontal', 'both'].includes(direction) && (
-        <StyledScrollbar orientation="horizontal">
-          <StyledThumb />
-        </StyledScrollbar>
-      )}
-      <StyledCorner />
-    </StyledScrollArea>
-  );
-});
+        {['horizontal', 'both'].includes(direction) && (
+          <StyledScrollbar orientation="horizontal">
+            <StyledThumb />
+          </StyledScrollbar>
+        )}
+        <StyledCorner />
+      </StyledScrollArea>
+    );
+  },
+);

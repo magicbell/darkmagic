@@ -1,11 +1,11 @@
-import { ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Listable } from './listable';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Listable } from './listable.js';
 
 type ItemProps = ComponentProps<typeof Listable.Item>;
 
-const Item = forwardRef<ElementRef<'li'>, ItemProps>(function Item({ children, ...props }, ref) {
+const Item = React.forwardRef<React.ElementRef<'li'>, ItemProps>(function Item({ children, ...props }, ref) {
   return (
     <Listable.Item asChild {...props}>
       <li ref={ref}>{children}</li>
@@ -40,7 +40,7 @@ type RootProps = {
 } & StyledListProps &
   ComponentProps<typeof Listable>;
 
-const Root = forwardRef<ElementRef<'ol' | 'ul'>, RootProps>(function List(
+const Root = React.forwardRef<React.ElementRef<'ol' | 'ul'>, RootProps>(function List(
   { spacing = 'sm', variant = 'default', ordered, children, ...props },
   ref,
 ) {

@@ -1,13 +1,13 @@
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import { useId } from '@radix-ui/react-id';
-import { cloneElement, ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 
-import { ComponentProps, styled } from '../lib/stitches';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { Label } from './label';
-import { RequiredBadge } from './required-badge';
+import { ComponentProps, styled } from '../lib/stitches.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { Label } from './label.js';
+import { RequiredBadge } from './required-badge.js';
 
 type StyledFormFieldProps = ComponentProps<typeof StyledFormField>;
 const StyledFormField = styled('div', {
@@ -37,7 +37,7 @@ type FormFieldProps = {
   state?: 'initial' | 'invalid';
 } & StyledFormFieldProps;
 
-export const FormField = forwardRef<ElementRef<typeof StyledFormField>, FormFieldProps>(function FormField(
+export const FormField = React.forwardRef<React.ElementRef<typeof StyledFormField>, FormFieldProps>(function FormField(
   {
     children,
     required,
@@ -78,7 +78,14 @@ export const FormField = forwardRef<ElementRef<typeof StyledFormField>, FormFiel
       ) : null}
 
       {isElement(children)
-        ? cloneElement(children, { required, state, tooltip, id, 'aria-describedby': describedBy, ...children.props })
+        ? React.cloneElement(children as React.ReactElement, {
+            required,
+            state,
+            tooltip,
+            id,
+            'aria-describedby': describedBy,
+            ...children.props,
+          })
         : children}
 
       {trailingError ? (

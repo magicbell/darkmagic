@@ -1,6 +1,6 @@
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 
-import { styled } from '../lib/stitches';
+import { styled } from '../lib/stitches.js';
 
 const StyledGroup = styled(ToggleGroupPrimitive.Root, {
   display: 'inline-flex',

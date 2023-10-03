@@ -15,16 +15,16 @@ import shell from 'highlight.js/lib/languages/shell';
 import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import { useMemo, useState } from 'react';
+import * as React from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import { stringify as parserJson } from '../lib/json-stringify';
-import { ComponentProps, styled } from '../lib/stitches';
-import { Box } from './box';
-import { Button } from './button';
-import { CopyButton } from './copy-button';
-import { Flex } from './flex';
-import { ScrollArea } from './scroll-area';
+import { stringify as parserJson } from '../lib/json-stringify.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
+import { Box } from './box.js';
+import { Button } from './button.js';
+import { CopyButton } from './copy-button.js';
+import { Flex } from './flex.js';
+import { ScrollArea } from './scroll-area.js';
 
 hljs.registerLanguage('json', json);
 // xml is required for jsx in javascript/typescript files
@@ -352,7 +352,7 @@ export function Code({
   bg = 1,
   padding = 'sm',
 }: CodeProps) {
-  const highlighted = useMemo(() => {
+  const highlighted = React.useMemo(() => {
     const formatted =
       lang === 'json'
         ? parserJson(typeof children === 'string' ? JSON.parse(children) : children, { maxLength: printWidth })
@@ -366,7 +366,7 @@ export function Code({
 
   const buttonArea = 3;
   const truncate = lineClamp > 0 && highlighted.lineCount > lineClamp + buttonArea;
-  const [isCollapsed, setIsCollapsed] = useState(truncate);
+  const [isCollapsed, setIsCollapsed] = React.useState(truncate);
 
   const css = {
     [`& tr:nth-child(n+${lineClamp + 1})`]: truncate && isCollapsed ? { display: 'none' } : {},
