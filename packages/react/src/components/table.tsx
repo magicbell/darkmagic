@@ -16,7 +16,7 @@ const Head = React.forwardRef<React.ElementRef<typeof StyledHead>, HeadProps>(fu
     <StyledHead {...props} ref={ref}>
       {React.Children.map(children, (rowElem) =>
         isElement(rowElem)
-          ? React.cloneElement(rowElem, {
+          ? React.cloneElement(rowElem as React.ReactElement, {
               spacing: 'xs',
               interactive: false,
               ...rowElem.props,

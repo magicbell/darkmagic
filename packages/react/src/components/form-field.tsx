@@ -78,7 +78,7 @@ export const FormField = React.forwardRef<React.ElementRef<typeof StyledFormFiel
       ) : null}
 
       {isElement(children)
-        ? React.cloneElement(children, {
+        ? React.cloneElement(children as React.ReactElement, {
             required,
             state,
             tooltip,

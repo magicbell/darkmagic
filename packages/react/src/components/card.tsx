@@ -273,7 +273,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledCard>, CardProps>(fu
     ? ((slots.tabs.props.variant || 'underline') as 'underline' | 'contained')
     : undefined;
 
-  const body = isElement(slots.body) ? React.cloneElement(slots.body, { variant }) : null;
+  const body = isElement(slots.body) ? React.cloneElement(slots.body as React.ReactElement, { variant }) : null;
 
   const pane = (
     <StyledCard {...props} gap={gap} variant={variant} expanded={expanded} ref={composedRefs}>

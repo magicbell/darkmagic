@@ -59,7 +59,7 @@ const List = React.forwardRef<React.ElementRef<typeof StyledList>, ListProps>(fu
   return (
     <StyledList variant={variant} size={size} {...props} ref={ref}>
       {React.Children.map(children, (child) =>
-        isElement(child) ? React.cloneElement(child, { variant, size, ...child.props }) : child,
+        isElement(child) ? React.cloneElement(child as React.ReactElement, { variant, size, ...child.props }) : child,
       )}
     </StyledList>
   );

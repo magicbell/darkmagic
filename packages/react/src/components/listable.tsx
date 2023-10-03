@@ -136,7 +136,7 @@ const Cell = React.forwardRef<React.ElementRef<typeof StyledCell>, ListableCellP
     >
       {movePadding
         ? React.cloneElement(
-            children,
+            children as React.ReactElement,
             // when we render a Slot, we need to move the padding to the child of the child,
             // as the Slot promotes the first child to the new root.
             asChild

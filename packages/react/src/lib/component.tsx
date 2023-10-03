@@ -8,15 +8,19 @@ export function makeComponent(
   if (Slot == null || Slot === false) return null;
 
   if (isPrimitive(Slot)) {
-    return function Component(props: Record<string, unknown> = {}) {
-      return isEmptyObject(props) ? <>{Slot}</> : <div {...props}>{Slot}</div>;
+    return function Component(props: Record<string, unknown> = {}): React.ReactElement {
+      if (isEmptyObject(props)) return React.createElement(React.Fragment, null, Slot);
+      return React.createElement('div', props, Slot);
     };
   }
 
-  if (isValidElementType(Slot)) return Slot;
+  if (isValidElementType(Slot)) return Slot as any;
+
   if (isElement(Slot)) {
     return function Component(props: Record<string, unknown> = {}) {
-      return isEmptyObject(props) ? Slot : React.cloneElement(Slot, { ...Slot.props, props });
+      return isEmptyObject(props)
+        ? (Slot as unknown as any)
+        : React.cloneElement(Slot as any, { ...Slot.props, props });
     };
   }
 
@@ -27,7 +31,9 @@ export function mapChildren(
   children: React.ReactNode | React.ReactNode[],
   cb: (child: React.ReactElement, index: number) => React.ReactNode,
 ) {
-  return React.Children.map(flattenChildren(children), (child, index) => (isElement(child) ? cb(child, index) : child));
+  return React.Children.map(flattenChildren(children), (child, index) =>
+    isElement(child) ? cb(child as React.ReactElement, index) : child,
+  );
 }
 
 function transformChildrenRecursive(
@@ -43,7 +49,7 @@ function transformChildrenRecursive(
 
     if (child.props.children) {
       return cb(
-        React.cloneElement(child, {
+        React.cloneElement(child as React.ReactElement, {
           ...child.props,
           children: transformChildrenRecursive(child.props.children, cb, options, currentDepth + 1),
         }),
@@ -51,7 +57,7 @@ function transformChildrenRecursive(
       );
     }
 
-    return cb(child, index);
+    return cb(child as React.ReactElement, index);
   });
 
   // As some components require a single child to be provided, we return a single
