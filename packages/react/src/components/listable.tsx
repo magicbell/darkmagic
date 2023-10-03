@@ -1,8 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
-import { cloneElement, createContext, ElementRef, forwardRef, ReactNode, useContext, useMemo } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 
-import { ComponentProps, styled } from '../lib/stitches';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 type StyledCellProps = ComponentProps<typeof StyledCell>;
 
@@ -117,7 +117,7 @@ export type ListableCellProps = {
   align?: StyledCellProps['align'];
 };
 
-const Cell = forwardRef<ElementRef<typeof StyledCell>, ListableCellProps>(function Cell(
+const Cell = React.forwardRef<React.ElementRef<typeof StyledCell>, ListableCellProps>(function Cell(
   { asChild, padOnlyChild = false, truncate = false, children, ...props },
   ref,
 ) {
@@ -135,14 +135,14 @@ const Cell = forwardRef<ElementRef<typeof StyledCell>, ListableCellProps>(functi
       ref={ref}
     >
       {movePadding
-        ? cloneElement(
+        ? React.cloneElement(
             children,
             // when we render a Slot, we need to move the padding to the child of the child,
             // as the Slot promotes the first child to the new root.
             asChild
               ? {
                   ...children.props,
-                  children: cloneElement(children.props.children, {
+                  children: React.cloneElement(children.props.children, {
                     'data-listable-cell-content': true,
                     ...children.props.children.props,
                   }),
@@ -311,11 +311,11 @@ type ItemProps = {
   asChild?: boolean;
 } & StyledItemProps;
 
-const Item = forwardRef<ElementRef<typeof StyledItem>, ItemProps>(function Item(
+const Item = React.forwardRef<React.ElementRef<typeof StyledItem>, ItemProps>(function Item(
   { asChild, selected = false, ...props },
   ref,
 ) {
-  const context = useContext(ListableContext);
+  const context = React.useContext(ListableContext);
   const Comp = asChild ? Slot : 'div';
 
   return (
@@ -350,20 +350,20 @@ type RootProps = {
   /**
    * The children of the list, usually a collection of Listable.Item components.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const ListableContext = createContext<Pick<RootProps, 'spacing' | 'variant'>>({
+const ListableContext = React.createContext<Pick<RootProps, 'spacing' | 'variant'>>({
   spacing: 'sm',
   variant: 'default',
 });
 
-const Root = forwardRef<ElementRef<'div'>, RootProps>(function Listable(
+const Root = React.forwardRef<React.ElementRef<'div'>, RootProps>(function Listable(
   { asChild, spacing = 'sm', variant = 'default', ...props },
   ref,
 ) {
   const Comp = asChild ? Slot : 'div';
-  const context = useMemo(() => ({ spacing, variant }), [spacing, variant]);
+  const context = React.useMemo(() => ({ spacing, variant }), [spacing, variant]);
 
   return (
     <ListableContext.Provider value={context}>

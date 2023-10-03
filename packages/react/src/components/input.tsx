@@ -1,7 +1,7 @@
-import { ChangeEventHandler, forwardRef, FunctionComponent, ReactElement, useCallback } from 'react';
+import * as React from 'react';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledRoot = styled('div', {
   all: 'unset',
@@ -94,11 +94,11 @@ type InputProps = {
   /**
    * An element to attach to the input, placed before the value
    */
-  leadingAddon?: FunctionComponent | ReactElement;
+  leadingAddon?: React.FunctionComponent | React.ReactElement;
   /**
    * An element to attach to the input, placed after the value
    */
-  trailingAddon?: FunctionComponent | ReactElement;
+  trailingAddon?: React.FunctionComponent | React.ReactElement;
   /**
    * The element size
    */
@@ -128,7 +128,7 @@ type InputProps = {
 } & Omit<StyledRootProps, 'onChange'> &
   Omit<StyledInputProps, 'size'>;
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   {
     // omit
     children,
@@ -152,7 +152,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   },
   ref,
 ) {
-  const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback(
     (event) => {
       onChange?.(event);
       onValueChange?.(event.target.value);

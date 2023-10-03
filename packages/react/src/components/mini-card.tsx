@@ -1,7 +1,7 @@
-import { ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode } from 'react';
+import * as React from 'react';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 type StyledMiniCardProps = ComponentProps<typeof StyledMiniCard>;
 const StyledMiniCard = styled('button', {
@@ -52,15 +52,15 @@ type MiniCardProps = {
   /**
    * An optional icon to show before the button text.
    */
-  icon?: FunctionComponent | ReactElement;
+  icon?: React.FunctionComponent | React.ReactElement;
   /**
    * An optional action (button) to show after the button text.
    */
-  addon?: FunctionComponent | ReactElement;
+  addon?: React.FunctionComponent | React.ReactElement;
   /**
-   * The textual content to render inside the card. Usually this is a Text compnent.
+   * The textual content to render inside the card. Usually this is a Text component.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Event handler called when the button is clicked. Note that providing the
    * onClick handler renders a button instead of a div. Don't provide a clickable
@@ -83,7 +83,7 @@ const IconWrapper = styled('span', {
   padding: '0 $1',
 });
 
-const Root = forwardRef<ElementRef<typeof StyledMiniCard>, MiniCardProps>(function MiniCard(
+const Root = React.forwardRef<React.ElementRef<typeof StyledMiniCard>, MiniCardProps>(function MiniCard(
   { icon, children, addon, onClick, collapsed, ...props },
   ref,
 ) {

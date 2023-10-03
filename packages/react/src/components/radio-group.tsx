@@ -1,8 +1,8 @@
 import { useId } from '@radix-ui/react-id';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import React, { ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledRadio = styled('div', {
   display: 'flex',
@@ -156,7 +156,7 @@ type RadioGroupProps = {
   css?: CSS;
 } & StyledRadioGroupProps;
 
-const Root = forwardRef<ElementRef<typeof StyledRadioGroup>, RadioGroupProps>(function RadioGroup(
+const Root = React.forwardRef<React.ElementRef<typeof StyledRadioGroup>, RadioGroupProps>(function RadioGroup(
   { orientation = 'vertical', spacing = 'md', ...props },
   ref,
 ) {
@@ -194,7 +194,7 @@ type ItemProps = {
   children: string;
 } & StyledItemProps;
 
-const Item = forwardRef<ElementRef<typeof StyledItem>, ItemProps>(function Item(
+const Item = React.forwardRef<React.ElementRef<typeof StyledItem>, ItemProps>(function Item(
   { children, disabled = false, ...props },
   forwardedRef,
 ) {

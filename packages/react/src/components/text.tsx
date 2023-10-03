@@ -1,17 +1,17 @@
-import { ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { Flex } from './flex';
-import { Typography } from './typography';
+import { Flex } from './flex.js';
+import { Typography } from './typography.js';
 
 type TextProps = {
-  primary?: ReactNode;
-  secondary?: ReactNode;
+  primary?: React.ReactNode;
+  secondary?: React.ReactNode;
   bold?: boolean;
   highlight?: boolean;
   reverse?: boolean;
 };
 
-export const Text = forwardRef<ElementRef<typeof Flex>, TextProps>(function Text(
+export const Text = React.forwardRef<React.ElementRef<typeof Flex>, TextProps>(function Text(
   { primary, secondary, bold, highlight, reverse, ...props },
   ref,
 ) {

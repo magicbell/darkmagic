@@ -1,10 +1,10 @@
 import { isEmptyObject, isPrimitive } from 'is-what';
-import { Children, cloneElement, FunctionComponent, isValidElement, ReactElement, ReactNode } from 'react';
+import * as React from 'react';
 import { isElement, isFragment, isValidElementType } from 'react-is';
 
 export function makeComponent(
-  Slot: FunctionComponent | ReactElement | string | number | boolean | undefined | null,
-): FunctionComponent | null {
+  Slot: React.FunctionComponent | React.ReactElement | string | number | boolean | undefined | null,
+): React.FunctionComponent | null {
   if (Slot == null || Slot === false) return null;
 
   if (isPrimitive(Slot)) {
@@ -16,31 +16,34 @@ export function makeComponent(
   if (isValidElementType(Slot)) return Slot;
   if (isElement(Slot)) {
     return function Component(props: Record<string, unknown> = {}) {
-      return isEmptyObject(props) ? Slot : cloneElement(Slot, { ...Slot.props, props });
+      return isEmptyObject(props) ? Slot : React.cloneElement(Slot, { ...Slot.props, props });
     };
   }
 
   return null;
 }
 
-export function mapChildren(children: ReactNode | ReactNode[], cb: (child: ReactElement, index: number) => ReactNode) {
-  return Children.map(flattenChildren(children), (child, index) => (isElement(child) ? cb(child, index) : child));
+export function mapChildren(
+  children: React.ReactNode | React.ReactNode[],
+  cb: (child: React.ReactElement, index: number) => React.ReactNode,
+) {
+  return React.Children.map(flattenChildren(children), (child, index) => (isElement(child) ? cb(child, index) : child));
 }
 
 function transformChildrenRecursive(
-  children: ReactNode | ReactNode[],
-  cb: (child: ReactElement, index: number) => ReactNode,
+  children: React.ReactNode | React.ReactNode[],
+  cb: (child: React.ReactElement, index: number) => React.ReactNode,
   options = { depth: 0 },
   currentDepth = 0,
-): ReactNode {
+): React.ReactNode {
   const input = flattenChildren(children);
-  const output = Children.map(input, (child, index) => {
+  const output = React.Children.map(input, (child, index) => {
     if (currentDepth > options.depth) return child;
     if (!isElement(child)) return child;
 
     if (child.props.children) {
       return cb(
-        cloneElement(child, {
+        React.cloneElement(child, {
           ...child.props,
           children: transformChildrenRecursive(child.props.children, cb, options, currentDepth + 1),
         }),
@@ -57,27 +60,31 @@ function transformChildrenRecursive(
 }
 
 export function transformChildren(
-  children: ReactNode | ReactNode[],
-  cb: (child: ReactElement, index: number) => ReactNode,
+  children: React.ReactNode | React.ReactNode[],
+  cb: (child: React.ReactElement, index: number) => React.ReactNode,
   options = { depth: 0 },
 ) {
   return transformChildrenRecursive(children, cb, options);
 }
 
 export function passPropsToChildren(
-  children: ReactNode | ReactNode[],
+  children: React.ReactNode | React.ReactNode[],
   props: Record<string, unknown> = {},
-): ReactNode | ReactNode[] {
-  return mapChildren(children, (child) => cloneElement(child, { ...child.props, ...props }));
+): React.ReactNode | React.ReactNode[] {
+  return mapChildren(children, (child) => React.cloneElement(child, { ...child.props, ...props }));
 }
 
-function flattenChildrenRecursive(children: ReactNode, depth = 0, keys: (string | number)[] = []): ReactNode[] {
-  return Children.toArray(children).reduce((acc: ReactNode[], node, index) => {
+function flattenChildrenRecursive(
+  children: React.ReactNode,
+  depth = 0,
+  keys: (string | number)[] = [],
+): React.ReactNode[] {
+  return React.Children.toArray(children).reduce((acc: React.ReactNode[], node, index) => {
     if (isFragment(node)) {
       acc.push(...flattenChildrenRecursive(node.props.children, depth + 1, [...keys, node.key || index]));
-    } else if (isValidElement(node)) {
+    } else if (React.isValidElement(node)) {
       acc.push(
-        cloneElement(node, {
+        React.cloneElement(node, {
           key: [...keys, node.key].join('.'),
         }),
       );
@@ -88,6 +95,6 @@ function flattenChildrenRecursive(children: ReactNode, depth = 0, keys: (string 
   }, []);
 }
 
-export function flattenChildren(children: ReactNode): ReactNode[] {
+export function flattenChildren(children: React.ReactNode): React.ReactNode[] {
   return flattenChildrenRecursive(children);
 }

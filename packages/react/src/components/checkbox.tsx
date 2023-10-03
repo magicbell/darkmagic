@@ -1,11 +1,11 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { useId } from '@radix-ui/react-id';
-import React, { forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, styled } from '../lib/stitches';
-import { Flex } from './flex';
-import { RequiredBadge } from './required-badge';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
+import { Flex } from './flex.js';
+import { RequiredBadge } from './required-badge.js';
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   all: 'unset',
@@ -78,7 +78,7 @@ type CheckboxProps = {
   /**
    * The label that will be shown next to the checkbox.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * Control whether the element is rendered as valid or invalid.
    */
@@ -118,7 +118,7 @@ type CheckboxProps = {
   css?: CSS;
 } & StyledCheckboxProps;
 
-export const Checkbox = forwardRef<React.ElementRef<typeof StyledCheckbox>, CheckboxProps>(function Checkbox(
+export const Checkbox = React.forwardRef<React.ElementRef<typeof StyledCheckbox>, CheckboxProps>(function Checkbox(
   { children, state = 'initial', required = false, disabled = false, ...props },
   ref,
 ) {

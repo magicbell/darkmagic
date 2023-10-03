@@ -1,6 +1,6 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { ComponentMeta } from '@storybook/react';
-import { Fragment } from 'react';
+import * as React from 'react';
 
 import * as fake from '~/fixtures';
 
@@ -17,7 +17,7 @@ const meta: ComponentMeta<typeof Grid> = {
       gridTemplateColumns: 'min-content 1fr min-content',
     },
     children: fake.listData.map((row) => (
-      <Fragment key={row.id}>
+      <React.Fragment key={row.id}>
         <Grid.Cell>
           <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
         </Grid.Cell>
@@ -27,7 +27,7 @@ const meta: ComponentMeta<typeof Grid> = {
         <Grid.Cell>
           <IconButton size="xs" icon={DotsHorizontalIcon} label="More" variant="ghost" />
         </Grid.Cell>
-      </Fragment>
+      </React.Fragment>
     )),
   },
   argTypes: {

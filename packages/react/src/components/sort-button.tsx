@@ -1,7 +1,7 @@
 import { ArrowDownIcon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, MouseEventHandler, ReactNode } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, styled } from '../lib/stitches';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const StyledSortIcon = styled('span', {
   display: 'inline',
@@ -44,7 +44,7 @@ const StyledSortButton = styled('button', {
 });
 
 type SortButtonProps = {
-  children?: ReactNode;
+  children?: React.ReactNode;
   direction?: StyledSortIconProps['direction'];
   onClick?: StyledSortButtonProps['onClick'];
   name?: string;
@@ -53,29 +53,28 @@ type SortButtonProps = {
 
 export type SortDirection = 'asc' | 'desc';
 
-export const SortButton = forwardRef<ElementRef<typeof StyledSortButton>, SortButtonProps>(function SortButton(
-  { direction, children, onClick, onChangeDirection, ...props },
-  ref,
-) {
-  const handleChange: MouseEventHandler<HTMLButtonElement> = (event) => {
-    onClick?.(event);
-    const newDirection = direction ? (direction === 'asc' ? 'desc' : 'asc') : 'desc';
-    onChangeDirection?.(newDirection);
-  };
+export const SortButton = React.forwardRef<React.ElementRef<typeof StyledSortButton>, SortButtonProps>(
+  function SortButton({ direction, children, onClick, onChangeDirection, ...props }, ref) {
+    const handleChange: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+      onClick?.(event);
+      const newDirection = direction ? (direction === 'asc' ? 'desc' : 'asc') : 'desc';
+      onChangeDirection?.(newDirection);
+    };
 
-  return (
-    <StyledSortButton
-      type="button"
-      onClick={handleChange}
-      {...props}
-      data-active={direction ? true : undefined}
-      ref={ref}
-    >
-      <div>{children}</div>
+    return (
+      <StyledSortButton
+        type="button"
+        onClick={handleChange}
+        {...props}
+        data-active={direction ? true : undefined}
+        ref={ref}
+      >
+        <div>{children}</div>
 
-      <StyledSortIcon direction={direction}>
-        <ArrowDownIcon />
-      </StyledSortIcon>
-    </StyledSortButton>
-  );
-});
+        <StyledSortIcon direction={direction}>
+          <ArrowDownIcon />
+        </StyledSortIcon>
+      </StyledSortButton>
+    );
+  },
+);

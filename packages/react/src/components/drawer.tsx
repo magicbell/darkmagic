@@ -1,13 +1,13 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import { ElementRef, forwardRef, ReactNode, useEffect, useMemo, useState } from 'react';
+import * as React from 'react';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 import invariant from 'tiny-invariant';
 
-import { createSlot, getSlots } from '../lib/slots';
-import { ComponentProps, keyframes, styled } from '../lib/stitches';
-import { IconButton } from './icon-button';
-import { Pane } from './pane';
+import { createSlot, getSlots } from '../lib/slots.js';
+import { ComponentProps, keyframes, styled } from '../lib/stitches.js';
+import { IconButton } from './icon-button.js';
+import { Pane } from './pane.js';
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -68,7 +68,7 @@ type DrawerProps = {
   /**
    * The children to render inside the drawer.
    */
-  children: ReactNode;
+  children: React.ReactNode;
   /**
    * Inline variant is rendered inline like a pane, while the overlay variant is
    * rendered in a dialog and closed by clicking "outside".
@@ -107,7 +107,7 @@ type DrawerProps = {
 // Use a slot for actions, so we can easily add a close button to user-provided actions
 const Actions = createSlot('Actions');
 
-const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function Drawer(
+const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps>(function Drawer(
   {
     children,
     variant = 'inline',
@@ -121,13 +121,13 @@ const Root = forwardRef<ElementRef<typeof StyledDrawer>, DrawerProps>(function D
   },
   forwardedRef,
 ) {
-  const portalNode = useMemo(() => {
+  const portalNode = React.useMemo(() => {
     if (typeof document === 'undefined') return null;
     return createHtmlPortalNode();
   }, []);
 
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(typeof document !== 'undefined'), []);
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => setIsClient(typeof document !== 'undefined'), []);
 
   const slots = getSlots(children, {
     actions: Actions,

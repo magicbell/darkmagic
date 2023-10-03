@@ -1,7 +1,7 @@
-import { ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode } from 'react';
+import * as React from 'react';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
 
 const StyledBadge = styled('div', {
   font: '$caption',
@@ -63,7 +63,7 @@ type BadgeProps = {
   /**
    * The icon to show before the label. Defaults to a filled dot.
    */
-  icon?: FunctionComponent | ReactElement;
+  icon?: React.FunctionComponent | React.ReactElement;
   /**
    * The color of the leading icon.
    */
@@ -71,14 +71,14 @@ type BadgeProps = {
   /**
    * The label to show. Any valid React node is allowed, but a short string is recommended.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
   /**
    * The variant of the badge.
    */
   variant?: StyledBadgeProps['variant'];
 };
 
-export const Badge = forwardRef<ElementRef<typeof StyledBadge>, BadgeProps>(function Badge(
+export const Badge = React.forwardRef<React.ElementRef<typeof StyledBadge>, BadgeProps>(function Badge(
   { icon, color = 'muted', children, variant = 'dot', ...props },
   ref,
 ) {

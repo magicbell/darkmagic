@@ -1,11 +1,11 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import * as SelectPrimitive from '@radix-ui/react-select';
-import React, { ComponentProps, ElementRef, forwardRef, ReactNode } from 'react';
+import * as React from 'react';
 
-import { useFormReset } from '../hooks/use-form-reset';
-import { useMaybeControlled } from '../hooks/use-maybe-controlled';
-import { CSS, styled, VariantProps } from '../lib/stitches';
+import { useFormReset } from '../hooks/use-form-reset.js';
+import { useMaybeControlled } from '../hooks/use-maybe-controlled.js';
+import { CSS, styled, VariantProps } from '../lib/stitches.js';
 
 const StyledPortal = styled(SelectPrimitive.Portal, {
   zIndex: 10,
@@ -132,8 +132,8 @@ const StyledScrollUpButton = styled(SelectPrimitive.ScrollUpButton, scrollButton
 
 const StyledScrollDownButton = styled(SelectPrimitive.ScrollDownButton, scrollButtonStyles);
 
-type TriggerProps = ComponentProps<typeof SelectPrimitive.SelectTrigger>;
-type SelectPrimitiveProps = ComponentProps<typeof SelectPrimitive.Root>;
+type TriggerProps = React.ComponentProps<typeof SelectPrimitive.SelectTrigger>;
+type SelectPrimitiveProps = React.ComponentProps<typeof SelectPrimitive.Root>;
 type SelectVariants = VariantProps<typeof StyledTrigger>;
 
 type SelectProps = {
@@ -192,7 +192,7 @@ type SelectProps = {
   css?: CSS;
 } & Omit<SelectPrimitive.SelectProps & TriggerProps, 'onValueChange' | 'defaultValue' | 'value'>;
 
-const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function Select(
+const Root = React.forwardRef<React.ElementRef<typeof StyledTrigger>, SelectProps>(function Select(
   {
     // Root
     value: valueFromProps,
@@ -266,9 +266,9 @@ const Root = forwardRef<ElementRef<typeof StyledTrigger>, SelectProps>(function 
 
 type SelectGroupProps = {
   label: string;
-} & ComponentProps<typeof SelectPrimitive.Group>;
+} & React.ComponentProps<typeof SelectPrimitive.Group>;
 
-const Group = forwardRef<ElementRef<typeof SelectPrimitive.Group>, SelectGroupProps>(function SelectGroup(
+const Group = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Group>, SelectGroupProps>(function SelectGroup(
   { children, label, ...props },
   ref,
 ) {
@@ -298,10 +298,13 @@ type SelectItemProps = {
   /**
    * The text or complex content to show in the select option.
    */
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-const Item = forwardRef<ElementRef<typeof StyledItem>, SelectItemProps>(function Item({ children, ...props }, ref) {
+const Item = React.forwardRef<React.ElementRef<typeof StyledItem>, SelectItemProps>(function Item(
+  { children, ...props },
+  ref,
+) {
   return (
     <StyledItem {...props} ref={ref}>
       <StyledItemText>

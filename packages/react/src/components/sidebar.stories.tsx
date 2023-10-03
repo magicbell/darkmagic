@@ -12,7 +12,7 @@ import {
 } from '@radix-ui/react-icons';
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
-import { Fragment } from 'react';
+import * as React from 'react';
 
 import { ChartIcon } from '../icons/chart-icon';
 import { LogIcon } from '../icons/log-icon';
@@ -84,7 +84,7 @@ export const Primary = {
     variant: 'primary',
     collapsable: true,
     children: (
-      <Fragment>
+      <React.Fragment>
         <MiniCard
           css={{ borderBottom: '1px solid $border-muted' }}
           icon={
@@ -111,7 +111,7 @@ export const Primary = {
         >
           <Text primary="Person Doe" secondary="person@example.com" bold />
         </MiniCard>
-      </Fragment>
+      </React.Fragment>
     ),
   },
 };
@@ -150,7 +150,7 @@ export const SubNav = {
     variant: 'primary',
     collapsable: false,
     children: (
-      <Fragment>
+      <React.Fragment>
         <MiniCard
           css={{ borderBottom: '1px solid $border-muted' }}
           icon={
@@ -191,7 +191,7 @@ export const SubNav = {
         >
           <Text primary="Person Doe" secondary="person@example.com" bold />
         </MiniCard>
-      </Fragment>
+      </React.Fragment>
     ),
   },
 };

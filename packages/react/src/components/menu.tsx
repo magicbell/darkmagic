@@ -1,11 +1,11 @@
 import { Slot } from '@radix-ui/react-slot';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { createContext, ElementRef, forwardRef, FunctionComponent, ReactElement, ReactNode, useContext } from 'react';
+import * as React from 'react';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, styled } from '../lib/stitches';
-import { Box } from './box';
-import { Tooltip } from './tooltip';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, styled } from '../lib/stitches.js';
+import { Box } from './box.js';
+import { Tooltip } from './tooltip.js';
 
 type StyledMenuProps = ComponentProps<typeof StyledMenu>;
 const StyledMenu = styled('nav', {
@@ -159,11 +159,11 @@ type MenuTitleProps = {
   /**
    * An option action (button) to show before the title.
    */
-  leadingAddon?: FunctionComponent | ReactElement;
+  leadingAddon?: React.FunctionComponent | React.ReactElement;
   /**
    * An optional action (button) to show after the title.
    */
-  trailingAddon?: FunctionComponent | ReactElement;
+  trailingAddon?: React.FunctionComponent | React.ReactElement;
 
   /**
    * The color of the text.
@@ -173,10 +173,10 @@ type MenuTitleProps = {
   /**
    * The title text.
    */
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const MenuTitle = forwardRef<ElementRef<typeof StyledMenuTitle>, MenuTitleProps>(function MenuTitle(
+const MenuTitle = React.forwardRef<React.ElementRef<typeof StyledMenuTitle>, MenuTitleProps>(function MenuTitle(
   { children, leadingAddon, trailingAddon, ...props },
   ref,
 ) {
@@ -221,11 +221,11 @@ type MenuItemPros = {
   /**
    * An optional icon to show before the button text.
    */
-  icon?: FunctionComponent | ReactElement;
+  icon?: React.FunctionComponent | React.ReactElement;
   /**
    * An optional action (button) to show after the button text.
    */
-  addon?: FunctionComponent | ReactElement;
+  addon?: React.FunctionComponent | React.ReactElement;
   /**
    * Set to true if this menu item should be marked active.
    */
@@ -243,7 +243,7 @@ type MenuItemPros = {
   asChild?: boolean;
 };
 
-const MenuItem = forwardRef<ElementRef<typeof StyledMenuItem>, MenuItemPros>(function MenuItem(
+const MenuItem = React.forwardRef<React.ElementRef<typeof StyledMenuItem>, MenuItemPros>(function MenuItem(
   {
     icon,
     addon,
@@ -259,7 +259,7 @@ const MenuItem = forwardRef<ElementRef<typeof StyledMenuItem>, MenuItemPros>(fun
   const comp: any = asChild ? { as: Slot } : props.onClick ? { as: 'button', type: 'button' } : { as: 'div' };
   const Icon = makeComponent(icon);
   const Addon = makeComponent(addon);
-  const context = useContext(MenuContext);
+  const context = React.useContext(MenuContext);
 
   const collapsed = context?.collapsed ?? collapsedFromProps;
   const variant = context?.variant ?? variantFromProps;
@@ -304,7 +304,7 @@ type MenuProps = {
   spacing?: StyledMenuProps['spacing'];
 } & StyledMenuProps;
 
-const Root = forwardRef<ElementRef<typeof StyledMenu>, MenuProps>(function Menu(
+const Root = React.forwardRef<React.ElementRef<typeof StyledMenu>, MenuProps>(function Menu(
   { children, collapsed = false, spacing, variant = 'primary', ...props },
   ref,
 ) {
@@ -317,7 +317,7 @@ const Root = forwardRef<ElementRef<typeof StyledMenu>, MenuProps>(function Menu(
   );
 });
 
-const MenuContext = createContext<MenuProps>({ collapsed: false, variant: 'primary' });
+const MenuContext = React.createContext<MenuProps>({ collapsed: false, variant: 'primary' });
 
 export const Menu = Object.assign(Root, {
   Title: MenuTitle,

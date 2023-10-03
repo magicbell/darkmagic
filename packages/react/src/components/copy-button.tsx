@@ -1,10 +1,10 @@
 import { CheckIcon, ClipboardIcon } from '@radix-ui/react-icons';
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 
-import { writeToClipboard } from '../lib/dom';
-import { Button } from './button';
-import { Grid } from './grid';
-import { IconButton } from './icon-button';
+import { writeToClipboard } from '../lib/dom.js';
+import { Button } from './button.js';
+import { Grid } from './grid.js';
+import { IconButton } from './icon-button.js';
 
 type CopyButtonProps = {
   value: string;
@@ -13,9 +13,9 @@ type CopyButtonProps = {
 };
 
 export function CopyButton({ value, onCopied, variant = 'icon' }: CopyButtonProps) {
-  const [state, setState] = useState('initial');
+  const [state, setState] = React.useState('initial');
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (state === 'initial') return;
     const timeout = setTimeout(() => setState('initial'), 1500);
     return () => clearTimeout(timeout);

@@ -1,4 +1,4 @@
-import { styled } from '../lib/stitches';
+import { styled } from '../lib/stitches.js';
 
 export const Box = styled('div', {
   // Reset

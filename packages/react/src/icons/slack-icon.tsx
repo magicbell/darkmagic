@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import * as React from 'react';
 
-export function SlackIcon(props: HTMLAttributes<SVGElement>) {
+export function SlackIcon(props: React.HTMLAttributes<SVGElement>) {
   return (
     <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

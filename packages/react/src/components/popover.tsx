@@ -1,9 +1,9 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import React, { ElementRef, forwardRef } from 'react';
+import * as React from 'react';
 
-import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
-import { IconButton } from './icon-button';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches.js';
+import { IconButton } from './icon-button.js';
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -84,7 +84,7 @@ type TriggerProps = {
   children: PopoverPrimitiveTriggerProps['children'];
 };
 
-const Trigger = forwardRef<ElementRef<typeof PopoverPrimitive.Trigger>, TriggerProps>(function Trigger(
+const Trigger = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigger>, TriggerProps>(function Trigger(
   { children, ...props },
   ref,
 ) {
@@ -179,7 +179,7 @@ type ContentProps = {
   css?: CSS;
 };
 
-const Content = forwardRef<ElementRef<typeof StyledContent>, ContentProps>(function Content(
+const Content = React.forwardRef<React.ElementRef<typeof StyledContent>, ContentProps>(function Content(
   { children, width = 'md', padding = 'md', showCloseButton = true, ...props },
   ref,
 ) {

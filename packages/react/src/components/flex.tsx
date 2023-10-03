@@ -1,5 +1,5 @@
-import { ComponentProps, styled } from '../lib/stitches';
-import { Box } from './box';
+import { ComponentProps, styled } from '../lib/stitches.js';
+import { Box } from './box.js';
 
 export type FlexProps = ComponentProps<typeof Flex>;
 

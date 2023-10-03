@@ -1,17 +1,17 @@
-import { useCallback, useRef, useState } from 'react';
+import * as React from 'react';
 
 export function useMaybeControlled<T>(
   defaultValue: T | undefined,
   value: T | undefined,
   onChange?: (value: T) => void,
 ) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
   const isControlled = typeof value !== 'undefined';
 
-  const onChangeRef = useRef(onChange);
+  const onChangeRef = React.useRef(onChange);
   onChangeRef.current = onChange;
 
-  const handleChange = useCallback(
+  const handleChange = React.useCallback(
     (value: T) => {
       onChangeRef.current?.(value);
       if (!isControlled) {
@@ -21,7 +21,7 @@ export function useMaybeControlled<T>(
     [onChangeRef, setInternalValue, isControlled],
   );
 
-  const reset = useCallback(() => {
+  const reset = React.useCallback(() => {
     setInternalValue(defaultValue);
   }, [setInternalValue, defaultValue]);
 

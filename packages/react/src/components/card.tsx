@@ -1,18 +1,18 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
-import { cloneElement, ElementRef, forwardRef, ReactNode, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
 import invariant from 'tiny-invariant';
 
-import { useIsClient } from '../hooks/use-is-client';
-import { createSlot, getSlots } from '../lib/slots';
-import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { ScrollArea } from './scroll-area';
-import { Typography } from './typography';
+import { useIsClient } from '../hooks/use-is-client.js';
+import { createSlot, getSlots } from '../lib/slots.js';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { ScrollArea } from './scroll-area.js';
+import { Typography } from './typography.js';
 
 const StyledHeaderContent = styled('div', {
   display: 'flex',
@@ -125,7 +125,7 @@ const StyledBody = styled('div', {
 });
 
 type BodyProps = {
-  children?: ReactNode;
+  children?: React.ReactNode;
 
   /**
    * Scrollbars are only shown when the content is overflowing.
@@ -133,7 +133,7 @@ type BodyProps = {
   scroll?: 'horizontal' | 'vertical' | 'both' | 'none';
 };
 
-const Body = forwardRef<ElementRef<typeof StyledBody>, BodyProps>(function Body(
+const Body = React.forwardRef<React.ElementRef<typeof StyledBody>, BodyProps>(function Body(
   { children, scroll = 'vertical', ...props },
   ref,
 ) {
@@ -205,7 +205,7 @@ type CardProps = {
    * The children to render inside the card. This can be a react node, or a
    * render function to get access to the cards expanded state.
    */
-  children: ReactNode | ((options: { expanded: boolean }) => ReactNode);
+  children: React.ReactNode | ((options: { expanded: boolean }) => React.ReactNode);
 
   /**
    * When set to `true`, the card gets a "full screen" action button, which shows
@@ -242,19 +242,19 @@ const Description = createSlot('Description');
  */
 const Tabs = createSlot('Tabs');
 
-const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
+const Root = React.forwardRef<React.ElementRef<typeof StyledCard>, CardProps>(function Card(
   { children, expandable = false, variant = 'outline', gap = 'md', ...props },
   forwardedRef,
 ) {
-  const [expanded, setExpanded] = useState(false);
-  const portalNode = useMemo(() => {
+  const [expanded, setExpanded] = React.useState(false);
+  const portalNode = React.useMemo(() => {
     if (typeof document === 'undefined') return null;
     return createHtmlPortalNode();
   }, []);
 
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = React.useState(0);
 
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = React.useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, cardRef);
   const isClient = useIsClient();
   const childNodes = typeof children === 'function' ? children({ expanded }) : children;
@@ -273,7 +273,7 @@ const Root = forwardRef<ElementRef<typeof StyledCard>, CardProps>(function Card(
     ? ((slots.tabs.props.variant || 'underline') as 'underline' | 'contained')
     : undefined;
 
-  const body = isElement(slots.body) ? cloneElement(slots.body, { variant }) : null;
+  const body = isElement(slots.body) ? React.cloneElement(slots.body, { variant }) : null;
 
   const pane = (
     <StyledCard {...props} gap={gap} variant={variant} expanded={expanded} ref={composedRefs}>

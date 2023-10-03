@@ -1,5 +1,5 @@
 import Mousetrap, { ExtendedKeyboardEvent } from 'mousetrap';
-import { useEffect, useRef } from 'react';
+import * as React from 'react';
 
 export type MousetrapAction = 'keypress' | 'keydown' | 'keyup';
 export type MousetrapHandler = (event: ExtendedKeyboardEvent, combo: string) => void | boolean;
@@ -11,10 +11,10 @@ export function useMousetrap(
   action?: MousetrapAction,
 ) {
   const keyString = Array.isArray(key) ? key.join(',') : key;
-  const cb = useRef(callback);
+  const cb = React.useRef(callback);
   cb.current = callback;
 
-  useEffect(() => {
+  React.useEffect(() => {
     // When ref === null, the ref was provided but the element isn't mounted (yet). Return early
     // so we don't mistakenly bind to the window.
     if (ref === null || !keyString) return;

@@ -1,19 +1,10 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
-import {
-  ChangeEventHandler,
-  FocusEventHandler,
-  forwardRef,
-  FunctionComponent,
-  ReactElement,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import * as React from 'react';
 import { HexColorPicker } from 'react-colorful';
 
-import { makeComponent } from '../lib/component';
-import { triggerChange } from '../lib/dom';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { triggerChange } from '../lib/dom.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledRoot = styled('div', {
   all: 'unset',
@@ -124,7 +115,7 @@ type InputProps = {
   /**
    * An element to attach to the input, placed before the value
    */
-  leadingAddon?: FunctionComponent | ReactElement;
+  leadingAddon?: React.FunctionComponent | React.ReactElement;
   /**
    * The element size
    */
@@ -157,11 +148,11 @@ type InputProps = {
   /**
    * Event handler called when the value changes.
    */
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 } & Omit<StyledRootProps, 'onChange'> &
   Omit<StyledInputProps, 'size' | 'value' | 'onChange'>;
 
-export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Input(
+export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   {
     // omit
     children,
@@ -190,30 +181,30 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
 ) {
   const LeadingAddon = makeComponent(leadingAddon);
 
-  const hiddenInputRef = useRef<HTMLInputElement>(null);
-  const visibleInputRef = useRef<HTMLInputElement>(null);
-  const rootRef = useRef<HTMLDivElement>(null);
+  const hiddenInputRef = React.useRef<HTMLInputElement>(null);
+  const visibleInputRef = React.useRef<HTMLInputElement>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, visibleInputRef);
 
   const isControlled = typeof valueFromProps !== 'undefined';
-  const [internalValue, setInternalValue] = useState(defaultValue);
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
 
   const value = (valueFromProps ?? internalValue).toUpperCase();
-  const [isPickerVisible, setIsPickerVisible] = useState(false);
+  const [isPickerVisible, setIsPickerVisible] = React.useState(false);
 
   // TODO: fix this blur, {tab} {tab} {tab} opens a lot of pickers
-  const handleBlur: FocusEventHandler<HTMLInputElement> = (event) => {
+  const handleBlur: React.FocusEventHandler<HTMLInputElement> = (event) => {
     onBlur?.(event);
     // setIsPickerVisible(false);
   };
 
-  const handleFocus: FocusEventHandler<HTMLInputElement> = (event) => {
+  const handleFocus: React.FocusEventHandler<HTMLInputElement> = (event) => {
     onFocus?.(event);
     setIsPickerVisible(true);
   };
 
   let lastValue = value;
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const value = event.target.value;
     if (value === lastValue) return;
     lastValue = value;
@@ -231,7 +222,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, InputProps>(function Inp
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isPickerVisible) return;
 
     const fn = (event: MouseEvent) => {

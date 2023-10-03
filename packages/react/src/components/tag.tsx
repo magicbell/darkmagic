@@ -1,10 +1,9 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import type { ElementRef, FunctionComponent, ReactElement, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import * as React from 'react';
 
-import { makeComponent } from '../lib/component';
-import { ComponentProps, CSS, styled } from '../lib/stitches';
+import { makeComponent } from '../lib/component.js';
+import { ComponentProps, CSS, styled } from '../lib/stitches.js';
 
 const StyledTag = styled('div', {
   // Reset
@@ -123,11 +122,11 @@ type TagProps = {
   /**
    * An optional icon to show before the label.
    */
-  icon?: FunctionComponent | ReactElement;
+  icon?: React.FunctionComponent | React.ReactElement;
   /**
    * The text label to show on the tag
    */
-  children: ReactNode;
+  children: React.ReactNode;
   /**
    * Event handler called when the label is clicked. Providing an onClick handler
    * will render the tag as a button element.
@@ -149,7 +148,7 @@ type TagProps = {
   css?: CSS;
 } & StyledTagProps;
 
-export const Tag = forwardRef<ElementRef<typeof StyledTag>, TagProps>(function Button(
+export const Tag = React.forwardRef<React.ElementRef<typeof StyledTag>, TagProps>(function Button(
   { icon, children, size = 'sm', onDismiss, onClick, ...props },
   ref,
 ) {

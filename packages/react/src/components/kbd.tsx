@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
+import * as React from 'react';
 
-import { styled } from '../lib/stitches';
+import { styled } from '../lib/stitches.js';
 
 const Box = styled('div', {
   backgroundColor: 'rgba(255, 255, 255, .08)',
@@ -52,7 +52,7 @@ export function Kbd({ shortcut, showPlus = false }: { shortcut: string; showPlus
   return (
     <Container>
       {keys.map((key, idx) =>
-        key === '+' ? <Fragment key={idx}>+</Fragment> : <Box key={idx}>{replacements[key] || key}</Box>,
+        key === '+' ? <React.Fragment key={idx}>+</React.Fragment> : <Box key={idx}>{replacements[key] || key}</Box>,
       )}
     </Container>
   );
