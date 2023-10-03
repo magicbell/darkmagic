@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": false,
     "target": "ES2018",
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
@@ -7,9 +8,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
-    "outDir": "./dist",
     "importHelpers": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "alwaysStrict": true,
@@ -22,5 +21,10 @@
       "@darkmagic/react": ["packages/react/src"]
     }
   },
+  "references": [
+    {
+      "path": "./packages/react/tsconfig-esm.json"
+    }
+  ],
   "exclude": ["**/*.stories.*", "**/*.spec.*", "**/*.test.*", "dist", "node_modules"]
 }
