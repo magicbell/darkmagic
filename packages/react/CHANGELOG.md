@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.21.0
+
+### Minor Changes
+
+- [#87](https://github.com/magicbell-io/darkmagic/pull/87) [`68de605`](https://github.com/magicbell-io/darkmagic/commit/68de6051088e62a9b944e214fb61d987eed3d312) Thanks [@smeijer](https://github.com/smeijer)! - improve esm/cjs support
+
 ## 0.20.0
 
 ### Minor Changes
