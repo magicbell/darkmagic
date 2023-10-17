@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStoryFn, Meta } from '@storybook/react';
+import React from 'react';
 
 import { Button } from './button';
 import { Dialog } from './dialog';
@@ -37,6 +38,7 @@ export const Basic = {};
 
 export const Example: ComponentStoryFn<any> = (args) => {
   const [open, setOpen] = React.useState(true);
+
   return (
     <Dialog open={open} onOpenChange={setOpen} dismissable={false}>
       <Dialog.Trigger>
