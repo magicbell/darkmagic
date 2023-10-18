@@ -91,4 +91,6 @@ jobs:
             await createChangeset(fileName, packageBumps, packageNames);
             await exec.exec('git', ['add', fileName]);
             await exec.exec('git commit -C HEAD --amend --no-edit');
+            await exec.exec('git config --global user.email "noreply@magicbell.io"');
+            await exec.exec('git config --global user.name "MagicBella"');
             await exec.exec('git push --force');
