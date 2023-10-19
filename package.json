@@ -87,7 +87,7 @@
     "tiny-glob": "^0.2.9",
     "tslib": "^2.6.2",
     "tsx": "^3.14.0",
-    "turbo": "^1.10.15",
+    "turbo": "^1.10.16",
     "typescript": "^5.2.2",
     "vite": "^3.1.0",
     "vite-plugin-banner": "^0.5.0",
