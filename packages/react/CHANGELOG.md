@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.22.0
+
+### Minor Changes
+
+- [`d9015af`](https://github.com/magicbell-io/darkmagic/commit/d9015af346fbfa9e60e72680f36111e584d75f8c) Thanks [@smeijer](https://github.com/smeijer)! - bump packages
+
 ## 0.21.0
 
 ### Minor Changes
