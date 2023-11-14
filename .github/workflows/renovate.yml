@@ -18,6 +18,11 @@ jobs:
           fetch-depth: 2
           ref: ${{ github.head_ref }}
           token: ${{ secrets.BELLA_ACTION_TOKEN }}
+      - name: Configure Git
+        run: |
+          git config --global user.email devs@magicbell.io
+          git config --global user.name 'MagicBella'
+
       - name: Generate changeset
         uses: actions/github-script@v6
         with:
