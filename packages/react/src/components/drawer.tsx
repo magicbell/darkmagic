@@ -158,14 +158,10 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
   if (!isClient) return null;
   invariant(portalNode, 'portalNode must be defined');
 
-  const handlePointerDown = onClickOutside
-    ? onClickOutside
-    : !modal
-    ? (event: CustomEvent<{ originalEvent: PointerEvent }>) => event.preventDefault()
-    : undefined;
+  const handlePointerDown = onClickOutside ? onClickOutside : () => onRequestClose?.();
 
   return (
-    <DialogPrimitive.Root modal={modal} open={variant === 'overlay'} onOpenChange={() => onRequestClose?.()}>
+    <DialogPrimitive.Root modal={modal} open={variant === 'overlay'}>
       <InPortal node={portalNode}>{drawer}</InPortal>
 
       {variant === 'inline' ? <OutPortal node={portalNode} /> : null}
