@@ -1,5 +1,35 @@
 # @darkmagic/react
 
+## 0.22.2
+
+### Patch Changes
+
+- [`4255777`](https://github.com/magicbell-io/darkmagic/commit/4255777f27323db88be5ecb57f419d5ca387eb46) Thanks [@smeijer](https://github.com/smeijer)! - fix: correct drawer click outside logic
+
+- [`af97b42`](https://github.com/magicbell-io/darkmagic/commit/af97b4206a18d1cd68c50d3bfbae0fb6f338a477) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@types/mousetrap` to `^1.6.14`.
+
+- [`954f621`](https://github.com/magicbell-io/darkmagic/commit/954f62175761af7e3b7ef59068bdf797c92fff5c) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `highlight.js` to `^11.9.0`.
+
+- [#103](https://github.com/magicbell-io/darkmagic/pull/103) [`4c77929`](https://github.com/magicbell-io/darkmagic/commit/4c77929763af092ca5ab02e209efc58212319713) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
+
+  - updated `@radix-ui/colors` to `^3.0.0`.
+
+- [`6132917`](https://github.com/magicbell-io/darkmagic/commit/6132917b9b290ccfc3adeb8879d2cdc0aa2c64c7) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.1.0`.
+
+- [`4ec0cbc`](https://github.com/magicbell-io/darkmagic/commit/4ec0cbc4a92a84649f462342caf91f1da50a4de4) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `is-what` to `^4.1.16`.
+
+- [`6317ca4`](https://github.com/magicbell-io/darkmagic/commit/6317ca422b5b5570440e1c26bc0de89d38eccfc4) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@types/react-is` to `^17.0.7`.
+
 ## 0.22.1
 
 ### Patch Changes
