@@ -62,7 +62,7 @@
     "@vanilla-extract/babel-plugin-debug-ids": "^1.0.3",
     "@vitest/coverage-c8": "^0.23.2",
     "cross-env": "^7.0.3",
-    "eslint": "^8.53.0",
+    "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-cypress": "^2.15.1",
