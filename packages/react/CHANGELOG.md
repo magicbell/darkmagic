@@ -1,5 +1,13 @@
 # @darkmagic/react
 
+## 0.22.3
+
+### Patch Changes
+
+- [`db21d31`](https://github.com/magicbell-io/darkmagic/commit/db21d3150313730813f22d30164d4adbe8098ce7) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@types/mousetrap` to `^1.6.15`.
+
 ## 0.22.2
 
 ### Patch Changes
