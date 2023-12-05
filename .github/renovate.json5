@@ -11,7 +11,14 @@
     enabled: true,
     automerge: true
   },
+  patch: {
+    enabled: false
+  },
   packageRules: [
+    {
+      matchDepTypes: ["devDependencies"],
+      schedule: ["on the first day of the month"]
+    },
     {
       matchDepTypes: ['devDependencies'],
       automerge: true,
