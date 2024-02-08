@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.23.0
+
+### Minor Changes
+
+- [`f2e1588`](https://github.com/magicbell-io/darkmagic/commit/f2e15885c89ca19c7a22401fbf41450707fff72b) Thanks [@smeijer](https://github.com/smeijer)! - color-picker now has a onValueChange handler, and resets on form reset
+
+### Patch Changes
+
+- [`eb1224e`](https://github.com/magicbell-io/darkmagic/commit/eb1224eee2dec6206876dfb2dc3357a34f75c759) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.2.1`.
+
 ## 0.22.3
 
 ### Patch Changes
