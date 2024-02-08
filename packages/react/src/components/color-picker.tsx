@@ -2,6 +2,8 @@ import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as React from 'react';
 import { HexColorPicker } from 'react-colorful';
 
+import { useFormReset } from '../hooks/use-form-reset.js';
+import { useMaybeControlled } from '../hooks/use-maybe-controlled.js';
 import { makeComponent } from '../lib/component.js';
 import { triggerChange } from '../lib/dom.js';
 import { ComponentProps, CSS, styled } from '../lib/stitches.js';
@@ -149,6 +151,7 @@ type InputProps = {
    * Event handler called when the value changes.
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onValueChange?: (value: string) => void;
 } & Omit<StyledRootProps, 'onChange'> &
   Omit<StyledInputProps, 'size' | 'value' | 'onChange'>;
 
@@ -169,10 +172,11 @@ export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(functi
 
     // input
     value: valueFromProps,
+    defaultValue = '#6E56CF',
     onChange,
+    onValueChange,
     onFocus,
     onBlur,
-    defaultValue = '#6E56CF',
     name,
 
     ...props
@@ -186,10 +190,14 @@ export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(functi
   const rootRef = React.useRef<HTMLDivElement>(null);
   const composedRefs = useComposedRefs(forwardedRef, visibleInputRef);
 
-  const isControlled = typeof valueFromProps !== 'undefined';
-  const [internalValue, setInternalValue] = React.useState(defaultValue);
+  const [internalValue, internalOnChange, reset] = useMaybeControlled<string>(
+    defaultValue,
+    valueFromProps,
+    onValueChange,
+  );
+  useFormReset(reset, rootRef.current);
+  const value = internalValue?.toUpperCase();
 
-  const value = (valueFromProps ?? internalValue).toUpperCase();
   const [isPickerVisible, setIsPickerVisible] = React.useState(false);
 
   // TODO: fix this blur, {tab} {tab} {tab} opens a lot of pickers
@@ -205,15 +213,12 @@ export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(functi
 
   let lastValue = value;
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
+    const value = event.target.value.toUpperCase();
     if (value === lastValue) return;
     lastValue = value;
 
     onChange?.(event);
-
-    if (!isControlled) {
-      setInternalValue(value);
-    }
+    internalOnChange?.(value);
 
     // hidden input's don't trigger onChange, and the input event doesn't trigger form.onChange, so we trigger the
     // onChange on the visible input which will bubble up to the form
