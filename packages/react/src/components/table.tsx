@@ -114,6 +114,7 @@ type StyledCellProps = ComponentProps<typeof StyledCell>;
 export type TableCellProps = {
   colSpan?: number;
   width?: StyledCellProps['width'];
+  css?: CSS;
 } & Omit<ListableCellProps, 'width'>;
 
 const Cell = React.forwardRef<React.ElementRef<'td'>, TableCellProps>(function Cell(
