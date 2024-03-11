@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.23.1
+
+### Patch Changes
+
+- [`b0f5115`](https://github.com/magicbell-io/darkmagic/commit/b0f5115d2f8c2c50b578a3056c939ce7a77d320c) Thanks [@smeijer](https://github.com/smeijer)! - feat: add css prop to table.cell
+
 ## 0.23.0
 
 ### Minor Changes
