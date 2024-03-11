@@ -33,7 +33,9 @@
     "build": "run-s clean build:*",
     "build:cjs": "tsc --project tsconfig-cjs.json",
     "build:esm": "tsc --project tsconfig-esm.json",
-    "start": "yarn build:dev --watch"
+    "start:cjs": "tsc --project tsconfig-cjs.json --watch",
+    "start:esm": "tsc --project tsconfig-esm.json --watch",
+    "start": "run-p start:*"
   },
   "repository": {
     "type": "git",
