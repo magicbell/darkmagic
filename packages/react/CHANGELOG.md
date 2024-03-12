@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.23.2
+
+### Patch Changes
+
+- [`7316d8f`](https://github.com/magicbell-io/darkmagic/commit/7316d8fc500a1d4c991a2cf6713d13e698621d26) Thanks [@smeijer](https://github.com/smeijer)! - add explicit 'columnheader' role to th
+
 ## 0.23.1
 
 ### Patch Changes
