@@ -73,7 +73,7 @@ const HeaderCell = React.forwardRef<React.ElementRef<'th'>, StyledCellProps>(fun
 
   return (
     <StyledCell asChild padOnlyChild={hasSingleElementChild} {...props} ref={ref}>
-      <StyledTH>{children}</StyledTH>
+      <StyledTH role="columnheader">{children}</StyledTH>
     </StyledCell>
   );
 });
