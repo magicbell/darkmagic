@@ -1,6 +1,7 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
+import { useId } from '@radix-ui/react-id';
 import * as React from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
@@ -293,6 +294,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
   { children, expandable = false, variant = 'nested', width = 'auto', drawer, ...props },
   forwardedRef,
 ) {
+  const id = useId();
   const [expanded, setExpanded] = React.useState(false);
   const portalNode = React.useMemo(() => {
     if (typeof document === 'undefined') return null;
@@ -326,6 +328,8 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
 
   const title = (
     <Typography
+      // don't override the id provided by the drawer.title
+      {...(drawer ? {} : { id })}
       as={variant === 'root' ? 'h1' : 'h2'}
       variant="h2"
       color="default"
@@ -336,8 +340,21 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
     </Typography>
   );
 
+  const aria = {
+    'aria-labelledby': id,
+    role: 'region',
+  };
+
   const pane = (
-    <StyledPane {...props} width={width} variant={variant} expanded={expanded} ref={composedRefs}>
+    <StyledPane
+      {...props}
+      // wrapping dialog provides aria props for drawers
+      {...(drawer ? {} : aria)}
+      width={width}
+      variant={variant}
+      expanded={expanded}
+      ref={composedRefs}
+    >
       {hasHeader && (
         <StyledHeader variant={headerVariant}>
           <StyledHeaderContent variant={headerVariant}>

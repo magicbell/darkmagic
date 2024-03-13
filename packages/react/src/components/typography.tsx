@@ -143,6 +143,7 @@ export type TypographyProps = {
   align?: StyledTypographyProps['align'];
   children?: React.ReactNode;
   as?: keyof JSX.IntrinsicElements;
+  id?: string;
 };
 
 export const Typography = React.forwardRef<HTMLDivElement, TypographyProps>(function Typography(
