@@ -13,20 +13,20 @@ const StyledItem = styled('div', {
   display: 'flex',
   font: '$body-small',
 
-  '& dd': {
+  '& dt': {
     truncate: true,
     flex: 'none',
     color: '$text-muted',
   },
 
-  '& dt': {
+  '& dd': {
     color: '$text-default',
   },
 
   variants: {
     truncate: {
       true: {
-        '& dt': {
+        '& dd': {
           truncate: true,
         },
 
@@ -40,22 +40,22 @@ const StyledItem = styled('div', {
       true: {
         flexDirection: 'column',
         gap: '0',
-        '&& dd': {
+        '&& dt': {
           width: 'unset',
         },
       },
       false: {
         flexDirection: 'row',
-        '&& dd': {
+        '&& dt': {
           pr: '$4',
         },
       },
     },
 
     labelWidth: {
-      sm: { '& dd': { width: '$40' } },
-      md: { '& dd': { width: '$50' } },
-      lg: { '& dd': { width: '$60' } },
+      sm: { '& dt': { width: '$40' } },
+      md: { '& dt': { width: '$50' } },
+      lg: { '& dt': { width: '$60' } },
     },
   },
 
@@ -139,9 +139,9 @@ const Item = React.forwardRef<React.ElementRef<'div'>, ItemProps>(function Item(
 
   return (
     <StyledItem stacked={stacked} labelWidth={labelWidth} truncate={truncate} {...props} ref={ref}>
-      <dd>{label}</dd>
+      <dt>{label}</dt>
       <StyledValue muted={!hasValue}>
-        <dt>{hasValue ? value : 'n/a'}</dt>
+        <dd>{hasValue ? value : 'n/a'}</dd>
         {hasValue && showCopyButton && (
           <StyledAddon>
             <CopyButton variant="text" value={String(copyValue)} />
