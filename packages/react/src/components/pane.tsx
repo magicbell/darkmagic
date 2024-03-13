@@ -270,6 +270,11 @@ type PaneProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
+
+  /**
+   * True when rendered as a drawer, this an internal prop that you shouldn't need
+   */
+  drawer?: boolean;
 };
 
 const Actions = createSlot('Actions');
@@ -285,7 +290,7 @@ const Description = createSlot('Description');
 const Tabs = createSlot('Tabs');
 
 const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(function Pane(
-  { children, expandable = false, variant = 'nested', width = 'auto', ...props },
+  { children, expandable = false, variant = 'nested', width = 'auto', drawer, ...props },
   forwardedRef,
 ) {
   const [expanded, setExpanded] = React.useState(false);
@@ -319,6 +324,18 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
     throw new Error('Pane variant "root" should specify tab variant "contained".');
   }
 
+  const title = (
+    <Typography
+      as={variant === 'root' ? 'h1' : 'h2'}
+      variant="h2"
+      color="default"
+      css={variant === 'root' ? { fontSize: '1.3125rem' } : undefined}
+      truncate
+    >
+      {slots.title}
+    </Typography>
+  );
+
   const pane = (
     <StyledPane {...props} width={width} variant={variant} expanded={expanded} ref={composedRefs}>
       {hasHeader && (
@@ -331,15 +348,8 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
               align={variant === 'root' ? 'baseline' : undefined}
               css={{ minWidth: 1 }}
             >
-              <Typography
-                as={variant === 'root' ? 'h1' : 'h2'}
-                variant="h2"
-                color="default"
-                css={variant === 'root' ? { fontSize: '1.3125rem' } : undefined}
-                truncate
-              >
-                {slots.title}
-              </Typography>
+              {drawer ? <DialogPrimitive.Title asChild>{title}</DialogPrimitive.Title> : title}
+
               {slots.description && (
                 <Typography variant="small" color="muted">
                   {slots.description}

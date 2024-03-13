@@ -134,7 +134,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
   });
 
   const drawer = (
-    <StyledDrawer variant="root" width={width} {...props} ref={forwardedRef}>
+    <StyledDrawer variant="root" width={width} drawer {...props} ref={forwardedRef}>
       <Pane.Actions>
         {slots.actions}
 
