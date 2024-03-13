@@ -43,6 +43,9 @@ const StyledItem = styled('div', {
         '&& dt': {
           width: 'unset',
         },
+        '&& dd': {
+          width: '100%',
+        },
       },
       false: {
         flexDirection: 'row',
