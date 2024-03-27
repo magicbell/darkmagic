@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.23.3
+
+### Patch Changes
+
+- [`1653ee3`](https://github.com/magicbell-io/darkmagic/commit/1653ee3552aecf3a0ffec1e519098d834dd9503c) Thanks [@smeijer](https://github.com/smeijer)! - make dd in stacked description lists full width
+
+- [`84812c8`](https://github.com/magicbell-io/darkmagic/commit/84812c8193f676225ed43d6bbce9e0911240087c) Thanks [@smeijer](https://github.com/smeijer)! - use drawer title as aria-label for dialog
+
+- [`8c6dd0e`](https://github.com/magicbell-io/darkmagic/commit/8c6dd0ecb88c58aacc63cff84bf59ade58459b88) Thanks [@smeijer](https://github.com/smeijer)! - fix dd/dt usage in description list
+
+- [`83a219b`](https://github.com/magicbell-io/darkmagic/commit/83a219b757bd93418d8c88ccea2d675803803e83) Thanks [@smeijer](https://github.com/smeijer)! - provide 'region' role to panes
+
 ## 0.23.2
 
 ### Patch Changes
