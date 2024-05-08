@@ -1,5 +1,18 @@
 # @darkmagic/react
 
+## 0.24.0
+
+### Minor Changes
+
+- [`bc7fbb4`](https://github.com/magicbell-io/darkmagic/commit/bc7fbb4de10296775f204eeb2ff6387c023bb4d6) Thanks [@smeijer](https://github.com/smeijer)! - move dialog a bit closer to the top
+
+### Patch Changes
+
+- [`230f9b6`](https://github.com/magicbell-io/darkmagic/commit/230f9b630191466f2893fb1e7b4f5539bfaeb212) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `react-is` to `^18.3.0`.
+  - updated `react` to `>= 18.3.0`.
+
 ## 0.23.3
 
 ### Patch Changes
