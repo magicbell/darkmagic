@@ -45,7 +45,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
   borderRadius: '$lg',
   position: 'fixed',
-  top: 'min(25vh, 240px)',
+  top: 'min(15vh, $sizes$44)',
   left: '50%',
   transform: 'translate(-50%, 0)',
   border: '1px solid $border-muted',
