@@ -15713,10 +15713,10 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-tsx@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.9.0.tgz#08d7ea58df19d87416d26cce8caf93d0c3619852"
-  integrity sha512-UY0UUhDPL6MkqkZU4xTEjEBOLfV+RIt4xeeJ1qwK73xai4/zveG+X6+tieILa7rjtegUW2LE4p7fw7gAoLuytA==
+tsx@^4.10.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.10.0.tgz#c9efb353f59219fe9056d4c271ef2f77563345c0"
+  integrity sha512-Ct/j4Yv49EFlr1z5CT++ld+BUhjLRLtimE4hIDaW9zEVIp3xJOQdTDAan+KEXeme7GcYIGzFD421Zcqf9dHomw==
   dependencies:
     esbuild "~0.20.2"
     get-tsconfig "^4.7.3"
