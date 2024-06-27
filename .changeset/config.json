@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.1.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "magicbell-io/darkmagic" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "magicbell/darkmagic" }],
   "commit": false,
   "fixed": [],
   "linked": [],

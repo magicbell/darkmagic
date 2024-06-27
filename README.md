@@ -18,7 +18,7 @@ The development environment for this repo supports `node:v18` and up. We use `ya
 Run the following commands in your terminal to get a copy of this repo, and install required dependencies.
 
 ```
-git clone git@github.com:magicbell-io/darkmagic.git
+git clone git@github.com:magicbell/darkmagic.git
 cd darkmagic
 yarn
 ```
