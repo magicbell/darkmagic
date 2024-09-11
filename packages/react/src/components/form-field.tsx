@@ -30,10 +30,10 @@ type FormFieldProps = {
   label?: string;
   required?: boolean;
   tooltip?: string;
-  leadingHint?: string;
-  trailingHint?: string;
-  leadingError?: string;
-  trailingError?: string;
+  leadingHint?: React.ReactElement;
+  trailingHint?: React.ReactElement;
+  leadingError?: React.ReactElement;
+  trailingError?: React.ReactElement;
   state?: 'initial' | 'invalid';
 } & StyledFormFieldProps;
 
