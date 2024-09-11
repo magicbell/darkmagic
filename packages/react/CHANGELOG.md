@@ -1,5 +1,52 @@
 # @darkmagic/react
 
+## 0.25.0
+
+### Minor Changes
+
+- [`166de05`](https://github.com/magicbell/darkmagic/commit/166de05bcdda9509b154f862c87365e06b693306) Thanks [@smeijer](https://github.com/smeijer)! - accept ReactElement for FormField hints and errors
+
+### Patch Changes
+
+- [`d5b2d9a`](https://github.com/magicbell/darkmagic/commit/d5b2d9a87107226041fb6b5763386401c3843107) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.3.0`.
+
+- [`1f6ab38`](https://github.com/magicbell/darkmagic/commit/1f6ab38ce45b5f41973c0095391791e714127e45) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `highlight.js` to `^11.10.0`.
+
+- [`54a3b25`](https://github.com/magicbell/darkmagic/commit/54a3b25f8de57316686e4e35c3c088a96ec7a4a5) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-accessible-icon` to `^1.1.0`.
+  - updated `@radix-ui/react-accordion` to `^1.2.0`.
+  - updated `@radix-ui/react-alert-dialog` to `^1.1.1`.
+  - updated `@radix-ui/react-aspect-ratio` to `^1.1.0`.
+  - updated `@radix-ui/react-avatar` to `^1.1.0`.
+  - updated `@radix-ui/react-checkbox` to `^1.1.1`.
+  - updated `@radix-ui/react-collapsible` to `^1.1.0`.
+  - updated `@radix-ui/react-compose-refs` to `^1.1.0`.
+  - updated `@radix-ui/react-dialog` to `^1.1.1`.
+  - updated `@radix-ui/react-hover-card` to `^1.1.1`.
+  - updated `@radix-ui/react-id` to `^1.1.0`.
+  - updated `@radix-ui/react-label` to `^2.1.0`.
+  - updated `@radix-ui/react-navigation-menu` to `^1.2.0`.
+  - updated `@radix-ui/react-popover` to `^1.1.1`.
+  - updated `@radix-ui/react-radio-group` to `^1.2.0`.
+  - updated `@radix-ui/react-scroll-area` to `^1.1.0`.
+  - updated `@radix-ui/react-select` to `^2.1.1`.
+  - updated `@radix-ui/react-separator` to `^1.1.0`.
+  - updated `@radix-ui/react-slider` to `^1.2.0`.
+  - updated `@radix-ui/react-slot` to `^1.1.0`.
+  - updated `@radix-ui/react-switch` to `^1.1.0`.
+  - updated `@radix-ui/react-tabs` to `^1.1.0`.
+  - updated `@radix-ui/react-toast` to `^1.2.1`.
+  - updated `@radix-ui/react-toggle` to `^1.1.0`.
+  - updated `@radix-ui/react-toggle-group` to `^1.1.0`.
+  - updated `@radix-ui/react-toolbar` to `^1.1.0`.
+  - updated `@radix-ui/react-tooltip` to `^1.1.2`.
+  - updated `@radix-ui/react-visually-hidden` to `^1.1.0`.
+
 ## 0.24.0
 
 ### Minor Changes
