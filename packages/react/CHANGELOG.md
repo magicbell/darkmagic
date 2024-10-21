@@ -1,5 +1,13 @@
 # @darkmagic/react
 
+## 0.25.1
+
+### Patch Changes
+
+- [`21f088f`](https://github.com/magicbell/darkmagic/commit/21f088f73c933ebee8822be1124bc568573da2cf) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-scroll-area` to `^1.2.0`.
+
 ## 0.25.0
 
 ### Minor Changes
