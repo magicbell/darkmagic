@@ -24,6 +24,16 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   zIndex: 1,
 });
 
+const slideRightAndFade = keyframes({
+  '0%': { opacity: 0, transform: 'translateX(-50px)' },
+  '100%': { opacity: 1, transform: 'translateX(0)' },
+});
+
+const slideLeftAndFade = keyframes({
+  '0%': { opacity: 0, transform: 'translateX(50px)' },
+  '100%': { opacity: 1, transform: 'translateX(0)' },
+});
+
 const StyledDialogContent = styled(DialogPrimitive.Content, {
   '&:focus': { outline: 'none' },
   display: 'flex',
@@ -33,9 +43,11 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
     align: {
       right: {
         right: '0',
+        animationName: `${slideLeftAndFade}`,
       },
       left: {
         left: '0',
+        animationName: `${slideRightAndFade}`,
       },
     },
     variant: {
@@ -44,6 +56,8 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
         top: '0',
         right: '0',
         zIndex: 1,
+        animationDuration: '400ms',
+        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       inline: {
         position: 'relative',
@@ -98,6 +112,11 @@ type DrawerProps = {
   align?: StyledDialogContentProps['align'];
 
   /**
+   * Control the open state
+   */
+  open?: boolean;
+
+  /**
    * The width of the drawer. Defaults to `md`.
    */
   width?: StyledDrawerProps['width'];
@@ -141,6 +160,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
     onClickOutside,
     onOpenAutoFocus,
     onCloseAutoFocus,
+    open = variant === 'overlay',
     ...props
   },
   forwardedRef,
@@ -185,7 +205,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
   const handlePointerDown = onClickOutside ? onClickOutside : () => onRequestClose?.();
 
   return (
-    <DialogPrimitive.Root modal={modal} open={variant === 'overlay'}>
+    <DialogPrimitive.Root modal={modal} open={open}>
       <InPortal node={portalNode}>{drawer}</InPortal>
 
       {variant === 'inline' ? <OutPortal node={portalNode} /> : null}
