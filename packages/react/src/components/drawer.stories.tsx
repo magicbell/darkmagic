@@ -59,6 +59,22 @@ Overlay.args = {
   variant: 'overlay',
 };
 
+export const LeftAligned: ComponentStoryFn<any> = (args) => (
+  <Drawer variant={args.variant} align={args.align}>
+    <Drawer.Title>{args.title}</Drawer.Title>
+    <Drawer.Description>{args.description}</Drawer.Description>
+    <Drawer.Body scroll="vertical">
+      <Box css={{ height: '200vh' }}>Drawer content - scrollable</Box>
+    </Drawer.Body>
+  </Drawer>
+);
+
+LeftAligned.args = {
+  ...Basic.args,
+  variant: 'overlay',
+  align: 'left',
+};
+
 export const WithActions: ComponentStoryFn<any> = (args) => (
   <Tabs defaultValue="2">
     <Drawer variant={args.variant} onRequestClose={action('onRequestClose')}>

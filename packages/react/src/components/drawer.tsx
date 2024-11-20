@@ -30,6 +30,14 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
   height: '100%',
 
   variants: {
+    align: {
+      right: {
+        right: '0',
+      },
+      left: {
+        left: '0',
+      },
+    },
     variant: {
       overlay: {
         position: 'fixed',
@@ -47,11 +55,20 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
 type StyledDialogContentProps = ComponentProps<typeof StyledDialogContent>;
 
 const StyledDrawer = styled(Pane, {
-  borderLeft: '1px solid $border-muted',
   height: '100%',
   backgroundColor: '$bg-app',
   boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
+
   variants: {
+    align: {
+      left: {
+        borderRight: '1px solid $border-muted',
+      },
+      right: {
+        borderLeft: '1px solid $border-muted',
+      },
+    },
+
     width: {
       xxs: { width: '$xs' },
       xs: { width: '$sm' },
@@ -74,6 +91,12 @@ type DrawerProps = {
    * rendered in a dialog and closed by clicking "outside".
    */
   variant?: StyledDialogContentProps['variant'];
+
+  /**
+   * Align the drawer to the left or right side of the screen? Defaults to right.
+   */
+  align?: StyledDialogContentProps['align'];
+
   /**
    * The width of the drawer. Defaults to `md`.
    */
@@ -111,6 +134,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
   {
     children,
     variant = 'inline',
+    align = 'right',
     width = 'md',
     onRequestClose,
     modal = variant === 'overlay',
@@ -134,7 +158,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
   });
 
   const drawer = (
-    <StyledDrawer variant="root" width={width} drawer {...props} ref={forwardedRef}>
+    <StyledDrawer variant="root" align={align} width={width} drawer {...props} ref={forwardedRef}>
       <Pane.Actions>
         {slots.actions}
 
@@ -171,6 +195,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
 
         <StyledDialogContent
           variant={variant}
+          align={align}
           onPointerDownOutside={handlePointerDown}
           onOpenAutoFocus={onOpenAutoFocus}
           onCloseAutoFocus={onCloseAutoFocus}
