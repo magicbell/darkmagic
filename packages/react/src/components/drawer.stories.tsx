@@ -17,7 +17,9 @@ const meta: Meta = {
   args: {},
   argTypes: {
     width: { control: 'select' },
-    variant: { control: 'select' },
+    variant: { control: 'select', options: ['inline', 'overlay'] },
+    align: { control: 'select', options: ['left', 'right'] },
+    open: { control: 'boolean' },
   },
   decorators: [
     (Story) => (
@@ -73,6 +75,22 @@ LeftAligned.args = {
   ...Basic.args,
   variant: 'overlay',
   align: 'left',
+};
+
+export const ControlledOpen: ComponentStoryFn<any> = (args) => (
+  <Drawer variant={args.variant} align={args.align} open={args.open}>
+    <Drawer.Title>{args.title}</Drawer.Title>
+    <Drawer.Description>{args.description}</Drawer.Description>
+    <Drawer.Body scroll="vertical">
+      <Box css={{ height: '200vh' }}>Drawer content - scrollable</Box>
+    </Drawer.Body>
+  </Drawer>
+);
+
+ControlledOpen.args = {
+  ...Basic.args,
+  variant: 'overlay',
+  open: true,
 };
 
 export const WithActions: ComponentStoryFn<any> = (args) => (
