@@ -45,4 +45,5 @@ export * from './hooks/use-form-reset.js';
 export * from './hooks/use-mousetrap.js';
 export * from './hooks/use-resize-observer.js';
 export * from './lib/dom.js';
+export * from './lib/slots.js';
 export * from './lib/stitches.js';
