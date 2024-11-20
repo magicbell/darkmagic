@@ -1,5 +1,19 @@
 # @darkmagic/react
 
+## 0.26.0
+
+### Minor Changes
+
+- [#159](https://github.com/magicbell/darkmagic/pull/159) [`c3808df`](https://github.com/magicbell/darkmagic/commit/c3808df3ceef6ac2c60651d6cd4969c99fcaa830) Thanks [@smeijer](https://github.com/smeijer)! - support controlled open state in drawer
+
+- [#158](https://github.com/magicbell/darkmagic/pull/158) [`e8fc7cd`](https://github.com/magicbell/darkmagic/commit/e8fc7cd71ee9c520dd0d906e4e70271e32d08394) Thanks [@smeijer](https://github.com/smeijer)! - add support for left aligned drawers
+
+### Patch Changes
+
+- [`21f088f`](https://github.com/magicbell/darkmagic/commit/21f088f73c933ebee8822be1124bc568573da2cf) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-scroll-area` to `^1.2.0`.
+
 ## 0.25.0
 
 ### Minor Changes
