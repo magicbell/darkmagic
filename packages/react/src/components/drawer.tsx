@@ -41,20 +41,14 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
 
   variants: {
     align: {
-      right: {
-        right: '0',
-        animationName: `${slideLeftAndFade}`,
-      },
-      left: {
-        left: '0',
-        animationName: `${slideRightAndFade}`,
-      },
+      left: {},
+      right: {},
     },
+
     variant: {
       overlay: {
         position: 'fixed',
         top: '0',
-        right: '0',
         zIndex: 1,
         animationDuration: '400ms',
         animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -64,6 +58,25 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
       },
     },
   },
+
+  compoundVariants: [
+    {
+      align: 'left',
+      variant: 'overlay',
+      css: {
+        left: '0',
+        animationName: `${slideRightAndFade}`,
+      },
+    },
+    {
+      align: 'right',
+      variant: 'overlay',
+      css: {
+        right: '0',
+        animationName: `${slideLeftAndFade}`,
+      },
+    },
+  ],
 });
 
 type StyledDialogContentProps = ComponentProps<typeof StyledDialogContent>;

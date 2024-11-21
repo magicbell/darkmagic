@@ -44,6 +44,7 @@ Basic.args = {
   title: 'Drawer Title',
   description: 'Drawer Description',
   content: 'Drawer Content',
+  variant: 'inline',
 };
 
 export const Overlay: ComponentStoryFn<any> = (args) => (
@@ -95,7 +96,12 @@ ControlledOpen.args = {
 
 export const WithActions: ComponentStoryFn<any> = (args) => (
   <Tabs defaultValue="2">
-    <Drawer variant={args.variant} onRequestClose={action('onRequestClose')}>
+    <Drawer
+      align={args.align}
+      variant={args.variant}
+      onClickOutside={action('onClickOutside')}
+      onRequestClose={action('onRequestClose')}
+    >
       <Drawer.Title>{args.title}</Drawer.Title>
       <Drawer.Description>{args.description}</Drawer.Description>
 
@@ -136,7 +142,8 @@ WithActions.args = {
   title: 'Drawer Title',
   description: 'some description',
   content: 'Content',
-  variant: 'inline',
+  variant: 'overlay',
+  align: 'right',
 };
 
 export const WithTabs: ComponentStoryFn<any> = (args) => (
@@ -202,7 +209,7 @@ WithCode.args = {
 };
 
 export const EmptyShell: ComponentStoryFn<any> = (args) => (
-  <Drawer variant={args.variant}>
+  <Drawer variant={args.variant} open onClickOutside={action('click outside')}>
     <div>custom child content</div>
   </Drawer>
 );
