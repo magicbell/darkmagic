@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.29.0
+
+### Minor Changes
+
+- [#164](https://github.com/magicbell/darkmagic/pull/164) [`ce45e86`](https://github.com/magicbell/darkmagic/commit/ce45e86c5a061fa5ce56e7382f662fdb2a88b07f) Thanks [@smeijer](https://github.com/smeijer)! - allow menu item tooltip positioning
+
 ## 0.28.0
 
 ### Minor Changes
