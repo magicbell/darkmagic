@@ -177,22 +177,26 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledDrawer>, DrawerProps
     actions: Actions,
   });
 
+  const hasActions = slots.actions || onRequestClose;
+
   const drawer = (
     <StyledDrawer variant="root" align={align} width={width} drawer {...props} ref={forwardedRef}>
-      <Pane.Actions>
-        {slots.actions}
+      {hasActions ? (
+        <Pane.Actions>
+          {slots.actions}
 
-        {onRequestClose ? (
-          <IconButton
-            tooltip="Close"
-            shortcut="esc"
-            variant="secondary"
-            icon={Cross2Icon}
-            label="Close"
-            onClick={() => onRequestClose()}
-          />
-        ) : null}
-      </Pane.Actions>
+          {onRequestClose ? (
+            <IconButton
+              tooltip="Close"
+              shortcut="esc"
+              variant="secondary"
+              icon={Cross2Icon}
+              label="Close"
+              onClick={() => onRequestClose()}
+            />
+          ) : null}
+        </Pane.Actions>
+      ) : null}
 
       {slots.children}
     </StyledDrawer>
