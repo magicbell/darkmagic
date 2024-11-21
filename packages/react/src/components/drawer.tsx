@@ -85,6 +85,12 @@ const StyledDrawer = styled(Pane, {
   height: '100%',
   backgroundColor: '$bg-app',
   boxShadow: 'rgb(0 0 0 / 20%) 0px 4px 24px',
+  maxWidth: '100vw',
+  minWidth: '100vw',
+
+  '@sm': {
+    minWidth: 'unset',
+  },
 
   variants: {
     align: {
