@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.28.0
+
+### Minor Changes
+
+- [#162](https://github.com/magicbell/darkmagic/pull/162) [`6d94104`](https://github.com/magicbell/darkmagic/commit/6d941042872f5739c8aad53e6191d8308dc51def) Thanks [@smeijer](https://github.com/smeijer)! - export VisuallyHidden
+
 ## 0.27.0
 
 ### Minor Changes
