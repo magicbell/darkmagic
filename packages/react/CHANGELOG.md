@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.30.0
+
+### Minor Changes
+
+- [#166](https://github.com/magicbell/darkmagic/pull/166) [`0dd075c`](https://github.com/magicbell/darkmagic/commit/0dd075c2c3b6d246b1768d0a0cd97a054714a3cc) Thanks [@smeijer](https://github.com/smeijer)! - make drawer use full screen width on mobile
+
 ## 0.29.0
 
 ### Minor Changes
