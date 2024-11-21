@@ -263,9 +263,10 @@ const MenuItem = React.forwardRef<React.ElementRef<typeof StyledMenuItem>, MenuI
 
   const collapsed = context?.collapsed ?? collapsedFromProps;
   const variant = context?.variant ?? variantFromProps;
+  const side = context?.tooltipSide ?? 'right';
 
   return (
-    <Tooltip content={children} enabled={collapsed} side="right">
+    <Tooltip content={children} enabled={collapsed} side={side}>
       <StyledMenuItem
         {...comp}
         variant={variant}
@@ -299,17 +300,21 @@ type MenuProps = {
    */
   collapsed?: boolean;
   /**
+   * Position the tooltip
+   */
+  tooltipSide?: 'top' | 'right' | 'bottom' | 'left';
+  /**
    * The vertical gap between menu items.
    */
   spacing?: StyledMenuProps['spacing'];
 } & StyledMenuProps;
 
 const Root = React.forwardRef<React.ElementRef<typeof StyledMenu>, MenuProps>(function Menu(
-  { children, collapsed = false, spacing, variant = 'primary', ...props },
+  { children, collapsed = false, spacing, variant = 'primary', tooltipSide = 'right', ...props },
   ref,
 ) {
   return (
-    <MenuContext.Provider value={{ collapsed, variant }}>
+    <MenuContext.Provider value={{ collapsed, variant, tooltipSide }}>
       <StyledMenu spacing={spacing} variant={variant} {...props} ref={ref}>
         {children}
       </StyledMenu>
@@ -317,7 +322,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledMenu>, MenuProps>(fu
   );
 });
 
-const MenuContext = React.createContext<MenuProps>({ collapsed: false, variant: 'primary' });
+const MenuContext = React.createContext<MenuProps>({ collapsed: false, variant: 'primary', tooltipSide: 'right' });
 
 export const Menu = Object.assign(Root, {
   Title: MenuTitle,
