@@ -200,3 +200,13 @@ WithCode.args = {
   ),
   variant: 'inline',
 };
+
+export const EmptyShell: ComponentStoryFn<any> = (args) => (
+  <Drawer variant={args.variant}>
+    <div>custom child content</div>
+  </Drawer>
+);
+
+EmptyShell.args = {
+  variant: 'overlay',
+};
