@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.27.0
+
+### Minor Changes
+
+- [#160](https://github.com/magicbell/darkmagic/pull/160) [`d21dddb`](https://github.com/magicbell/darkmagic/commit/d21dddb9b56b491ef265b1f5fb7247d175ac1516) Thanks [@smeijer](https://github.com/smeijer)! - don't render drawer action wrapper when there are no actions
+
 ## 0.26.0
 
 ### Minor Changes
