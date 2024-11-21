@@ -46,3 +46,4 @@ export * from './hooks/use-mousetrap.js';
 export * from './hooks/use-resize-observer.js';
 export * from './lib/dom.js';
 export * from './lib/stitches.js';
+export { VisuallyHidden } from '@radix-ui/react-visually-hidden';
