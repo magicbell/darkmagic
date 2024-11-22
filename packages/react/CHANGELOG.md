@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.31.0
+
+### Minor Changes
+
+- [`359252b`](https://github.com/magicbell/darkmagic/commit/359252b17cfd5387ea9ca0ddb9c882b6f4e550c5) Thanks [@smeijer](https://github.com/smeijer)! - animate drawer closing
+
+- [`3d756c9`](https://github.com/magicbell/darkmagic/commit/3d756c939e9067602973a273867ca268c42c0221) Thanks [@smeijer](https://github.com/smeijer)! - document drawer css prop
+
+### Patch Changes
+
+- [#168](https://github.com/magicbell/darkmagic/pull/168) [`c01a566`](https://github.com/magicbell/darkmagic/commit/c01a566c1acc4bb2bd889d858a6606f9732e2498) Thanks [@stigi](https://github.com/stigi)! - Fixing expandable pane in client mode
+
 ## 0.30.0
 
 ### Minor Changes
