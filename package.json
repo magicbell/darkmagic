@@ -25,7 +25,7 @@
     "test": "vitest -c scripts/vite/vite.config.js --run --coverage",
     "test:watch": "vitest -c scripts/vite/vite.config.js",
     "test:ci": "cross-env CI=true vitest -c scripts/vite/vite.config.js --passWithNoTests",
-    "postinstall": "husky install && node scripts/sync-paths.js && manypkg check",
+    "postinstall": "husky && node scripts/sync-paths.js && manypkg check",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:release": "yarn build && yarn prettier --write '{packages,example}/*/{package.json,CHANGELOG.md}' '.changeset/*.json' && changeset publish",
