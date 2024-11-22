@@ -5,7 +5,7 @@ import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal'
 import invariant from 'tiny-invariant';
 
 import { createSlot, getSlots } from '../lib/slots.js';
-import { ComponentProps, keyframes, styled } from '../lib/stitches.js';
+import { ComponentProps, CSS, keyframes, styled } from '../lib/stitches.js';
 import { IconButton } from './icon-button.js';
 import { Pane } from './pane.js';
 
@@ -198,6 +198,12 @@ type DrawerProps = {
    * `true` for the overlay variant, and `false` for the inline variant.
    */
   modal?: boolean;
+
+  /**
+   * Easily override styles. It’s like the style attribute, but it supports
+   * tokens, media queries, nesting and token-aware values.
+   */
+  css?: CSS;
 };
 
 // Use a slot for actions, so we can easily add a close button to user-provided actions
