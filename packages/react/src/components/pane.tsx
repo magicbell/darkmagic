@@ -376,11 +376,11 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledPane>, PaneProps>(fu
             <StyledActions>
               {slots.actions}
 
-              {expandable && expanded ? (
+              {expandable && expanded && isClient ? (
                 <DialogPrimitive.Close asChild>
                   <IconButton icon={ExitFullScreenIcon} label="exit fullscreen" variant="secondary" />
                 </DialogPrimitive.Close>
-              ) : expandable ? (
+              ) : expandable && isClient ? (
                 <DialogPrimitive.Trigger asChild>
                   <IconButton icon={EnterFullScreenIcon} label="enter fullscreen" variant="secondary" />
                 </DialogPrimitive.Trigger>
