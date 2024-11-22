@@ -97,6 +97,7 @@ ControlledOpen.args = {
 export const WithActions: ComponentStoryFn<any> = (args) => (
   <Tabs defaultValue="2">
     <Drawer
+      open={args.open}
       align={args.align}
       variant={args.variant}
       onClickOutside={action('onClickOutside')}

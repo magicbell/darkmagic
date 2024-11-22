@@ -14,24 +14,45 @@ const overlayShow = keyframes({
   '100%': { opacity: 1 },
 });
 
+const overlayHide = keyframes({
+  '100%': { opacity: 0 },
+  '0%': { opacity: 1 },
+});
+
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: '$bg-overlay',
   position: 'fixed',
   inset: 0,
+
   '@media (prefers-reduced-motion: no-preference)': {
-    animation: `${overlayShow} 150ms linear`,
+    '&[data-state="open"]': {
+      animation: `${overlayShow} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+    },
+    '&[data-state="closed"]': {
+      animation: `${overlayHide} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+    },
   },
   zIndex: 1,
 });
 
-const slideRightAndFade = keyframes({
+const overlayRightShow = keyframes({
   '0%': { opacity: 0, transform: 'translateX(-50px)' },
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-const slideLeftAndFade = keyframes({
+const overlayRightHide = keyframes({
+  '100%': { opacity: 0, transform: 'translateX(-50px)' },
+  '0%': { opacity: 1, transform: 'translateX(0)' },
+});
+
+const overlayLeftShow = keyframes({
   '0%': { opacity: 0, transform: 'translateX(50px)' },
   '100%': { opacity: 1, transform: 'translateX(0)' },
+});
+
+const overlayLeftHide = keyframes({
+  '100%': { opacity: 0, transform: 'translateX(50px)' },
+  '0%': { opacity: 1, transform: 'translateX(0)' },
 });
 
 const StyledDialogContent = styled(DialogPrimitive.Content, {
@@ -50,8 +71,6 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
         position: 'fixed',
         top: '0',
         zIndex: 1,
-        animationDuration: '400ms',
-        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       inline: {
         position: 'relative',
@@ -65,7 +84,15 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
       variant: 'overlay',
       css: {
         left: '0',
-        animationName: `${slideRightAndFade}`,
+
+        '@media (prefers-reduced-motion: no-preference)': {
+          '&[data-state="open"]': {
+            animation: `${overlayRightShow} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          },
+          '&[data-state="closed"]': {
+            animation: `${overlayRightHide} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          },
+        },
       },
     },
     {
@@ -73,7 +100,15 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
       variant: 'overlay',
       css: {
         right: '0',
-        animationName: `${slideLeftAndFade}`,
+
+        '@media (prefers-reduced-motion: no-preference)': {
+          '&[data-state="open"]': {
+            animation: `${overlayLeftShow} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          },
+          '&[data-state="closed"]': {
+            animation: `${overlayLeftHide} 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+          },
+        },
       },
     },
   ],
