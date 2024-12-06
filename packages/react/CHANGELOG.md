@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.32.0
+
+### Minor Changes
+
+- [`8d8842c`](https://github.com/magicbell/darkmagic/commit/8d8842c71eaef5ba25ec65a309ccb4247b24bef8) Thanks [@smeijer](https://github.com/smeijer)! - add xl, 2xl and 3xl icon sizes
+
+### Patch Changes
+
+- [`9f7ba84`](https://github.com/magicbell/darkmagic/commit/9f7ba840202a1ae55c4b0d063f7dc848c89b6ae3) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.4.0`.
+
 ## 0.31.0
 
 ### Minor Changes
