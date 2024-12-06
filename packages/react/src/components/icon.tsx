@@ -50,6 +50,24 @@ const StyledIcon = styled('div', {
           height: '1.5rem',
         },
       },
+      xl: {
+        '& > *': {
+          width: '2rem', // 32px
+          height: '2rem',
+        },
+      },
+      '2xl': {
+        '& > *': {
+          width: '2.5rem', // 40px
+          height: '2.5rem',
+        },
+      },
+      '3xl': {
+        '& > *': {
+          width: '3rem', // 48px
+          height: '3rem',
+        },
+      },
     },
 
     color: {
