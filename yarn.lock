@@ -4752,10 +4752,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.1.tgz#28fa185f67daaf7b7a1a8c1d445132c5d979f8bd"
   integrity sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA==
 
-"@vanilla-extract/babel-plugin-debug-ids@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin-debug-ids/-/babel-plugin-debug-ids-1.1.0.tgz#783b33d55c4c4cdad0b2ddcd681ecbbe2dfc0a7b"
-  integrity sha512-Zy9bKjaL2P5zsrFYQJ8IjWGlFODmZrpvFmjFE0Zv8om55Pz1JtpJtL6DvlxlWUxbVaP1HKCqsmEfFOZN8fX/ZQ==
+"@vanilla-extract/babel-plugin-debug-ids@^1.1.0", "@vanilla-extract/babel-plugin-debug-ids@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin-debug-ids/-/babel-plugin-debug-ids-1.2.0.tgz#4211264dc2c9bfe85a733baba5492ea64e560c6c"
+  integrity sha512-z5nx2QBnOhvmlmBKeRX5sPVLz437wV30u+GJL+Hzj1rGiJYVNvgIIlzUpRNjVQ0MgAgiQIqIUbqPnmMc6HmDlQ==
   dependencies:
     "@babel/core" "^7.23.9"
 
