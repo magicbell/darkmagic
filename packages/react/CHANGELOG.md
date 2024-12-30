@@ -1,5 +1,13 @@
 # @darkmagic/react
 
+## 0.32.1
+
+### Patch Changes
+
+- [`b84d645`](https://github.com/magicbell/darkmagic/commit/b84d64541dfb4d83c25a4ad5244c9e1f74be7c9c) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `highlight.js` to `^11.11.0`.
+
 ## 0.32.0
 
 ### Minor Changes
