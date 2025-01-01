@@ -97,7 +97,7 @@
     "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
-    "@types/react-is": "^17.0.7",
+    "@types/react-is": "^19.0.0",
     "react": "^18.3.0"
   },
   "peerDependencies": {
