@@ -67,6 +67,7 @@ export function stringify(
         for (; index < length; index++) {
           const key = keys[index];
           const keyPart = `${JSON.stringify(key)}: `;
+          if (key == null) continue;
           const value: any = _stringify(obj[key], nextIndent, keyPart.length + (index === length - 1 ? 0 : 1));
           if (value !== undefined) {
             items.push(keyPart + value);

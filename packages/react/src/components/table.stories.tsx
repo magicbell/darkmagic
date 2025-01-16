@@ -1,18 +1,19 @@
 import { ChatBubbleIcon, DesktopIcon, DotsHorizontalIcon, EnvelopeClosedIcon, MobileIcon } from '@radix-ui/react-icons';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentProps } from '@stitches/react';
+import { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
+import * as fake from '../../fixtures/index.js';
+import { Avatar } from './avatar.js';
+import { Badge } from './badge.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { SortButton } from './sort-button.js';
+import { Table } from './table.js';
+import { Text } from './text.js';
+import { Typography } from './typography.js';
 
-import { Avatar } from './avatar';
-import { Badge } from './badge';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { SortButton } from './sort-button';
-import { Table } from './table';
-import { Text } from './text';
-import { Typography } from './typography';
-
-const meta: ComponentMeta<typeof Table> = {
+const meta: Meta<typeof Table> = {
   component: Table,
   args: {},
   argTypes: {
@@ -25,7 +26,7 @@ export default meta;
 
 const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
 
-export const Basic: ComponentStory<typeof Table> = (args) => (
+export const Basic: StoryFn<typeof Table> = (args: ComponentProps<typeof Table>) => (
   <Table spacing={args.spacing} variant={args.variant}>
     <Table.Head>
       <Table.Row>
@@ -55,7 +56,7 @@ export const Basic: ComponentStory<typeof Table> = (args) => (
             </Typography>
           </Table.Cell>
           <Table.Cell>
-            <Badge color={`accent-${(fake.status.indexOf(row.status) % 3) + 1}` as any}>{row.status}</Badge>
+            <Badge color={`accent-${(fake.status.indexOf(row.status!) % 3) + 1}` as any}>{row.status}</Badge>
           </Table.Cell>
           <Table.Cell muted>
             <Flex gap={2} flex="none">
@@ -78,7 +79,7 @@ Basic.args = {
   spacing: 'sm',
 };
 
-export const Responsive: ComponentStory<typeof Table> = (args) => (
+export const Responsive: StoryFn<typeof Table> = (args: ComponentProps<typeof Table>) => (
   <Table spacing={args.spacing} variant={args.variant}>
     <Table.Head>
       <Table.Row>
@@ -108,7 +109,7 @@ export const Responsive: ComponentStory<typeof Table> = (args) => (
             </Typography>
           </Table.Cell>
           <Table.Cell width="min">
-            <Badge color={`accent-${(fake.status.indexOf(row.status) % 3) + 1}` as any}>{row.status}</Badge>
+            <Badge color={`accent-${(fake.status.indexOf(row.status!) % 3) + 1}` as any}>{row.status}</Badge>
           </Table.Cell>
           <Table.Cell width="min" muted>
             <Flex gap={2} flex="none">
@@ -131,13 +132,13 @@ Responsive.args = {
   spacing: 'sm',
 };
 
-export const Contained: ComponentStory<typeof Table> = (args) => (
+export const Contained: StoryFn<typeof Table> = (args: ComponentProps<typeof Table>) => (
   <Table spacing={args.spacing} variant={args.variant}>
     <Table.Body>
       {fake.listData.map((row) => (
         <Table.Row key={row.id}>
           <Table.Cell width="min">
-            <Avatar color={`accent-${(fake.names.indexOf(row.author) % 5) + 1}` as any}>{row.author}</Avatar>
+            <Avatar color={`accent-${(fake.names.indexOf(row.author!) % 5) + 1}` as any}>{row.author}</Avatar>
           </Table.Cell>
           <Table.Cell width="auto">
             <Text primary={row.event} secondary={row.id} />

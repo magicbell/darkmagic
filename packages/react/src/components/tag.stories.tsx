@@ -3,7 +3,7 @@ import { PersonIcon } from '@radix-ui/react-icons';
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
 
-import { Tag } from './tag';
+import { Tag } from './tag.js';
 
 const iconNames = Object.keys(icons) as (keyof typeof icons)[];
 const iconMap = {

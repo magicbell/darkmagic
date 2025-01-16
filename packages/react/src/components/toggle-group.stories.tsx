@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ChatBubbleIcon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import * as React from 'react';
 
-import { Icon } from './icon';
-import { ToggleGroup } from './toggle-group';
+import { Icon } from './icon.js';
+import { ToggleGroup } from './toggle-group.js';
 
 const meta = {
   component: ToggleGroup,

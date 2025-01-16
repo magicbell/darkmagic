@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { RadioGroup } from './radio-group';
+import { RadioGroup } from './radio-group.js';
 
 const options = Array.from({ length: 3 }).map((_, idx) => `option ${idx + 1}`);
 

@@ -1,14 +1,14 @@
 import { ChevronDownIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Avatar } from './avatar';
-import { IconButton } from './icon-button';
-import { MiniCard } from './mini-card';
-import { Text } from './text';
-import { Typography } from './typography';
+import * as fake from '../../fixtures/index.js';
+import { Avatar } from './avatar.js';
+import { IconButton } from './icon-button.js';
+import { MiniCard } from './mini-card.js';
+import { Text } from './text.js';
+import { Typography } from './typography.js';
 
 const meta: Meta = {
   component: MiniCard,
@@ -71,7 +71,7 @@ export const TruncatedText = {
         Person Doe
       </Avatar>
     ),
-    children: <Text primary="Person Doe" secondary={fake.listData[0].event.repeat(3)} />,
+    children: <Text primary="Person Doe" secondary={fake.listData[0]!.event.repeat(3)} />,
     addon: <IconButton icon={DotsHorizontalIcon} variant="ghost" label="menu" />,
   },
 };

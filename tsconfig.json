@@ -17,8 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "~/fixtures": ["fixtures"],
-      "~/sb-decorators": [".storybook/decorators"],
-      "@darkmagic/react": ["packages/react/src"]
+      "~/sb-decorators": [".storybook/decorators"]
     }
   },
   "references": [

@@ -1,10 +1,10 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
+import * as fake from '../../fixtures/index.js';
+import { DescriptionList } from './description-list.js';
 
-import { DescriptionList } from './description-list';
-
-const meta: ComponentMeta<typeof DescriptionList> = {
+const meta: Meta<typeof DescriptionList> = {
   component: DescriptionList,
   subcomponents: { 'DescriptionList.Item': DescriptionList.Item },
   args: {

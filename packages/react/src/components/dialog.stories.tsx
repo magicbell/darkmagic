@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
-import { ComponentStoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
-import { Button } from './button';
-import { Dialog } from './dialog';
-import { Flex } from './flex';
-import { Typography } from './typography';
+import { Button } from './button.js';
+import { Dialog } from './dialog.js';
+import { Flex } from './flex.js';
+import { Typography } from './typography.js';
 
 const meta: Meta = {
   component: Dialog,
@@ -36,7 +36,7 @@ export default meta;
 
 export const Basic = {};
 
-export const Example: ComponentStoryFn<any> = (args) => {
+export const Example: StoryFn<any> = (args) => {
   const [open, setOpen] = React.useState(true);
 
   return (
