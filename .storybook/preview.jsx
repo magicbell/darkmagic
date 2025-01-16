@@ -1,9 +1,9 @@
 import { globalStyles, Tooltip } from '@darkmagic/react';
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 globalStyles();
 
 export const parameters = {
-  actions: { argTypesRegex: '^on.*(Click|Change|Focus|Blur|Enter|Leave).*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -23,4 +23,11 @@ export const decorators = [
       <Story />
     </Tooltip.Provider>
   ),
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    }
+  }),
 ];
+export const tags = [];//['autodocs'];

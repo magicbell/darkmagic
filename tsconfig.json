@@ -26,5 +26,11 @@
       "path": "./packages/react/tsconfig-esm.json"
     }
   ],
-  "exclude": ["**/*.stories.*", "**/*.spec.*", "**/*.test.*", "dist", "node_modules"]
+  "exclude": [
+    "**/*.stories.*",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "dist",
+    "node_modules"
+  ]
 }
