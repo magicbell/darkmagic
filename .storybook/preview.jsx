@@ -1,4 +1,5 @@
 import { globalStyles, Tooltip } from '@darkmagic/react';
+import '../styles/tailwind.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 globalStyles();
