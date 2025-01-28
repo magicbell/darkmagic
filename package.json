@@ -20,7 +20,7 @@
     "build:storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider storybook build -o dist/storybook && node .storybook/post-build.js",
     "build:playroom": "cross-env NODE_OPTIONS=--openssl-legacy-provider playroom build --config .playroom/playroom.config.cjs",
     "lint": "run-s lint:*",
-    "lint:typescript": "tsc --build",
+    "lint:typescript": "cd packages/react && tsc --build",
     "lint:eslint": "eslint --fix .",
     "test": "vitest -c scripts/vite/vite.config.js --run --coverage",
     "test:watch": "vitest -c scripts/vite/vite.config.js",
