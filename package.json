@@ -77,7 +77,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "husky": "^9.1.4",
     "identity-obj-proxy": "^3.0.0",
-    "jsdom": "^25.0.0",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.4.3",
     "npm-run-all2": "^7.0.1",
     "playroom": "^0.39.0",
