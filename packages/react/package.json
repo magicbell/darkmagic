@@ -1,46 +1,7 @@
 {
   "name": "@darkmagic/react",
   "version": "0.32.0",
-  "license": "MIT",
   "description": "Official MagicBell Design System",
-  "author": "MagicBell <bot@magicbell.io> (https://magicbell.com/)",
-  "contributors": [
-    "Stephan Meijer <stephan.meijer@gmail.com>"
-  ],
-  "type": "module",
-  "main": "./dist/cjs/index.js",
-  "types": "./dist/cjs/index.d.ts",
-  "module": "./dist/esm/index.js",
-  "exports": {
-    ".": {
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      },
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      }
-    }
-  },
-  "sideEffects": false,
-  "files": [
-    "/dist",
-    "/src"
-  ],
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "run-s clean build:*",
-    "build:cjs": "tsc --project tsconfig-cjs.json",
-    "build:esm": "tsc --project tsconfig-esm.json",
-    "start:cjs": "tsc --project tsconfig-cjs.json --watch",
-    "start:esm": "tsc --project tsconfig-esm.json --watch",
-    "start": "run-p start:*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/magicbell/darkmagic"
-  },
   "keywords": [
     "magicbell",
     "design system"
@@ -48,6 +9,330 @@
   "homepage": "https://magicbell.com",
   "bugs": {
     "url": "https://github.com/magicbell/darkmagic/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicbell/darkmagic"
+  },
+  "license": "MIT",
+  "author": "MagicBell <bot@magicbell.io> (https://magicbell.com/)",
+  "contributors": [
+    "Stephan Meijer <stephan.meijer@gmail.com>"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./components/avatar": {
+      "import": {
+        "types": "./dist/esm/components/avatar.d.ts",
+        "default": "./dist/esm/components/avatar.js"
+      }
+    },
+    "./components/badge": {
+      "import": {
+        "types": "./dist/esm/components/badge.d.ts",
+        "default": "./dist/esm/components/badge.js"
+      }
+    },
+    "./components/box": {
+      "import": {
+        "types": "./dist/esm/components/box.d.ts",
+        "default": "./dist/esm/components/box.js"
+      }
+    },
+    "./components/button": {
+      "import": {
+        "types": "./dist/esm/components/button.d.ts",
+        "default": "./dist/esm/components/button.js"
+      }
+    },
+    "./components/card": {
+      "import": {
+        "types": "./dist/esm/components/card.d.ts",
+        "default": "./dist/esm/components/card.js"
+      }
+    },
+    "./components/checkbox": {
+      "import": {
+        "types": "./dist/esm/components/checkbox.d.ts",
+        "default": "./dist/esm/components/checkbox.js"
+      }
+    },
+    "./components/code": {
+      "import": {
+        "types": "./dist/esm/components/code.d.ts",
+        "default": "./dist/esm/components/code.js"
+      }
+    },
+    "./components/color-picker": {
+      "import": {
+        "types": "./dist/esm/components/color-picker.d.ts",
+        "default": "./dist/esm/components/color-picker.js"
+      }
+    },
+    "./components/copy-button": {
+      "import": {
+        "types": "./dist/esm/components/copy-button.d.ts",
+        "default": "./dist/esm/components/copy-button.js"
+      }
+    },
+    "./components/description-list": {
+      "import": {
+        "types": "./dist/esm/components/description-list.d.ts",
+        "default": "./dist/esm/components/description-list.js"
+      }
+    },
+    "./components/dialog": {
+      "import": {
+        "types": "./dist/esm/components/dialog.d.ts",
+        "default": "./dist/esm/components/dialog.js"
+      }
+    },
+    "./components/drawer": {
+      "import": {
+        "types": "./dist/esm/components/drawer.d.ts",
+        "default": "./dist/esm/components/drawer.js"
+      }
+    },
+    "./components/flex": {
+      "import": {
+        "types": "./dist/esm/components/flex.d.ts",
+        "default": "./dist/esm/components/flex.js"
+      }
+    },
+    "./components/form-field": {
+      "import": {
+        "types": "./dist/esm/components/form-field.d.ts",
+        "default": "./dist/esm/components/form-field.js"
+      }
+    },
+    "./components/grid": {
+      "import": {
+        "types": "./dist/esm/components/grid.d.ts",
+        "default": "./dist/esm/components/grid.js"
+      }
+    },
+    "./components/icon-button": {
+      "import": {
+        "types": "./dist/esm/components/icon-button.d.ts",
+        "default": "./dist/esm/components/icon-button.js"
+      }
+    },
+    "./components/icon": {
+      "import": {
+        "types": "./dist/esm/components/icon.d.ts",
+        "default": "./dist/esm/components/icon.js"
+      }
+    },
+    "./components/input": {
+      "import": {
+        "types": "./dist/esm/components/input.d.ts",
+        "default": "./dist/esm/components/input.js"
+      }
+    },
+    "./components/kbd": {
+      "import": {
+        "types": "./dist/esm/components/kbd.d.ts",
+        "default": "./dist/esm/components/kbd.js"
+      }
+    },
+    "./components/label": {
+      "import": {
+        "types": "./dist/esm/components/label.d.ts",
+        "default": "./dist/esm/components/label.js"
+      }
+    },
+    "./components/list": {
+      "import": {
+        "types": "./dist/esm/components/list.d.ts",
+        "default": "./dist/esm/components/list.js"
+      }
+    },
+    "./components/listable": {
+      "import": {
+        "types": "./dist/esm/components/listable.d.ts",
+        "default": "./dist/esm/components/listable.js"
+      }
+    },
+    "./components/menu": {
+      "import": {
+        "types": "./dist/esm/components/menu.d.ts",
+        "default": "./dist/esm/components/menu.js"
+      }
+    },
+    "./components/mini-card": {
+      "import": {
+        "types": "./dist/esm/components/mini-card.d.ts",
+        "default": "./dist/esm/components/mini-card.js"
+      }
+    },
+    "./components/pane": {
+      "import": {
+        "types": "./dist/esm/components/pane.d.ts",
+        "default": "./dist/esm/components/pane.js"
+      }
+    },
+    "./components/popover": {
+      "import": {
+        "types": "./dist/esm/components/popover.d.ts",
+        "default": "./dist/esm/components/popover.js"
+      }
+    },
+    "./components/radio-group": {
+      "import": {
+        "types": "./dist/esm/components/radio-group.d.ts",
+        "default": "./dist/esm/components/radio-group.js"
+      }
+    },
+    "./components/required-badge": {
+      "import": {
+        "types": "./dist/esm/components/required-badge.d.ts",
+        "default": "./dist/esm/components/required-badge.js"
+      }
+    },
+    "./components/scroll-area": {
+      "import": {
+        "types": "./dist/esm/components/scroll-area.d.ts",
+        "default": "./dist/esm/components/scroll-area.js"
+      }
+    },
+    "./components/select": {
+      "import": {
+        "types": "./dist/esm/components/select.d.ts",
+        "default": "./dist/esm/components/select.js"
+      }
+    },
+    "./components/sidebar": {
+      "import": {
+        "types": "./dist/esm/components/sidebar.d.ts",
+        "default": "./dist/esm/components/sidebar.js"
+      }
+    },
+    "./components/sort-button": {
+      "import": {
+        "types": "./dist/esm/components/sort-button.d.ts",
+        "default": "./dist/esm/components/sort-button.js"
+      }
+    },
+    "./components/spinner": {
+      "import": {
+        "types": "./dist/esm/components/spinner.d.ts",
+        "default": "./dist/esm/components/spinner.js"
+      }
+    },
+    "./components/stack": {
+      "import": {
+        "types": "./dist/esm/components/stack.d.ts",
+        "default": "./dist/esm/components/stack.js"
+      }
+    },
+    "./components/switch": {
+      "import": {
+        "types": "./dist/esm/components/switch.d.ts",
+        "default": "./dist/esm/components/switch.js"
+      }
+    },
+    "./components/table": {
+      "import": {
+        "types": "./dist/esm/components/table.d.ts",
+        "default": "./dist/esm/components/table.js"
+      }
+    },
+    "./components/tabs": {
+      "import": {
+        "types": "./dist/esm/components/tabs.d.ts",
+        "default": "./dist/esm/components/tabs.js"
+      }
+    },
+    "./components/tag": {
+      "import": {
+        "types": "./dist/esm/components/tag.d.ts",
+        "default": "./dist/esm/components/tag.js"
+      }
+    },
+    "./components/text": {
+      "import": {
+        "types": "./dist/esm/components/text.d.ts",
+        "default": "./dist/esm/components/text.js"
+      }
+    },
+    "./components/textarea": {
+      "import": {
+        "types": "./dist/esm/components/textarea.d.ts",
+        "default": "./dist/esm/components/textarea.js"
+      }
+    },
+    "./components/toggle-group": {
+      "import": {
+        "types": "./dist/esm/components/toggle-group.d.ts",
+        "default": "./dist/esm/components/toggle-group.js"
+      }
+    },
+    "./components/tooltip": {
+      "import": {
+        "types": "./dist/esm/components/tooltip.d.ts",
+        "default": "./dist/esm/components/tooltip.js"
+      }
+    },
+    "./components/typography": {
+      "import": {
+        "types": "./dist/esm/components/typography.d.ts",
+        "default": "./dist/esm/components/typography.js"
+      }
+    },
+    "./components/visually-hidden": {
+      "import": {
+        "types": "./dist/esm/components/visually-hidden.d.ts",
+        "default": "./dist/esm/components/visually-hidden.js"
+      }
+    },
+    "./hooks/use-form-reset": {
+      "import": {
+        "types": "./dist/esm/hooks/use-form-reset.d.ts",
+        "default": "./dist/esm/hooks/use-form-reset.js"
+      }
+    },
+    "./hooks/use-mousetrap": {
+      "import": {
+        "types": "./dist/esm/hooks/use-mousetrap.d.ts",
+        "default": "./dist/esm/hooks/use-mousetrap.js"
+      }
+    },
+    "./hooks/use-resize-observer": {
+      "import": {
+        "types": "./dist/esm/hooks/use-resize-observer.d.ts",
+        "default": "./dist/esm/hooks/use-resize-observer.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
+    },
+    "./lib/dom": {
+      "import": {
+        "types": "./dist/esm/lib/dom.d.ts",
+        "default": "./dist/esm/lib/dom.js"
+      }
+    },
+    "./lib/stitches": {
+      "import": {
+        "types": "./dist/esm/lib/stitches.d.ts",
+        "default": "./dist/esm/lib/stitches.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "./dist/esm/index.js",
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "scripts": {
+    "build": "tshy && node scripts/postbuild.js",
+    "clean": "rimraf dist",
+    "start": "tshy --watch"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -98,9 +383,30 @@
   },
   "devDependencies": {
     "@types/react-is": "^17.0.7",
-    "react": "^18.3.0"
+    "react": "^18.3.0",
+    "sort-package-json": "^2.14.0",
+    "tshy": "^3.0.2"
   },
   "peerDependencies": {
     "react": ">= 18.3.0"
+  },
+  "tshy": {
+    "exclude": [
+      "src/**/*.stories.tsx",
+      "fixtures/**/*.ts"
+    ],
+    "dialects": [
+      "esm"
+    ],
+    "exports": [
+      "./package.json",
+      "./src/index.ts",
+      "./src/components/*.tsx",
+      "./src/hooks/use-form-reset.ts",
+      "./src/hooks/use-mousetrap.ts",
+      "./src/hooks/use-resize-observer.ts",
+      "./src/lib/dom.ts",
+      "./src/lib/stitches.ts"
+    ]
   }
 }

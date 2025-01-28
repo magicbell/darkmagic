@@ -1,15 +1,14 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import * as React from 'react';
 
-import * as fake from '~/fixtures';
+import * as fake from '../../fixtures/index.js';
+import { Avatar } from './avatar.js';
+import { Grid } from './grid.js';
+import { IconButton } from './icon-button.js';
+import { Text } from './text.js';
 
-import { Avatar } from './avatar';
-import { Grid } from './grid';
-import { IconButton } from './icon-button';
-import { Text } from './text';
-
-const meta: ComponentMeta<typeof Grid> = {
+const meta: Meta<typeof Grid> = {
   component: Grid,
   args: {
     spacing: 'xs',
@@ -19,7 +18,7 @@ const meta: ComponentMeta<typeof Grid> = {
     children: fake.listData.map((row) => (
       <React.Fragment key={row.id}>
         <Grid.Cell>
-          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author!) % 3) + 1}` as any}>{row.author}</Avatar>
         </Grid.Cell>
         <Grid.Cell>
           <Text primary={row.event} secondary={row.id} />

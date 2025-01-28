@@ -1,14 +1,14 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
+import * as fake from '../../fixtures/index.js';
+import { Avatar } from './avatar.js';
+import { IconButton } from './icon-button.js';
+import { Listable } from './listable.js';
+import { Text } from './text.js';
 
-import { Avatar } from './avatar';
-import { IconButton } from './icon-button';
-import { Listable } from './listable';
-import { Text } from './text';
-
-const meta: ComponentMeta<typeof Listable> = {
+const meta: Meta<typeof Listable> = {
   component: Listable,
   args: {
     variant: 'default',
@@ -16,7 +16,7 @@ const meta: ComponentMeta<typeof Listable> = {
     children: fake.listData.map((row) => (
       <Listable.Item key={row.id}>
         <Listable.Cell width="min">
-          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author!) % 3) + 1}` as any}>{row.author}</Avatar>
         </Listable.Cell>
         <Listable.Cell width="full">
           <Text primary={row.event} secondary={row.id} />

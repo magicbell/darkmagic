@@ -1,8 +1,7 @@
 import { Meta } from '@storybook/react';
 
-import * as fake from '~/fixtures';
-
-import { Code } from './code';
+import * as fake from '../../fixtures/index.js';
+import { Code } from './code.js';
 
 const meta: Meta = {
   component: Code,

@@ -2,11 +2,10 @@ import { TrashIcon } from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
 import React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Box } from './box';
-import { Tabs } from './tabs';
-import { Typography } from './typography';
+import * as fake from '../../fixtures/index.js';
+import { Box } from './box.js';
+import { Tabs } from './tabs.js';
+import { Typography } from './typography.js';
 
 const meta: Meta = {
   component: Tabs,
@@ -34,10 +33,10 @@ export const Basic = (args: any) => (
 
       <Box p={4}>
         <Tabs.Panel value="tab1">
-          <Typography>{fake.listData[0].event}</Typography>
+          <Typography>{fake.listData[0]!.event}</Typography>
         </Tabs.Panel>
         <Tabs.Panel value="tab2">
-          <Typography>{fake.listData[1].event}</Typography>
+          <Typography>{fake.listData[1]!.event}</Typography>
         </Tabs.Panel>
       </Box>
     </Tabs>

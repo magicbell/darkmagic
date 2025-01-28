@@ -2,9 +2,9 @@ import { QuestionMarkIcon } from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
 import React from 'react';
 
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { Tooltip } from './tooltip';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { Tooltip } from './tooltip.js';
 
 const meta: Meta = {
   component: Tooltip,

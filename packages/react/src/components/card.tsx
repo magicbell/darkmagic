@@ -1,6 +1,7 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { EnterFullScreenIcon, ExitFullScreenIcon } from '@radix-ui/react-icons';
+import { useId } from '@radix-ui/react-id';
 import * as React from 'react';
 import { isElement } from 'react-is';
 import { createHtmlPortalNode, InPortal, OutPortal } from 'react-reverse-portal';
@@ -246,6 +247,7 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledCard>, CardProps>(fu
   { children, expandable = false, variant = 'outline', gap = 'md', ...props },
   forwardedRef,
 ) {
+  const id = useId();
   const [expanded, setExpanded] = React.useState(false);
   const portalNode = React.useMemo(() => {
     if (typeof document === 'undefined') return null;
@@ -275,13 +277,18 @@ const Root = React.forwardRef<React.ElementRef<typeof StyledCard>, CardProps>(fu
 
   const body = isElement(slots.body) ? React.cloneElement(slots.body as React.ReactElement, { variant }) : null;
 
+  const aria = {
+    'aria-labelledby': id,
+    role: 'region',
+  };
+
   const pane = (
-    <StyledCard {...props} gap={gap} variant={variant} expanded={expanded} ref={composedRefs}>
+    <StyledCard {...props} {...aria} gap={gap} variant={variant} expanded={expanded} ref={composedRefs}>
       {hasHeader && (
         <StyledHeader>
           <StyledHeaderContent>
             <Flex direction="column" gap={1} flex="auto">
-              <Typography as="h2" variant="h2" color="default">
+              <Typography id={id} as="h2" variant="h2" color="default">
                 {slots.title}
               </Typography>
               {slots.description && (

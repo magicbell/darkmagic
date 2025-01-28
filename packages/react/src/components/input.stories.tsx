@@ -1,10 +1,11 @@
 import * as icons from '@radix-ui/react-icons';
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { IconButton } from './icon-button';
-import { Input } from './input';
-import { Typography } from './typography';
+import { IconButton } from './icon-button.js';
+import { Input } from './input.js';
+import { Typography } from './typography.js';
 
 const addons = {
   '-': undefined,

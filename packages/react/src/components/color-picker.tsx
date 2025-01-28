@@ -1,5 +1,6 @@
 import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import * as React from 'react';
+import { ChangeEvent } from 'react';
 import { HexColorPicker } from 'react-colorful';
 
 import { useFormReset } from '../hooks/use-form-reset.js';
@@ -258,7 +259,7 @@ export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(functi
         {...props}
         value={value?.replace('#', '')}
         // update hidden input, which will trigger the change
-        onChange={(e) => triggerChange(hiddenInputRef.current, `#${e.target.value}`)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => triggerChange(hiddenInputRef.current, `#${e.target.value}`)}
         onFocus={handleFocus}
         onBlur={handleBlur}
         ref={composedRefs}
@@ -267,7 +268,7 @@ export const ColorPicker = React.forwardRef<HTMLInputElement, InputProps>(functi
       {/* The color picker doesn't directly write to state, it updates the input, and the input triggers the change. That
        way the consumer does not see a difference between a change event triggered by input or color picker. */}
       {isPickerVisible ? (
-        <StyledColorPicker color={value} onChange={(color) => triggerChange(hiddenInputRef.current, color)} />
+        <StyledColorPicker color={value} onChange={(color: string) => triggerChange(hiddenInputRef.current, color)} />
       ) : null}
     </StyledRoot>
   );

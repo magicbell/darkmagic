@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { Select } from './select';
+import { Select } from './select.js';
 
 const options = Array.from({ length: 20 }).map((_, idx) => `option ${idx + 1}`);
 

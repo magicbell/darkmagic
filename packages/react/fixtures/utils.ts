@@ -6,7 +6,7 @@ export const uuidv4 = (() => {
     const d2 = (Math.random() * 0xffffffff) | 0;
     const d3 = (Math.random() * 0xffffffff) | 0;
     return (
-      lut[d0 & 0xff] +
+      lut[d0 & 0xff]! +
       lut[(d0 >> 8) & 0xff] +
       lut[(d0 >> 16) & 0xff] +
       lut[(d0 >> 24) & 0xff] +

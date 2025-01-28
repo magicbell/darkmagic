@@ -1,11 +1,12 @@
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { Checkbox } from './checkbox';
-import { FormField } from './form-field';
-import { Input } from './input';
-import { RadioGroup } from './radio-group';
-import { Select } from './select';
-import { TextArea } from './textarea';
+import { Checkbox } from './checkbox.js';
+import { FormField } from './form-field.js';
+import { Input } from './input.js';
+import { RadioGroup } from './radio-group.js';
+import { Select } from './select.js';
+import { TextArea } from './textarea.js';
 
 const mapping = {
   input: <Input />,
