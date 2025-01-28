@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 
-import { Label } from './label';
+import { Label } from './label.js';
 
 const meta: Meta = {
   component: Label,

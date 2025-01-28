@@ -215,7 +215,7 @@ function addLineNumbers(source: HighlightResult) {
   let inBlockComment = false;
   for (let i = 0; i < lines.length; i++) {
     const num = `<div class="hljs-ln-line hljs-ln-n" data-line-number="${i + 1}"></div>`;
-    let line = lines[i];
+    let line = lines[i]!;
 
     // block comments were rendered in a single span, and now divided.
     if (!inBlockComment && line.trim().startsWith('<span class="hljs-comment">/**')) {

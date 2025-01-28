@@ -1,13 +1,13 @@
 import { PlusIcon } from '@radix-ui/react-icons';
-import { ComponentStoryFn, Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Button } from './button';
-import { Card } from './card';
-import { Code } from './code';
-import { IconButton } from './icon-button';
-import { Tabs } from './tabs';
+import * as fake from '../../fixtures/index.js';
+import { Button } from './button.js';
+import { Card } from './card.js';
+import { Code } from './code.js';
+import { IconButton } from './icon-button.js';
+import { Tabs } from './tabs.js';
 
 const meta: Meta = {
   component: Card,
@@ -24,7 +24,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Basic: ComponentStoryFn<any> = ({ padding, actions, tabs, scroll, ...args }) => (
+export const Basic: StoryFn<any> = ({ padding, actions, tabs, scroll, ...args }) => (
   <Tabs defaultValue="2">
     <Card {...args}>
       <Card.Title>{args.title}</Card.Title>

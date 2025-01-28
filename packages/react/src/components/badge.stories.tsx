@@ -1,7 +1,7 @@
 import * as icons from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
 
-import { Badge } from './badge';
+import { Badge } from './badge.js';
 
 const iconNames = Object.keys(icons) as (keyof typeof icons)[];
 const iconMap: Record<string, Element | undefined> = {

@@ -1,14 +1,14 @@
 import { MixerHorizontalIcon } from '@radix-ui/react-icons';
-import { ComponentStoryFn, Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
-import { Flex } from './flex';
-import { FormField } from './form-field';
-import { IconButton } from './icon-button';
-import { Input } from './input';
-import { Popover } from './popover';
+import { Flex } from './flex.js';
+import { FormField } from './form-field.js';
+import { IconButton } from './icon-button.js';
+import { Input } from './input.js';
+import { Popover } from './popover.js';
 
-const Component: ComponentStoryFn<any> = (args) => (
+const Component: StoryFn<any> = (args) => (
   <Popover open={args.open}>
     <Popover.Trigger>
       <IconButton label="Update sender" icon={MixerHorizontalIcon} />
@@ -50,7 +50,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Basic: ComponentStoryFn<any> = Component;
+export const Basic: StoryFn<any> = Component;
 Basic.args = { open: true };
 
 export const Left = Basic.bind({});

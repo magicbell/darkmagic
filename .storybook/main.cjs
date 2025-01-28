@@ -1,6 +1,10 @@
 const { mergeConfig } = require('vite');
 const tsConfig = require('../tsconfig.json');
-const { resolve } = require('path');
+const {
+  resolve,
+  dirname,
+  join
+} = require('path');
 
 const cleanPath = (path) => path.replace(/\/\*$/, '');
 const alias = Object.entries(tsConfig.compilerOptions.paths).reduce(
@@ -17,15 +21,22 @@ module.exports = {
   stories: [
     {
       directory: '../packages/react/src/components',
-      files: '**/*.stories.@(js|jsx|ts|tsx|mdx)',
+      files: '**/*.stories.@(js|jsx|ts|tsx)',
       titlePrefix: 'primitives',
     },
   ],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-  framework: '@storybook/react',
-  core: {
-    builder: '@storybook/builder-vite',
+
+  addons: [
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-themes")
+  ],
+
+  framework: {
+    name: getAbsolutePath("@storybook/react-vite"),
+    options: {},
   },
+
   features: {
     storyStoreV7: true,
     previewCsfV3: true,
@@ -43,6 +54,7 @@ module.exports = {
       build: mergeConfig(config.build, { minify: false }, false),
     });
   },
+
   managerWebpack: (config, { configType }) => {
     if (configType === 'PRODUCTION') {
       config.output.publicPath = baseUrl;
@@ -50,6 +62,7 @@ module.exports = {
 
     return config;
   },
+
   managerHead: (head, { configType }) => {
     const injections = [
       `<link rel="shortcut icon" type="image/x-icon" href="${baseUrl}favicon.ico">`,
@@ -60,4 +73,14 @@ module.exports = {
       ? `${head}${injections.join('')}`
       : head
   },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, "package.json")));
+}

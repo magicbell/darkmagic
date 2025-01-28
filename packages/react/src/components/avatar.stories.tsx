@@ -1,8 +1,9 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { Avatar } from './avatar';
-import { Icon } from './icon';
+import { Avatar } from './avatar.js';
+import { Icon } from './icon.js';
 
 const meta: Meta = {
   component: Avatar,

@@ -14,18 +14,18 @@ import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
 import * as React from 'react';
 
-import { ChartIcon } from '../icons/chart-icon';
-import { LogIcon } from '../icons/log-icon';
-import StatusIcon from '../icons/status-icon';
-import { Avatar } from './avatar';
-import { Box } from './box';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { Kbd } from './kbd';
-import { Menu } from './menu';
-import { MiniCard } from './mini-card';
-import { Sidebar } from './sidebar';
-import { Text } from './text';
+import { ChartIcon } from '../icons/chart-icon.js';
+import { LogIcon } from '../icons/log-icon.js';
+import StatusIcon from '../icons/status-icon.js';
+import { Avatar } from './avatar.js';
+import { Box } from './box.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { Kbd } from './kbd.js';
+import { Menu } from './menu.js';
+import { MiniCard } from './mini-card.js';
+import { Sidebar } from './sidebar.js';
+import { Text } from './text.js';
 
 const options = {
   compose: Pencil2Icon,

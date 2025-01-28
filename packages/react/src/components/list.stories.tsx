@@ -1,12 +1,12 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Avatar } from './avatar';
-import { IconButton } from './icon-button';
-import { List } from './list';
-import { Text } from './text';
+import * as fake from '../../fixtures/index.js';
+import { Avatar } from './avatar.js';
+import { IconButton } from './icon-button.js';
+import { List } from './list.js';
+import { Text } from './text.js';
 
 const meta: Meta = {
   component: List,
@@ -15,7 +15,7 @@ const meta: Meta = {
     children: fake.listData.map((row) => (
       <List.Item key={row.id}>
         <List.Cell width="min">
-          <Avatar color={`accent-${(fake.names.indexOf(row.author) % 3) + 1}` as any}>{row.author}</Avatar>
+          <Avatar color={`accent-${(fake.names.indexOf(row.author!) % 3) + 1}` as any}>{row.author}</Avatar>
         </List.Cell>
         <List.Cell width="full">
           <Text primary={row.event} secondary={row.id} />

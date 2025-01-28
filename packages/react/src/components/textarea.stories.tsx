@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 
-import { TextArea } from './textarea';
+import { TextArea } from './textarea.js';
 
 const meta: Meta = {
   component: TextArea,

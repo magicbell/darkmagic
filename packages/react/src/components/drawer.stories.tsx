@@ -1,16 +1,16 @@
 import { PlusIcon } from '@radix-ui/react-icons';
 import { action } from '@storybook/addon-actions';
-import { ComponentStoryFn, Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Box } from './box';
-import { Button } from './button';
-import { Code } from './code';
-import { Drawer } from './drawer';
-import { Flex } from './flex';
-import { IconButton } from './icon-button';
-import { Tabs } from './tabs';
+import * as fake from '../../fixtures/index.js';
+import { Box } from './box.js';
+import { Button } from './button.js';
+import { Code } from './code.js';
+import { Drawer } from './drawer.js';
+import { Flex } from './flex.js';
+import { IconButton } from './icon-button.js';
+import { Tabs } from './tabs.js';
 
 const meta: Meta = {
   component: Drawer,
@@ -32,7 +32,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Basic: ComponentStoryFn<any> = (args) => (
+export const Basic: StoryFn<any> = (args) => (
   <Drawer variant={args.variant} width={args.width}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
@@ -47,7 +47,7 @@ Basic.args = {
   variant: 'inline',
 };
 
-export const Overlay: ComponentStoryFn<any> = (args) => (
+export const Overlay: StoryFn<any> = (args) => (
   <Drawer variant={args.variant}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
@@ -62,7 +62,7 @@ Overlay.args = {
   variant: 'overlay',
 };
 
-export const LeftAligned: ComponentStoryFn<any> = (args) => (
+export const LeftAligned: StoryFn<any> = (args) => (
   <Drawer variant={args.variant} align={args.align}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
@@ -78,7 +78,7 @@ LeftAligned.args = {
   align: 'left',
 };
 
-export const ControlledOpen: ComponentStoryFn<any> = (args) => (
+export const ControlledOpen: StoryFn<any> = (args) => (
   <Drawer variant={args.variant} align={args.align} open={args.open}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
@@ -94,7 +94,7 @@ ControlledOpen.args = {
   open: true,
 };
 
-export const WithActions: ComponentStoryFn<any> = (args) => (
+export const WithActions: StoryFn<any> = (args) => (
   <Tabs defaultValue="2">
     <Drawer
       open={args.open}
@@ -147,7 +147,7 @@ WithActions.args = {
   align: 'right',
 };
 
-export const WithTabs: ComponentStoryFn<any> = (args) => (
+export const WithTabs: StoryFn<any> = (args) => (
   <Tabs defaultValue="2">
     <Drawer variant={args.variant}>
       <Drawer.Title>{args.title}</Drawer.Title>
@@ -186,7 +186,7 @@ WithTabs.args = {
   variant: 'inline',
 };
 
-export const WithCode: ComponentStoryFn<any> = (args) => (
+export const WithCode: StoryFn<any> = (args) => (
   <Drawer variant={args.variant}>
     <Drawer.Title>{args.title}</Drawer.Title>
     <Drawer.Description>{args.description}</Drawer.Description>
@@ -209,7 +209,7 @@ WithCode.args = {
   variant: 'inline',
 };
 
-export const EmptyShell: ComponentStoryFn<any> = (args) => (
+export const EmptyShell: StoryFn<any> = (args) => (
   <Drawer variant={args.variant} open onClickOutside={action('click outside')}>
     <div>custom child content</div>
   </Drawer>

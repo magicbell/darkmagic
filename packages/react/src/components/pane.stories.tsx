@@ -1,13 +1,13 @@
 import { PlusIcon } from '@radix-ui/react-icons';
-import { ComponentStoryFn, Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
+import * as React from 'react';
 
-import * as fake from '~/fixtures';
-
-import { Button } from './button';
-import { Code } from './code';
-import { IconButton } from './icon-button';
-import { Pane } from './pane';
-import { Tabs } from './tabs';
+import * as fake from '../../fixtures/index.js';
+import { Button } from './button.js';
+import { Code } from './code.js';
+import { IconButton } from './icon-button.js';
+import { Pane } from './pane.js';
+import { Tabs } from './tabs.js';
 
 const meta: Meta = {
   component: Pane,
@@ -24,7 +24,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const Basic: ComponentStoryFn<any> = ({ padding, scroll, tabs, actions, ...args }) => (
+export const Basic: StoryFn<any> = ({ padding, scroll, tabs, actions, ...args }) => (
   <Tabs defaultValue="2">
     <Pane {...args}>
       <Pane.Title>{args.title}</Pane.Title>
@@ -85,7 +85,7 @@ Expandable.args = {
   expandable: true,
 };
 
-export const WithActions: ComponentStoryFn<any> = Basic.bind({});
+export const WithActions: StoryFn<any> = Basic.bind({});
 
 WithActions.args = {
   title: 'Pane Title',
@@ -95,7 +95,7 @@ WithActions.args = {
   actions: true,
 };
 
-export const WithTabs: ComponentStoryFn<any> = Basic.bind({});
+export const WithTabs: StoryFn<any> = Basic.bind({});
 
 WithTabs.args = {
   title: 'Pane Title',

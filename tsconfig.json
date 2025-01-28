@@ -17,8 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "~/fixtures": ["fixtures"],
-      "~/sb-decorators": [".storybook/decorators"],
-      "@darkmagic/react": ["packages/react/src"]
+      "~/sb-decorators": [".storybook/decorators"]
     }
   },
   "references": [
@@ -26,5 +25,11 @@
       "path": "./packages/react/tsconfig-esm.json"
     }
   ],
-  "exclude": ["**/*.stories.*", "**/*.spec.*", "**/*.test.*", "dist", "node_modules"]
+  "exclude": [
+    "**/*.stories.*",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "dist",
+    "node_modules"
+  ]
 }

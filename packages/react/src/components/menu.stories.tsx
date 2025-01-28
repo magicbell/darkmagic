@@ -1,10 +1,11 @@
 import { CodeIcon, GearIcon, Pencil2Icon, PersonIcon, PlusIcon } from '@radix-ui/react-icons';
 import { Meta } from '@storybook/react';
+import * as React from 'react';
 
-import { ChartIcon } from '../icons/chart-icon';
-import { LogIcon } from '../icons/log-icon';
-import { IconButton } from './icon-button';
-import { Menu } from './menu';
+import { ChartIcon } from '../icons/chart-icon.js';
+import { LogIcon } from '../icons/log-icon.js';
+import { IconButton } from './icon-button.js';
+import { Menu } from './menu.js';
 
 const options = {
   compose: Pencil2Icon,
