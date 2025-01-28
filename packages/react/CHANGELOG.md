@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.33.0
+
+### Minor Changes
+
+- [`51fdc89`](https://github.com/magicbell/darkmagic/commit/51fdc898512acb4769a781cc901b45ea3f451a48) Thanks [@smeijer](https://github.com/smeijer)! - assign region role to cards
+
 ## 0.32.1
 
 ### Patch Changes
