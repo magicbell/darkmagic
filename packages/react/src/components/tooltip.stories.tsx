@@ -38,7 +38,7 @@ export const Top = { args: { side: 'top' } };
 
 export const Bottom = { args: { side: 'bottom' } };
 
-export const OnToggle = (args) => (
+export const OnToggle = (args: any) => (
   <ToggleGroup size="md" type="single">
     <Tooltip {...args}>
       {/* Wrapping the children in Flex prevents clash on radix-uis internal `data-state` prop */}
