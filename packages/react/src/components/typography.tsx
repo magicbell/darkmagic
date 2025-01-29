@@ -62,6 +62,10 @@ const StyledTypography = styled('div', {
       caption: {
         font: '$caption',
       },
+
+      mono: {
+        font: '$mono',
+      },
     },
 
     color: {
