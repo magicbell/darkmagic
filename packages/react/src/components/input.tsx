@@ -9,7 +9,6 @@ const StyledRoot = styled('div', {
   fontFamily: 'inherit',
   width: '100%',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-  fontVariantNumeric: 'tabular-nums',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -34,6 +33,11 @@ const StyledRoot = styled('div', {
   '&:-webkit-autofill::first-line': { color: '$text-highlight' },
 
   variants: {
+    numeric: {
+      true: {
+        fontVariantNumeric: 'tabular-nums',
+      },
+    },
     size: {
       sm: {
         height: '$8',
@@ -67,7 +71,7 @@ const StyledInput = styled('input', {
   width: '100%',
   height: '100%',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-  fontVariantNumeric: 'tabular-nums',
+  fontVariantNumeric: 'inherit',
   backgroundColor: 'transparent',
   color: 'inherit',
   padding: '0 $1',

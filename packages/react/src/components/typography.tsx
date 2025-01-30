@@ -6,10 +6,14 @@ const StyledTypography = styled('div', {
   lineHeight: '1',
   margin: '0',
   fontWeight: 400,
-  fontVariantNumeric: 'tabular-nums',
   display: 'block',
 
   variants: {
+    numeric: {
+      true: {
+        fontVariantNumeric: 'tabular-nums',
+      },
+    },
     noWrap: {
       true: {
         whiteSpace: 'nowrap',

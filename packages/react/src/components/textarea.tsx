@@ -15,7 +15,6 @@ const StyledTextArea = styled('textarea', {
   width: '100%',
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
   boxShadow: 'none',
-  fontVariantNumeric: 'tabular-nums',
   position: 'relative',
   resize: 'none',
   border: '1px solid transparent',
@@ -39,6 +38,11 @@ const StyledTextArea = styled('textarea', {
   },
 
   variants: {
+    numeric: {
+      true: {
+        fontVariantNumeric: 'tabular-nums',
+      },
+    },
     size: {
       xs: {
         minHeight: '$10',
