@@ -1,5 +1,21 @@
 # @darkmagic/react
 
+## 0.34.0
+
+### Minor Changes
+
+- [`9342408`](https://github.com/magicbell/darkmagic/commit/93424089e92f6ff3be21d3f579e6777e9206eeea) Thanks [@smeijer](https://github.com/smeijer)! - support opting out of inter font
+
+- [`02f613d`](https://github.com/magicbell/darkmagic/commit/02f613dc83b723677e7609f30918f371eba9869c) Thanks [@smeijer](https://github.com/smeijer)! - add typography variant mono
+
+- [`771e01e`](https://github.com/magicbell/darkmagic/commit/771e01e772b985d3828bedabdb9415e7b681cc50) Thanks [@smeijer](https://github.com/smeijer)! - move tabular nums to a variant
+
+### Patch Changes
+
+- [`975cd05`](https://github.com/magicbell/darkmagic/commit/975cd0588e9599b0b583f676e617fa714999b005) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `react-reverse-portal` to `^2.2.0`.
+
 ## 0.33.0
 
 ### Minor Changes
