@@ -97,7 +97,7 @@ const stitches = createStitches({
     },
     fonts: {
       sans: `Inter, sans-serif`,
-      serif: `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
+      serif: `Inter, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
       mono: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
     },
     fontWeights: {
@@ -285,32 +285,46 @@ const stitches = createStitches({
     font: (variant: string) => {
       const variants = {
         'heading-lg': {
-          font: '700 1.5rem/1.5 Inter, sans-serif',
-          letterSpacing: 0,
+          fontWeight: 700,
+          fontSize: '$xl',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$serif',
         },
         'heading-md': {
-          font: '700 1.125rem/1.5 Inter, sans-serif',
-          letterSpacing: 0,
+          fontWeight: 700,
+          fontSize: '$lg',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$serif',
         },
         'body-default': {
-          font: '400 1rem/1.5 Inter, sans-serif',
-          letterSpacing: '-0.0125rem',
+          fontWeight: 400,
+          fontSize: '$md',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$sans',
         },
         'body-small': {
-          font: '400 0.875rem/1.5 Inter, sans-serif',
-          letterSpacing: '-0.0125rem',
+          fontWeight: 400,
+          fontSize: '$sm',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$sans',
         },
         'body-small-bold': {
-          font: '600 0.875rem/1.5 Inter, sans-serif',
-          letterSpacing: '-0.005625rem',
+          fontWeight: 600,
+          fontSize: '$sm',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$sans',
         },
         caption: {
-          font: '600 0.8125rem/1.5 Inter, sans-serif',
-          letterSpacing: '-0.005625rem',
+          fontWeight: 600,
+          fontSize: '$xs',
+          lineHeight: '$normal',
+          fontFamily: '$fonts$sans',
         },
         mono: {
-          font: '400 0.8125rem/1.4 Fira Code, monospace',
-          letterSpacing: '0',
+          fontWeight: 400,
+          fontSize: '$xs',
+          lineHeight: '$snug',
+          fontFamily: '$fonts$mono',
         },
       };
 
@@ -446,51 +460,57 @@ export const reset: Stitches['reset'] = stitches['reset'];
 export const styled: Stitches['styled'] = stitches['styled'];
 export const theme: Stitches['theme'] = stitches['theme'];
 
-export const globalStyles = globalCss({
-  ...cssReset,
-  '@import': [
-    'url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap")',
-    'url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap")',
-  ],
-  body: {
-    background: '$bg-app',
-    color: '$text-default',
-    fontFamily: 'inter',
-    '-webkit-font-smoothing': 'antialiased',
+export const globalStyles = (options: { noFonts?: boolean } = {}) => {
+  const imports = [];
 
-    '& [data-scroll]::-webkit-scrollbar': {
-      width: '$2',
-      height: '$2',
-      backgroundColor: 'transparent',
-    },
+  if (!options.noFonts) {
+    imports.push('url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap")');
+    imports.push('url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap")');
+  }
 
-    '& [data-scroll]::-webkit-scrollbar-thumb': {
-      borderRadius: '$base',
-      backgroundColor: '$bg-default',
-    },
+  return globalCss({
+    ...cssReset,
+    '@import': imports,
+    body: {
+      background: '$bg-app',
+      color: '$text-default',
+      fontFamily: options.noFonts ? undefined : 'inter',
+      '-webkit-font-smoothing': 'antialiased',
 
-    '& [data-scroll]::-webkit-scrollbar-track': {
-      padding: 2,
-      backgroundColor: 'transparent',
-    },
+      '& [data-scroll]::-webkit-scrollbar': {
+        width: '$2',
+        height: '$2',
+        backgroundColor: 'transparent',
+      },
 
-    '& [data-scroll="y"]': {
-      overflowY: 'auto',
-    },
+      '& [data-scroll]::-webkit-scrollbar-thumb': {
+        borderRadius: '$base',
+        backgroundColor: '$bg-default',
+      },
 
-    '& [data-scroll="x"]': {
-      overflowX: 'auto',
-    },
+      '& [data-scroll]::-webkit-scrollbar-track': {
+        padding: 2,
+        backgroundColor: 'transparent',
+      },
 
-    '& [data-scroll="xy"]': {
-      overflow: 'auto',
-    },
+      '& [data-scroll="y"]': {
+        overflowY: 'auto',
+      },
 
-    '[data-radix-popper-content-wrapper]': {
-      zIndex: '999 !important',
+      '& [data-scroll="x"]': {
+        overflowX: 'auto',
+      },
+
+      '& [data-scroll="xy"]': {
+        overflow: 'auto',
+      },
+
+      '[data-radix-popper-content-wrapper]': {
+        zIndex: '999 !important',
+      },
     },
-  },
-});
+  })();
+};
 
 export function useMatchMedia(key: keyof typeof config.media) {
   const media = config.media[key];
