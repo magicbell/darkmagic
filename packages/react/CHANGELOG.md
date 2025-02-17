@@ -1,5 +1,13 @@
 # @darkmagic/react
 
+## 0.34.1
+
+### Patch Changes
+
+- [`9d00145`](https://github.com/magicbell/darkmagic/commit/9d001451876895aec938a2a2301bff03abc72e83) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.5.0`.
+
 ## 0.34.0
 
 ### Minor Changes
