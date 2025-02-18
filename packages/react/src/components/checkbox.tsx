@@ -48,6 +48,20 @@ const StyledCheckbox = styled(CheckboxPrimitive.Root, {
   '&[data-state="checked"]': { borderColor: '$border-highlight' },
 
   variants: {
+    size: {
+      xs: {
+        width: '$3',
+        height: '$3',
+      },
+      sm: {
+        width: '$4',
+        height: '$4',
+      },
+      md: {
+        width: '$6',
+        height: '$6',
+      },
+    },
     state: {
       initial: {},
       invalid: {
@@ -70,6 +84,91 @@ const Label = styled('label', {
   font: '$body-default',
   color: '$text-default',
   userSelect: 'none',
+
+  variants: {
+    size: {
+      xs: {
+        fontSize: '$3xs',
+      },
+      sm: {
+        fontSize: '$xs',
+      },
+      md: {
+        fontSize: '$md',
+      },
+    },
+  },
+});
+
+const Container = styled('div', {
+  display: 'flex',
+  gap: '$2',
+  alignItems: 'center',
+
+  variants: {
+    size: {
+      xs: {},
+      sm: {},
+      md: {},
+    },
+    variant: {
+      button: {
+        display: 'inline-flex',
+        borderRadius: '$base',
+
+        '& > div:first-child': {
+          display: 'flex',
+        },
+
+        '&:hover, &:hover label': {
+          cursor: 'pointer',
+          backgroundColor: '$bg-hover',
+        },
+      },
+      checkbox: {},
+    },
+  },
+  compoundVariants: [
+    {
+      size: 'xs',
+      variant: 'button',
+      css: {
+        gap: '$1',
+        '& > div:first-child': {
+          padding: '$1',
+        },
+        '& label': {
+          paddingRight: '$1',
+        },
+      },
+    },
+    {
+      size: 'sm',
+      variant: 'button',
+      css: {
+        gap: '$1',
+        '& > div:first-child': {
+          padding: '$2',
+        },
+        '& label': {
+          paddingRight: '$2',
+        },
+      },
+    },
+    {
+      size: 'md',
+      variant: 'button',
+      css: {
+        gap: '$2',
+        '& > div:first-child': {
+          padding: '$2',
+        },
+        '& label': {
+          paddingRight: '$2',
+        },
+      },
+    },
+  ],
 });
 
 type StyledCheckboxProps = ComponentProps<typeof StyledCheckbox>;
@@ -116,17 +215,20 @@ type CheckboxProps = {
    * tokens, media queries, nesting and token-aware values.
    */
   css?: CSS;
+
+  size?: 'sm' | 'md';
+  variant?: 'button' | 'checkbox';
 } & StyledCheckboxProps;
 
 export const Checkbox = React.forwardRef<React.ElementRef<typeof StyledCheckbox>, CheckboxProps>(function Checkbox(
-  { children, state = 'initial', required = false, disabled = false, ...props },
+  { children, state = 'initial', required = false, disabled = false, size = 'md', variant = 'checkbox', ...props },
   ref,
 ) {
   const generatedId = useId();
   const id = props.id || generatedId;
 
   const checkbox = (
-    <StyledCheckbox id={id} state={state} disabled={disabled} required={required} {...props} ref={ref}>
+    <StyledCheckbox id={id} state={state} disabled={disabled} required={required} size={size} {...props} ref={ref}>
       <StyledIndicator>
         <CheckIcon />
       </StyledIndicator>
@@ -138,12 +240,14 @@ export const Checkbox = React.forwardRef<React.ElementRef<typeof StyledCheckbox>
   }
 
   return (
-    <Flex gap={2}>
-      {checkbox}
+    <Container variant={variant} size={size}>
+      <div>{checkbox}</div>
       <Flex gap={1}>
-        <Label htmlFor={id}>{children}</Label>
+        <Label htmlFor={id} size={size}>
+          {children}
+        </Label>
         {required ? <RequiredBadge /> : null}
       </Flex>
-    </Flex>
+    </Container>
   );
 });

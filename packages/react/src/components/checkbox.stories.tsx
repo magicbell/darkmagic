@@ -7,12 +7,16 @@ const meta: Meta = {
   args: {
     children: 'Accept terms and conditions.',
     state: 'initial',
+    size: 'md',
+    variant: 'checkbox',
   },
   argTypes: {
     children: { name: 'label', control: 'text' },
     checked: { control: 'boolean' },
     required: { control: 'boolean' },
     state: { control: 'select' },
+    size: { control: 'select', options: ['xs', 'sm', 'md'] },
+    variant: { control: 'select', options: ['checkbox', 'button'] },
     onCheckedChange: { action: 'onCheckedChange', table: { category: 'events' } },
   },
 };
