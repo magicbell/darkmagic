@@ -1,5 +1,17 @@
 # @darkmagic/react
 
+## 0.35.0
+
+### Minor Changes
+
+- [`8b47e9c`](https://github.com/magicbell/darkmagic/commit/8b47e9ce142dfcf3e0b0528c4bd883bcd1d8f341) Thanks [@smeijer](https://github.com/smeijer)! - add button and size variants to checkbox
+
+### Patch Changes
+
+- [`9d00145`](https://github.com/magicbell/darkmagic/commit/9d001451876895aec938a2a2301bff03abc72e83) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `prettier` to `^3.5.0`.
+
 ## 0.34.0
 
 ### Minor Changes
