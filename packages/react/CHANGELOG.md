@@ -1,5 +1,15 @@
 # @darkmagic/react
 
+## 0.36.0
+
+### Minor Changes
+
+- [`b018100`](https://github.com/magicbell/darkmagic/commit/b0181007e79c51fa6c37c60156d672f2ffb250b4) Thanks [@smeijer](https://github.com/smeijer)! - Improves the checkbox component with the following changes:
+
+  - Checkbox is now wrapped in a Label, so that clicking gaps still toggles it
+  - Added the onClickLabel event, to distinguish clicking the label from the checkbox
+  - Added the onMouseEnter and onMouseLeave events, for custom hover actions
+
 ## 0.35.0
 
 ### Minor Changes
