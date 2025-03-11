@@ -1,6 +1,5 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
-import { useId } from '@radix-ui/react-id';
 import * as React from 'react';
 
 import { ComponentProps, CSS, styled } from '../lib/stitches.js';
@@ -80,7 +79,7 @@ const StyledIndicator = styled(CheckboxPrimitive.Indicator, {
   width: '100%',
 });
 
-const Label = styled('label', {
+const Label = styled('div', {
   font: '$body-default',
   color: '$text-default',
   userSelect: 'none',
@@ -97,10 +96,16 @@ const Label = styled('label', {
         fontSize: '$md',
       },
     },
+
+    noWrap: {
+      true: {
+        whiteSpace: 'nowrap',
+      },
+    },
   },
 });
 
-const Container = styled('div', {
+const Container = styled('label', {
   display: 'flex',
   gap: '$2',
   alignItems: 'center',
@@ -218,17 +223,45 @@ type CheckboxProps = {
 
   size?: 'sm' | 'md';
   variant?: 'button' | 'checkbox';
-} & StyledCheckboxProps;
+  /**
+   * When `true`, the label will not wrap to the next line.
+   */
+  noWrap?: boolean;
+  /**
+   * Triggered when the mouse enters the checkboxes surrounding label element
+   * @param event
+   */
+  onMouseEnter?: (event: React.MouseEvent<HTMLLabelElement>) => void;
+  /**
+   * Triggered when the mouse leaves the checkboxes surrounding label element.
+   * @param event
+   */
+  onMouseLeave?: (event: React.MouseEvent<HTMLLabelElement>) => void;
+  /**
+   * Triggered when clicking the label, but not the checkbox itself.
+   * @param event
+   */
+  onClickLabel?: (event: React.MouseEvent<HTMLElement>) => void;
+} & Omit<StyledCheckboxProps, 'onMouseEnter' | 'onMouseLeave'>;
 
 export const Checkbox = React.forwardRef<React.ElementRef<typeof StyledCheckbox>, CheckboxProps>(function Checkbox(
-  { children, state = 'initial', required = false, disabled = false, size = 'md', variant = 'checkbox', ...props },
+  {
+    children,
+    state = 'initial',
+    required = false,
+    disabled = false,
+    size = 'md',
+    variant = 'checkbox',
+    noWrap = false,
+    onMouseEnter,
+    onMouseLeave,
+    onClickLabel,
+    ...props
+  },
   ref,
 ) {
-  const generatedId = useId();
-  const id = props.id || generatedId;
-
   const checkbox = (
-    <StyledCheckbox id={id} state={state} disabled={disabled} required={required} size={size} {...props} ref={ref}>
+    <StyledCheckbox state={state} disabled={disabled} required={required} size={size} {...props} ref={ref}>
       <StyledIndicator>
         <CheckIcon />
       </StyledIndicator>
@@ -240,10 +273,10 @@ export const Checkbox = React.forwardRef<React.ElementRef<typeof StyledCheckbox>
   }
 
   return (
-    <Container variant={variant} size={size}>
+    <Container as="label" variant={variant} size={size} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div>{checkbox}</div>
       <Flex gap={1}>
-        <Label htmlFor={id} size={size}>
+        <Label as="div" size={size} noWrap={noWrap} onClick={onClickLabel}>
           {children}
         </Label>
         {required ? <RequiredBadge /> : null}

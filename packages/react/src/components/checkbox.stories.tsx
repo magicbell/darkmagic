@@ -18,6 +18,10 @@ const meta: Meta = {
     size: { control: 'select', options: ['xs', 'sm', 'md'] },
     variant: { control: 'select', options: ['checkbox', 'button'] },
     onCheckedChange: { action: 'onCheckedChange', table: { category: 'events' } },
+    onClickLabel: { action: 'onClickLabel', table: { category: 'events' } },
+    onMouseEnter: { action: 'onMouseEnter', table: { category: 'events' } },
+    onMouseLeave: { action: 'onMouseLeave', table: { category: 'events' } },
+    noWrap: { control: 'boolean' },
   },
 };
 
