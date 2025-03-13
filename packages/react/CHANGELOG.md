@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.37.0
+
+### Minor Changes
+
+- [`0978431`](https://github.com/magicbell/darkmagic/commit/09784310e9d1afb8ce5b3a7848859280714a74ba) Thanks [@smeijer](https://github.com/smeijer)! - fix: add right padding on checkbox button variant
+
 ## 0.36.0
 
 ### Minor Changes
