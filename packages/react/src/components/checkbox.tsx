@@ -142,7 +142,7 @@ const Container = styled('label', {
         '& > div:first-child': {
           padding: '$1',
         },
-        '& label': {
+        '& > div:last-child': {
           paddingRight: '$1',
         },
       },
@@ -155,7 +155,7 @@ const Container = styled('label', {
         '& > div:first-child': {
           padding: '$2',
         },
-        '& label': {
+        '& > div:last-child': {
           paddingRight: '$2',
         },
       },
@@ -168,7 +168,7 @@ const Container = styled('label', {
         '& > div:first-child': {
           padding: '$2',
         },
-        '& label': {
+        '& > div:last-child': {
           paddingRight: '$2',
         },
       },
