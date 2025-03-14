@@ -3139,15 +3139,15 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
+"@types/react-dom@^18.0.0 || ^19.0.0":
+  version "19.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
+  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
+
 "@types/react-dom@^18.3.0":
   version "18.3.5"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.5.tgz#45f9f87398c5dcea085b715c58ddcf1faf65f716"
   integrity sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==
-
-"@types/react-dom@^19.0.4":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
-  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
 
 "@types/react-is@^17.0.7":
   version "17.0.7"
@@ -3165,19 +3165,19 @@
     "@types/scheduler" "^0.16"
     csstype "^3.0.2"
 
+"@types/react@^18.0.0 || ^19.0.0":
+  version "19.0.10"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.10.tgz#d0c66dafd862474190fe95ce11a68de69ed2b0eb"
+  integrity sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==
+  dependencies:
+    csstype "^3.0.2"
+
 "@types/react@^18.3.0":
   version "18.3.18"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.18.tgz#9b382c4cd32e13e463f97df07c2ee3bbcd26904b"
   integrity sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==
   dependencies:
     "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/react@^19.0.10":
-  version "19.0.10"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.10.tgz#d0c66dafd862474190fe95ce11a68de69ed2b0eb"
-  integrity sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==
-  dependencies:
     csstype "^3.0.2"
 
 "@types/resolve@^1.20.2":
@@ -7964,10 +7964,10 @@ pkg-types@^1.2.1:
     mlly "^1.7.2"
     pathe "^1.1.2"
 
-playroom@^0.40.0:
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.40.0.tgz#579b979b8fd2ddb7baa594677901db9f08146ce9"
-  integrity sha512-C6z2/c/9gXwntCokOxAojWKHVWrTalzsd+PM5vskT4U4PpzrtN/A2c6TtZYvqpWEyWSME1i3IgWH4ljmGD+obA==
+playroom@^0.41.0:
+  version "0.41.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.41.0.tgz#f1bd5ca2ca4f9b8a64049cb489e26ca2a60a7044"
+  integrity sha512-qnxeAVG0SNXEtu905QeR5/ch8RA54yA1YUON+K5sm+Rv8sOJlhl9hf0WY89+XZDGievoRB0sgvVaJCM5mmbXcw==
   dependencies:
     "@babel/core" "^7.20.5"
     "@babel/parser" "^7.23.4"
@@ -7978,8 +7978,8 @@ playroom@^0.40.0:
     "@types/base64-url" "^2.2.0"
     "@types/codemirror" "^5.60.5"
     "@types/prettier" "^2.7.1"
-    "@types/react" "^19.0.10"
-    "@types/react-dom" "^19.0.4"
+    "@types/react" "^18.0.0 || ^19.0.0"
+    "@types/react-dom" "^18.0.0 || ^19.0.0"
     "@vanilla-extract/css" "^1.9.2"
     "@vanilla-extract/css-utils" "^0.1.3"
     "@vanilla-extract/dynamic" "^2.1.2"
