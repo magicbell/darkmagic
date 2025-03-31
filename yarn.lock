@@ -2925,15 +2925,15 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
+"@types/react-dom@^18.0.0 || ^19.0.0":
+  version "19.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
+  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
+
 "@types/react-dom@^18.3.0":
   version "18.3.5"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.5.tgz#45f9f87398c5dcea085b715c58ddcf1faf65f716"
   integrity sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==
-
-"@types/react-dom@^19.0.4":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
-  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
 
 "@types/react-is@^17.0.7":
   version "17.0.7"
@@ -2951,19 +2951,19 @@
     "@types/scheduler" "^0.16"
     csstype "^3.0.2"
 
+"@types/react@^18.0.0 || ^19.0.0":
+  version "19.0.12"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.12.tgz#338b3f7854adbb784be454b3a83053127af96bd3"
+  integrity sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==
+  dependencies:
+    csstype "^3.0.2"
+
 "@types/react@^18.3.0":
   version "18.3.19"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.19.tgz#2b6a01315c9b1b644a8799a7d33efb027150240f"
   integrity sha512-fcdJqaHOMDbiAwJnXv6XCzX0jDW77yI3tJqYh1Byn8EL5/S628WRx9b/y3DnNe55zTukUQKrfYxiZls2dHcUMw==
   dependencies:
     "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/react@^19.0.10":
-  version "19.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.12.tgz#338b3f7854adbb784be454b3a83053127af96bd3"
-  integrity sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==
-  dependencies:
     csstype "^3.0.2"
 
 "@types/resolve@^1.20.2":
@@ -5440,7 +5440,7 @@ fast-diff@^1.1.2:
   resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.3.0.tgz#ece407fa550a64d638536cd727e129c61616e0f0"
   integrity sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==
 
-fast-glob@^3.2.12, fast-glob@^3.2.9, fast-glob@^3.3.2:
+fast-glob@^3.2.9, fast-glob@^3.3.2:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.3.tgz#d06d585ce8dba90a16b0505c543c3ccfb3aeb818"
   integrity sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==
@@ -7699,10 +7699,10 @@ pkg-types@^1.3.0:
     mlly "^1.7.4"
     pathe "^2.0.1"
 
-playroom@^0.40.0:
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.40.0.tgz#579b979b8fd2ddb7baa594677901db9f08146ce9"
-  integrity sha512-C6z2/c/9gXwntCokOxAojWKHVWrTalzsd+PM5vskT4U4PpzrtN/A2c6TtZYvqpWEyWSME1i3IgWH4ljmGD+obA==
+playroom@^0.42.0:
+  version "0.42.0"
+  resolved "https://registry.yarnpkg.com/playroom/-/playroom-0.42.0.tgz#a049e752e3d3dfc5faf54377ca0f1f3594b7ea60"
+  integrity sha512-SigGjFxPo4n5xUsUK6sZkmQv5TMG1e9H8n5zSNuJ25Gm2sX1xVhFKdL6ZOM3LGoFxuILYLJdyVjLEGu4AY6iKA==
   dependencies:
     "@babel/core" "^7.20.5"
     "@babel/parser" "^7.23.4"
@@ -7713,8 +7713,8 @@ playroom@^0.40.0:
     "@types/base64-url" "^2.2.0"
     "@types/codemirror" "^5.60.5"
     "@types/prettier" "^2.7.1"
-    "@types/react" "^19.0.10"
-    "@types/react-dom" "^19.0.4"
+    "@types/react" "^18.0.0 || ^19.0.0"
+    "@types/react-dom" "^18.0.0 || ^19.0.0"
     "@vanilla-extract/css" "^1.9.2"
     "@vanilla-extract/css-utils" "^0.1.3"
     "@vanilla-extract/dynamic" "^2.1.2"
@@ -7729,7 +7729,6 @@ playroom@^0.40.0:
     copy-to-clipboard "^3.3.3"
     css-loader "^6.7.2"
     dedent "^1.5.1"
-    fast-glob "^3.2.12"
     find-up "^5.0.0"
     fuzzy "^0.1.3"
     history "^5.3.0"
@@ -7749,6 +7748,7 @@ playroom@^0.40.0:
     read-pkg-up "^7.0.1"
     scope-eval "^1.0.0"
     sucrase "^3.34.0"
+    tinyglobby "^0.2.12"
     typescript ">=5.0.0"
     use-debounce "^10.0.0"
     webpack "^5.75.0"
@@ -9292,7 +9292,7 @@ tinyexec@^0.3.1, tinyexec@^0.3.2:
   resolved "https://registry.yarnpkg.com/tinyexec/-/tinyexec-0.3.2.tgz#941794e657a85e496577995c6eef66f53f42b3d2"
   integrity sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==
 
-tinyglobby@^0.2.11:
+tinyglobby@^0.2.11, tinyglobby@^0.2.12:
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/tinyglobby/-/tinyglobby-0.2.12.tgz#ac941a42e0c5773bd0b5d08f32de82e74a1a61b5"
   integrity sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==
