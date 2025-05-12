@@ -1,5 +1,31 @@
 # @darkmagic/react
 
+## 0.37.1
+
+### Patch Changes
+
+- [`28e3750`](https://github.com/magicbell/darkmagic/commit/28e375087a1e7359389a2a407f3c8efc60cfebe8) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-checkbox` to `^1.2.2`.
+  - updated `@radix-ui/react-radio-group` to `^1.3.2`.
+  - updated `@radix-ui/react-select` to `^2.2.2`.
+  - updated `@radix-ui/react-slider` to `^1.3.2`.
+  - updated `@radix-ui/react-switch` to `^1.2.2`.
+  - updated `@radix-ui/react-visually-hidden` to `^1.2.0`.
+
+- [`3a46810`](https://github.com/magicbell/darkmagic/commit/3a4681018919f8b1cd3ebd5fa2b608da5948ca13) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-slot` to `^1.2.0`.
+  - updated `@radix-ui/react-tooltip` to `^1.2.0`.
+
+- [`e0482ea`](https://github.com/magicbell/darkmagic/commit/e0482ea3e6d46a15b3934ea7eaa9707037366214) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `react-reverse-portal` to `^2.3.0`.
+
+- [`292bfbe`](https://github.com/magicbell/darkmagic/commit/292bfbe31f46574437209520459524fabf5c5b3d) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+
+  - updated `@radix-ui/react-checkbox` to `^1.3.1`.
+
 ## 0.37.0
 
 ### Minor Changes
