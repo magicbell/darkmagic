@@ -80,7 +80,7 @@
     "jsdom": "^26.1.0",
     "lint-staged": "^15.5.0",
     "npm-run-all2": "^7.0.1",
-    "playroom": "^0.40.0",
+    "playroom": "^0.44.0",
     "postcss": "^8.5.1",
     "prettier": "^3.5.0",
     "react": "^18.3.0",
