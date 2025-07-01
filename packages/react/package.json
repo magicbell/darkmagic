@@ -85,6 +85,7 @@
     "@types/mousetrap": "^1.6.15",
     "highlight.js": "^11.11.0",
     "highlightjs-curl": "^1.3.0",
+    "highlightjs-svelte": "^1.0.6",
     "is-what": "^4.1.16",
     "json-stringify-pretty-compact": "^4.0.0",
     "mousetrap": "^1.6.5",

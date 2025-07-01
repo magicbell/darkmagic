@@ -15,6 +15,8 @@ import shell from 'highlight.js/lib/languages/shell';
 import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+// @ts-expect-error types aren't available
+import svelte from 'highlightjs-svelte';
 import * as React from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -43,6 +45,7 @@ hljs.registerLanguage('ruby', ruby);
 hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('swift', swift);
 hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('svelte', svelte);
 
 const StyledExpandIcon = styled('span', {
   display: 'inline',
@@ -265,10 +268,12 @@ type CodeProps = {
     | 'python'
     | 'ruby'
     | 'shell'
+    | 'svelte'
     | 'swift'
     | 'tsx'
     | 'typescript'
-    | 'xml';
+    | 'xml'
+    | 'html';
   /**
    * Only show the first `n` lines of code, and render a button to "show more".
    * Set to 0 to show all.
