@@ -3,6 +3,7 @@ import { HighlightResult } from 'highlight.js';
 import hljs from 'highlight.js/lib/core';
 import bash from 'highlight.js/lib/languages/bash';
 import clojure from 'highlight.js/lib/languages/clojure';
+import css from 'highlight.js/lib/languages/css';
 import go from 'highlight.js/lib/languages/go';
 import graphql from 'highlight.js/lib/languages/graphql';
 import java from 'highlight.js/lib/languages/java';
@@ -32,6 +33,7 @@ hljs.registerLanguage('json', json);
 // xml is required for jsx in javascript/typescript files
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('css', css);
 hljs.registerLanguage('clojure', clojure);
 hljs.registerLanguage('curl', shell);
 hljs.registerLanguage('go', go);
@@ -257,6 +259,7 @@ type CodeProps = {
   lang:
     | 'bash'
     | 'clojure'
+    | 'css'
     | 'curl'
     | 'go'
     | 'graphql'
