@@ -13,6 +13,12 @@ const StyledCell = styled('div', {
       center: { justifyContent: 'center' },
       end: { justifyContent: 'flex-end' },
     },
+    align: {
+      start: { alignItems: 'start' },
+      center: { alignItems: 'center' },
+      end: { alignItems: 'end' },
+      normal: { alignItems: 'normal' },
+    },
     colSpan: {
       1: { gridColumn: 'span 1 / span 1' },
       2: { gridColumn: 'span 2 / span 2' },
