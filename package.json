@@ -79,7 +79,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
-    "npm-run-all2": "^7.0.1",
+    "npm-run-all2": "^8.0.4",
     "playroom": "^0.44.0",
     "postcss": "^8.5.1",
     "prettier": "^3.5.0",
