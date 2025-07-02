@@ -62,7 +62,7 @@
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vanilla-extract/babel-plugin-debug-ids": "^1.2.0",
-    "@vitejs/plugin-react": "^4.4.0",
+    "@vitejs/plugin-react": "^4.6.0",
     "@vitest/coverage-c8": "^0.33.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
@@ -98,7 +98,7 @@
     "typescript": "^5.8.2",
     "vite": "^6.3.0",
     "vite-plugin-banner": "^0.8.0",
-    "vitest": "^3.1.1",
+    "vitest": "^3.2.4",
     "vitest-github-actions-reporter": "^0.11.1"
   }
 }
