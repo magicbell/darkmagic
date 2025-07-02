@@ -1,5 +1,38 @@
 # @darkmagic/react
 
+## 0.38.0
+
+### Minor Changes
+
+- [`a0414de`](https://github.com/magicbell/darkmagic/commit/a0414ded3440d0fc40db49e863681a29673abd55) Thanks [@smeijer](https://github.com/smeijer)! - add align option to grid cells
+
+- [`72119db`](https://github.com/magicbell/darkmagic/commit/72119db7fb0e0c32820f1aa56f0c7e4780c2beee) Thanks [@smeijer](https://github.com/smeijer)! - add css highlighting to Code
+
+- [`a0414de`](https://github.com/magicbell/darkmagic/commit/a0414ded3440d0fc40db49e863681a29673abd55) Thanks [@smeijer](https://github.com/smeijer)! - add svelte highlighting to Code
+
+### Patch Changes
+
+- [`fcba5a3`](https://github.com/magicbell/darkmagic/commit/fcba5a30e6320adfcb7bea3bf30da3f81a8e9c47) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+  - updated `prettier` to `^3.6.2`.
+
+- [`28e3750`](https://github.com/magicbell/darkmagic/commit/28e375087a1e7359389a2a407f3c8efc60cfebe8) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+  - updated `@radix-ui/react-checkbox` to `^1.2.2`.
+  - updated `@radix-ui/react-radio-group` to `^1.3.2`.
+  - updated `@radix-ui/react-select` to `^2.2.2`.
+  - updated `@radix-ui/react-slider` to `^1.3.2`.
+  - updated `@radix-ui/react-switch` to `^1.2.2`.
+  - updated `@radix-ui/react-visually-hidden` to `^1.2.0`.
+
+- [`3a46810`](https://github.com/magicbell/darkmagic/commit/3a4681018919f8b1cd3ebd5fa2b608da5948ca13) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+  - updated `@radix-ui/react-slot` to `^1.2.0`.
+  - updated `@radix-ui/react-tooltip` to `^1.2.0`.
+
+- [`e0482ea`](https://github.com/magicbell/darkmagic/commit/e0482ea3e6d46a15b3934ea7eaa9707037366214) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+  - updated `react-reverse-portal` to `^2.3.0`.
+
+- [`292bfbe`](https://github.com/magicbell/darkmagic/commit/292bfbe31f46574437209520459524fabf5c5b3d) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
+  - updated `@radix-ui/react-checkbox` to `^1.3.1`.
+
 ## 0.37.0
 
 ### Minor Changes
@@ -11,7 +44,6 @@
 ### Minor Changes
 
 - [`b018100`](https://github.com/magicbell/darkmagic/commit/b0181007e79c51fa6c37c60156d672f2ffb250b4) Thanks [@smeijer](https://github.com/smeijer)! - Improves the checkbox component with the following changes:
-
   - Checkbox is now wrapped in a Label, so that clicking gaps still toggles it
   - Added the onClickLabel event, to distinguish clicking the label from the checkbox
   - Added the onMouseEnter and onMouseLeave events, for custom hover actions
@@ -25,7 +57,6 @@
 ### Patch Changes
 
 - [`9d00145`](https://github.com/magicbell/darkmagic/commit/9d001451876895aec938a2a2301bff03abc72e83) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `prettier` to `^3.5.0`.
 
 ## 0.34.0
@@ -41,7 +72,6 @@
 ### Patch Changes
 
 - [`975cd05`](https://github.com/magicbell/darkmagic/commit/975cd0588e9599b0b583f676e617fa714999b005) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `react-reverse-portal` to `^2.2.0`.
 
 ## 0.33.0
@@ -55,7 +85,6 @@
 ### Patch Changes
 
 - [`b84d645`](https://github.com/magicbell/darkmagic/commit/b84d64541dfb4d83c25a4ad5244c9e1f74be7c9c) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `highlight.js` to `^11.11.0`.
 
 ## 0.32.0
@@ -67,7 +96,6 @@
 ### Patch Changes
 
 - [`9f7ba84`](https://github.com/magicbell/darkmagic/commit/9f7ba840202a1ae55c4b0d063f7dc848c89b6ae3) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `prettier` to `^3.4.0`.
 
 ## 0.31.0
@@ -117,7 +145,6 @@
 ### Patch Changes
 
 - [`21f088f`](https://github.com/magicbell/darkmagic/commit/21f088f73c933ebee8822be1124bc568573da2cf) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `@radix-ui/react-scroll-area` to `^1.2.0`.
 
 ## 0.25.0
@@ -129,15 +156,12 @@
 ### Patch Changes
 
 - [`d5b2d9a`](https://github.com/magicbell/darkmagic/commit/d5b2d9a87107226041fb6b5763386401c3843107) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `prettier` to `^3.3.0`.
 
 - [`1f6ab38`](https://github.com/magicbell/darkmagic/commit/1f6ab38ce45b5f41973c0095391791e714127e45) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `highlight.js` to `^11.10.0`.
 
 - [`54a3b25`](https://github.com/magicbell/darkmagic/commit/54a3b25f8de57316686e4e35c3c088a96ec7a4a5) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `@radix-ui/react-accessible-icon` to `^1.1.0`.
   - updated `@radix-ui/react-accordion` to `^1.2.0`.
   - updated `@radix-ui/react-alert-dialog` to `^1.1.1`.
@@ -176,7 +200,6 @@
 ### Patch Changes
 
 - [`230f9b6`](https://github.com/magicbell/darkmagic/commit/230f9b630191466f2893fb1e7b4f5539bfaeb212) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `react-is` to `^18.3.0`.
   - updated `react` to `>= 18.3.0`.
 
@@ -213,7 +236,6 @@
 ### Patch Changes
 
 - [`eb1224e`](https://github.com/magicbell/darkmagic/commit/eb1224eee2dec6206876dfb2dc3357a34f75c759) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `prettier` to `^3.2.1`.
 
 ## 0.22.3
@@ -221,7 +243,6 @@
 ### Patch Changes
 
 - [`db21d31`](https://github.com/magicbell/darkmagic/commit/db21d3150313730813f22d30164d4adbe8098ce7) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `@types/mousetrap` to `^1.6.15`.
 
 ## 0.22.2
@@ -231,27 +252,21 @@
 - [`4255777`](https://github.com/magicbell/darkmagic/commit/4255777f27323db88be5ecb57f419d5ca387eb46) Thanks [@smeijer](https://github.com/smeijer)! - fix: correct drawer click outside logic
 
 - [`af97b42`](https://github.com/magicbell/darkmagic/commit/af97b4206a18d1cd68c50d3bfbae0fb6f338a477) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `@types/mousetrap` to `^1.6.14`.
 
 - [`954f621`](https://github.com/magicbell/darkmagic/commit/954f62175761af7e3b7ef59068bdf797c92fff5c) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `highlight.js` to `^11.9.0`.
 
 - [#103](https://github.com/magicbell/darkmagic/pull/103) [`4c77929`](https://github.com/magicbell/darkmagic/commit/4c77929763af092ca5ab02e209efc58212319713) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `@radix-ui/colors` to `^3.0.0`.
 
 - [`6132917`](https://github.com/magicbell/darkmagic/commit/6132917b9b290ccfc3adeb8879d2cdc0aa2c64c7) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `prettier` to `^3.1.0`.
 
 - [`4ec0cbc`](https://github.com/magicbell/darkmagic/commit/4ec0cbc4a92a84649f462342caf91f1da50a4de4) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `is-what` to `^4.1.16`.
 
 - [`6317ca4`](https://github.com/magicbell/darkmagic/commit/6317ca422b5b5570440e1c26bc0de89d38eccfc4) Thanks [@renovate[bot]](https://github.com/renovate%5Bbot%5D)! - Updated dependencies:
-
   - updated `@types/react-is` to `^17.0.7`.
 
 ## 0.22.1
@@ -259,7 +274,6 @@
 ### Patch Changes
 
 - [#98](https://github.com/magicbell/darkmagic/pull/98) [`171ac76`](https://github.com/magicbell/darkmagic/commit/171ac7680ddba364852666385f7bb44bd97b072b) Thanks [@smeijer](https://github.com/smeijer)! - Updated dependencies:
-
   - updated `@radix-ui/react-alert-dialog` to `^1.0.5`.
   - updated `@radix-ui/react-avatar` to `^1.0.4`.
   - updated `@radix-ui/react-dialog` to `^1.0.5`.
@@ -338,11 +352,9 @@
 ### Patch Changes
 
 - [#51](https://github.com/magicbell/darkmagic/pull/51) [`5967a0f`](https://github.com/magicbell/darkmagic/commit/5967a0f43796d9f3b0a1265a1ddddcfcadafda52) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `react` to `>= 18.2.0`.
 
 - [#54](https://github.com/magicbell/darkmagic/pull/54) [`730a7a2`](https://github.com/magicbell/darkmagic/commit/730a7a2f51cddcf55d4315e239b79906062b6187) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `@radix-ui/colors` to `^0.1.9`.
   - updated `@radix-ui/react-accessible-icon` to `^1.0.3`.
   - updated `@radix-ui/react-accordion` to `^1.1.2`.
@@ -423,7 +435,6 @@
 ### Patch Changes
 
 - [#46](https://github.com/magicbell/darkmagic/pull/46) [`2bc9226`](https://github.com/magicbell/darkmagic/commit/2bc9226459ad89866a61d1e30c04aed94e8bfa4a) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `tiny-invariant` to `^1.3.1`.
 
 ## 0.10.0
@@ -435,15 +446,12 @@
 ### Patch Changes
 
 - [#45](https://github.com/magicbell/darkmagic/pull/45) [`3f1e1f9`](https://github.com/magicbell/darkmagic/commit/3f1e1f91bb6fe15a30f15709baa5c56ec84e2df2) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `is-what` to `^4.1.15`.
 
 - [#40](https://github.com/magicbell/darkmagic/pull/40) [`8d5b990`](https://github.com/magicbell/darkmagic/commit/8d5b9909c3637dca2640695fdd18d86fa5a5c2c6) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `is-what` to `^4.1.10`.
 
 - [#36](https://github.com/magicbell/darkmagic/pull/36) [`7e40dc0`](https://github.com/magicbell/darkmagic/commit/7e40dc0c2ea5c3624c9c357f90c3abd43498cbd5) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `is-what` to `^4.1.9`.
 
 ## 0.9.1
@@ -451,12 +459,10 @@
 ### Patch Changes
 
 - [#29](https://github.com/magicbell/darkmagic/pull/29) [`3a52f91`](https://github.com/magicbell/darkmagic/commit/3a52f913722eb46d14d8f54720a9f223e7825b78) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `prettier` to `^2.8.8`.
   - updated `@types/prettier` to `^2.7.2`.
 
 - [#17](https://github.com/magicbell/darkmagic/pull/17) [`6318426`](https://github.com/magicbell/darkmagic/commit/6318426586d15ed7faff9a96ac9a7d200890d578) Thanks [@renovate](https://github.com/apps/renovate)! - Updated dependencies:
-
   - updated `@radix-ui/react-accessible-icon` to `^1.0.2`.
   - updated `@radix-ui/react-accordion` to `^1.1.1`.
   - updated `@radix-ui/react-alert-dialog` to `^1.0.3`.
@@ -491,7 +497,6 @@
 ### Minor Changes
 
 - [#7](https://github.com/magicbell/darkmagic/pull/7) [`6d1edd6`](https://github.com/magicbell/darkmagic/commit/6d1edd6d9c304b77d013049a90c8e704312823ba) Thanks [@kgray-MB](https://github.com/kgray-MB)!
-
   - Set cursor style to 'pointer' for button, iconButton, select, and tabs
   - Added 'padding' prop to popover (default: 'md')
   - Set padding between pane title and tabs to '$6' (was '$2')
@@ -501,7 +506,6 @@
   - Set copyButton variant="icon" to size="md"
 
 - [#9](https://github.com/magicbell/darkmagic/pull/9) [`a3c621b`](https://github.com/magicbell/darkmagic/commit/a3c621b2100484178e5a8f26c33e7835b0be92b6) Thanks [@kgray-MB](https://github.com/kgray-MB)!
-
   - Update style preview drawers from being scrollable
   - Change default drawer background color to 'bg-app'
 
