@@ -1,5 +1,11 @@
 # @darkmagic/react
 
+## 0.38.1
+
+### Patch Changes
+
+- [`5c2c01c`](https://github.com/magicbell/darkmagic/commit/5c2c01c54e0950d6f586f110c6ae218759ae9419) Thanks [@smeijer](https://github.com/smeijer)! - fix svelte highlighting
+
 ## 0.38.0
 
 ### Minor Changes
