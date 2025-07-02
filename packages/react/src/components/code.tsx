@@ -17,7 +17,7 @@ import swift from 'highlight.js/lib/languages/swift';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 // @ts-expect-error types aren't available
-import svelte from 'highlightjs-svelte';
+import registerSvelte from 'highlightjs-svelte';
 import * as React from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -47,7 +47,7 @@ hljs.registerLanguage('ruby', ruby);
 hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('swift', swift);
 hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('svelte', svelte);
+registerSvelte(hljs);
 
 const StyledExpandIcon = styled('span', {
   display: 'inline',
